@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebaseApp from './firebaseApp'
+import firebase from './firebase'
 
 class App extends Component {
   render() {
 
     return (
       <div className="App">
-    
+        
       </div>
     )
   }
