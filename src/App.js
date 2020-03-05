@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import GeneralSearch from './GeneralSearch';
-import firebaseApp from './firebaseApp';
+import firebase from './firebase'
 
 class App extends Component {
   render() {
