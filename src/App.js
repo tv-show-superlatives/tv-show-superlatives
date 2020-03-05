@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import StoreState from './StoreState.js';
 import firebaseApp from './firebaseApp'
 
 class App extends Component {
