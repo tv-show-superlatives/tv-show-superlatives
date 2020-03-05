@@ -10,14 +10,29 @@ class StoreState extends Component {
         }
     }
 
-    componentDidMount() {
-        const dbRef=firebase.database().ref();
+
+    handleChange = (e) => {
+        this.setState({userInput:e.target.value})
     }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    // componentDidMount() {
+    //     const dbRef=firebase.database().ref();
+    // }
 
     render() {
         return (
             <div>
-                <h1>hi</h1>
+                {this.state.shows.map((show) => {
+                    return (
+                        <li>
+                            <p>{show}</p>
+                        </li>
+                    )
+                })}
             </div>
         );
     }
