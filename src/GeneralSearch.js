@@ -48,7 +48,6 @@ class GeneralSearch extends Component {
                 topTen: topTen,
             })
 
-
         })
     }
 
@@ -58,15 +57,15 @@ class GeneralSearch extends Component {
                 {this.state.topTen.map(show => {
                 return (
                     <div key={show.id} className="tv-titles">
+                        <img src={`${show.image.medium}`} alt=""/>
                         <h2>{`${show.name}`}</h2>
                         {/* <p>{`${show.summary}`}</p> */}
                         <p>{`${show.genres[0]}`}</p>
                         <p>{`${show.network.name}`}</p>
-                        <p>Average Rating: {`${show.rating.average}`}</p>
+                        <p>Average User Rating: {`${show.rating.average}`}</p>
                     
 
                         
-                        <img src={`${show.image.medium}`} alt=""/>
                     </div>
                 )
             })}
