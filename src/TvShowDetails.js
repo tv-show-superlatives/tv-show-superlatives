@@ -8,6 +8,7 @@ class TvShowDetails extends Component {
 		};
 	}
 	componentDidMount() {
+<<<<<<< HEAD
 		axios({
 			url: `https://api.tvmaze.com/lookup/shows?tvrage=5325`,
 			method: "GET"
@@ -39,6 +40,31 @@ class TvShowDetails extends Component {
 			</div>
 		);
 	}
+=======
+        axios({
+            url: `https://api.tvmaze.com/lookup/shows?tvrage=5325`,
+            method: 'GET',
+            
+        }).then((response) => {
+            const tv = response.data;
+            this.setState({
+                tv: tv,
+            })
+            console.log(tv);
+            console.log(this.state.tv.name)
+        })
+    }
+
+    // /when component is true, show title, image, description, rating, network, country, genre, close button
+
+    render() {
+        return (
+           <div>
+               <h1>{this.state.tv.name}</h1>
+           </div>
+        )
+    }
+>>>>>>> master
 }
 export default TvShowDetails;
 
