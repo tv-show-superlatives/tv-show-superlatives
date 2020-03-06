@@ -39,7 +39,7 @@ class TvShowDetails extends Component {
                         return (
                             <div key={show.id} className="titles">
                                 <p>{`${show.name}`}</p>
-                                <img src={`${show.image.medium}`} alt="" />
+                                <img src={`${show.image.medium}`} alt={`A poster of ${show.name}`} />
                                 <p>{`${show.summary}`}</p>
                                 <p>{`${show.rating.average}`}</p>
                                 <p>{`${show.network.name}`}</p>
