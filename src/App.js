@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
 import StoreState from './StoreState';
+import GeneralSearch from './GeneralSearch';
 
 class App extends Component {
   constructor(){
@@ -38,6 +39,7 @@ class App extends Component {
           })}
         </ul>
         <StoreState />
+        <GeneralSearch />
       </div>
     )
   }
