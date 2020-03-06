@@ -17,24 +17,27 @@ class App extends Component {
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
-    console.log(dbRef)
-
-    dbRef.on('value', (response) => {
+    dbRef.on('value', response => {
       const newState = [];
       const data = response.val();
 
-      for(let key in data){
-        newState.push(data[key])
-        
+
+
+      for (let key in data) {
+        const shows = {
+          key: key,
+          ...data[key]
+        };
+
+        newState.push(shows)
+        this.setState({
+          tvShows: newState[0]
+        })
       }
-      this.setState({
-        tvShows:newState,
-        userInput:''
-      })
-      
+      console.log(this.state.tvShows)
     })
   }
-  
+
   render() {
 
     return (
@@ -42,6 +45,14 @@ class App extends Component {
         <StoreState />
         <TvShowDetails />
         <GeneralSearch />
+        <ul>
+          {
+            // this.state.tvShows.map(tvShow => {
+            //   return <li>{tvShow}</li>
+            // })
+          }
+        </ul>
+        {/* <GeneralSearch /> */}
       </div>
     )
   }
