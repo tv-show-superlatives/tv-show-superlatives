@@ -55,25 +55,6 @@ class App extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="App">
-        <h1>test</h1>
-        {/* <StoreState />
-        <TvShowDetails />
-      <GeneralSearch /> */}
-
-      <button onClick={this.dummyData}>click for dummy data</button>
-
-        {/* <ul>
-          
-            {this.state.tvShows.map(tvShow => {
-              console.log(tvShow)
-            })}
-          
-        </ul> */}
-        {/* <GeneralSearch /> */}
-      </div>
-=======
       <Router>
         <div className="App">
           <h1>Welcome</h1>
@@ -84,11 +65,11 @@ class App extends Component {
           <Route path="/StoreState/" component={StoreState}/>
           <Link to="/TvShowDetails/">TV Show Details</Link>
           <Route path="/TvShowDetails/" component={TvShowDetails}/>
+          <button onClick={this.dummyData}>click for dummy data</button>
 
 
           </div>
         </Router>
->>>>>>> master
     )
   }
 }
