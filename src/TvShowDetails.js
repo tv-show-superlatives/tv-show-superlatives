@@ -33,12 +33,22 @@ class TvShowDetails extends Component {
         return (
             <div>
                 {this.state.tv.map(show => {
-                    return (
-                        <div key={show.id} className="titles">
-                            <p>{`${show.name}`}</p>
-                            <img src={`${show.image.medium}`} alt="" />
-                        </div>
-                    );
+                    if (show.network === null) {
+                        console.log('gaaaaah')
+                    } else {
+                        return (
+                            <div key={show.id} className="titles">
+                                <p>{`${show.name}`}</p>
+                                <img src={`${show.image.medium}`} alt="" />
+                                <p>{`${show.summary}`}</p>
+                                <p>{`${show.rating.average}`}</p>
+                                <p>{`${show.network.name}`}</p>
+                                <p>{`${show.network.country.name}`}</p>
+                                <p>{`${show.genres}`}</p>
+                                <button>Close</button>
+                            </div>
+                        )
+                    }
                 })}
             </div>
         )
