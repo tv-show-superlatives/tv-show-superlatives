@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class TvShowDetails extends Component {
 	constructor() {
@@ -22,8 +23,6 @@ class TvShowDetails extends Component {
             this.setState({
                 tv: tv,
             })
-            console.log(tv);
-            console.log(this.state.tv.name)
         })
     }
 
@@ -34,19 +33,36 @@ class TvShowDetails extends Component {
             <div>
                 {this.state.tv.map(show => {
                     if (show.network === null) {
-                        console.log('gaaaaah')
+                        return (
+                           
+                                <div key={show.id} className="titles">
+                                    <Link to={`/show/${show.id}`}>
+                                        <p>{`${show.name}`}</p>
+                                        <img src={`${show.image.medium}`} alt={`A poster of ${show.name}`} />
+                                    </Link> 
+                                        <p>{`${show.summary}`}</p>
+                                        <p>{`${show.rating.average}`}</p>
+                                        <p>Unknown network</p>
+                                        <p>Unknown country</p>
+                                        <p>{`${show.genres}`}</p>
+                                        <button>Close</button>
+                                </div>
+                            
+                        )
                     } else {
                         return (
-                            <div key={show.id} className="titles">
-                                <p>{`${show.name}`}</p>
-                                <img src={`${show.image.medium}`} alt={`A poster of ${show.name}`} />
-                                <p>{`${show.summary}`}</p>
-                                <p>{`${show.rating.average}`}</p>
-                                <p>{`${show.network.name}`}</p>
-                                <p>{`${show.network.country.name}`}</p>
-                                <p>{`${show.genres}`}</p>
-                                <button>Close</button>
-                            </div>
+                                <div key={show.id} className="titles">
+                                    <Link to={`/show/${show.id}`}>
+                                        <p>{`${show.name}`}</p>
+                                        <img src={`${show.image.medium}`} alt={`A poster of ${show.name}`} />
+                                    </Link> 
+                                        <p>{`${show.summary}`}</p>
+                                        <p>{`${show.rating.average}`}</p>
+                                        <p>{`${show.network.name}`}</p>
+                                        <p>{`${show.network.country.name}`}</p>
+                                        <p>{`${show.genres}`}</p>
+                                        <button>Close</button>   
+                                </div>
                         )
                     }
                 })}
