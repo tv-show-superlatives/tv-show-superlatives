@@ -22,8 +22,8 @@ class GeneralSearch extends Component {
             this.setState({
             tv: tv,
             })
-            console.log(tv)
-            console.log(this.state.tv.name);
+            // console.log(tv)
+            // console.log(this.state.tv.name);
         })
     }
 
