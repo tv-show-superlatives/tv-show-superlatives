@@ -29,21 +29,20 @@ class GeneralSearch extends Component {
             })
             const network = this.state.tv.map(show => {
                 if (show.network === null) {
-                    console.log('shitttt')
+                    console.log('no network error catch')
                 } else {
                     return show.network.name
                 }
             })
+            console.log(network)
             const sortedTV = tv.sort(function(a, b) {
                 if (a.rating.average === null) {
-                    console.log('no score')
+                    console.log('no user rating error catch')
                 } else {
-
                     return a.rating.average - b.rating.average;
                 }
             });
-            const sortedOrder = sortedTV.reverse();
-            const topTen = sortedTV.slice(0,10)
+            const topTen = sortedTV.reverse().slice(0,10);
             console.log(topTen)
             this.setState({
                 topTen: topTen,
@@ -62,7 +61,7 @@ class GeneralSearch extends Component {
                         <h2>{`${show.name}`}</h2>
                         {/* <p>{`${show.summary}`}</p> */}
                         <p>{`${show.genres[0]}`}</p>
-                        {/* <p>{`${show.network.name}`}</p> */}
+                        <p>{`${show.network.name}`}</p>
                         <p>Average Rating: {`${show.rating.average}`}</p>
                     
 
