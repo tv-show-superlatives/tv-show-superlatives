@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
+import GeneralSearch from './GeneralSearch';
 import firebase from './firebase'
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
             return <li>{tvShow}</li>
           })}
         </ul>
+        <GeneralSearch />
       </div>
     )
   }
