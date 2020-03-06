@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import firebase from './firebase';
+import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
-import firebase from './firebase'
+import StoreState from './StoreState';
 
 class App extends Component {
-  constructor() {
+  constructor(){
     super();
-    this.state = {
-      tvShows: []
+
+    this.state={
+      tvShows:[],
+      userInput:''
     }
   }
 
