@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      tvShows: {}
+      tvShows: []
     }
   }
 
@@ -16,12 +16,21 @@ class App extends Component {
     dbRef.on('value', response => {
       const newState = [];
       const data = response.val();
+
+
+
       for (let key in data) {
-        newState.push(data[key])
+        const shows = {
+          key: key,
+          ...data[key]
+        };
+
+        newState.push(shows)
         this.setState({
           tvShows: newState[0]
         })
       }
+      console.log(this.state.tvShows)
     })
   }
 
@@ -30,11 +39,13 @@ class App extends Component {
     return (
       <div className="App">
         <ul>
-          {/* {this.state.tvShows.map(tvShow => {
-            return <li>{tvShow}</li>
-          })} */}
+          {
+            // this.state.tvShows.map(tvShow => {
+            //   return <li>{tvShow}</li>
+            // })
+          }
         </ul>
-        <GeneralSearch />
+        {/* <GeneralSearch /> */}
       </div>
     )
   }
