@@ -5,7 +5,8 @@ class GeneralSearch extends Component {
     constructor(){
         super();
         this.state = {
-            tv: []
+            tv: [],
+            topTen: [],
         }
     }
    
@@ -21,7 +22,7 @@ class GeneralSearch extends Component {
             const tv = response.data;
             this.setState({
             tv: tv,
-            })
+        })
             console.log(tv)
             const avgRating = this.state.tv.map(show => {
                 return show.rating.average
@@ -33,7 +34,20 @@ class GeneralSearch extends Component {
                     return show.network.name
                 }
             })
-            console.log(network)
+            const sortedTV = tv.sort(function(a, b) {
+                if (a.rating.average === null) {
+                    console.log('no score')
+                } else {
+
+                    return a.rating.average - b.rating.average;
+                }
+            });
+            const sortedOrder = sortedTV.reverse();
+            const topTen = sortedTV.slice(0,10)
+            console.log(topTen)
+            this.setState({
+                topTen: topTen,
+            })
 
 
         })
@@ -42,7 +56,7 @@ class GeneralSearch extends Component {
     render() {
         return (
             <div>
-                {this.state.tv.map(show => {
+                {this.state.topTen.map(show => {
                 return (
                     <div key={show.id} className="tv-titles">
                         <h2>{`${show.name}`}</h2>
