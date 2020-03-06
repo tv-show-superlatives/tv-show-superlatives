@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase';
-import StoreState from './StoreState';
+import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
+import StoreState from './StoreState';
 
 class App extends Component {
   constructor(){
@@ -33,11 +34,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <ul>
-          {this.state.tvShows.map(tvShow => {
-            return<li>{tvShow}</li>
-          })}
-        </ul>
+        <TvShowDetails />
         <StoreState />
         <GeneralSearch />
       </div>
