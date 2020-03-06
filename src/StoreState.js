@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from './firebase';
 import './App.css';
 
 class StoreState extends Component {
@@ -18,6 +19,9 @@ class StoreState extends Component {
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(this.handleFormSubmit, "hello")
+        const dbRef=firebase.database().ref()
+
+        dbRef.push(this.state.userInput);
 
         this.setState={
             userInput:'',
