@@ -22,37 +22,53 @@ class App extends Component {
       const data = response.val();
 
 
-
       for (let key in data) {
-        const shows = {
-          key: key,
-          ...data[key]
-        };
 
-        newState.push(shows)
+        newState.push(data[key])
         this.setState({
-          tvShows: newState[0]
+          tvShows: newState
         })
       }
-      console.log(this.state.tvShows)
     })
   }
 
-  render() {
+  dummyData = () => {
+    const dummyData = {
+      owner: 'celeste',
+      name: 'weekend soon thank god',
+      shows: [
+        {
+          name: 'the best show',
+          id: 10,
+        },
+        {
+          name: 'a lesser show',
+          id: 24,
+        }
+      ]
+    };
 
+    const dbRef = firebase.database().ref();
+    dbRef.push(dummyData);
+  }
+
+  render() {
     return (
       <div className="App">
         <h1>test</h1>
-        <StoreState />
+        {/* <StoreState />
         <TvShowDetails />
-        <GeneralSearch />
-        <ul>
-          {
-            // this.state.tvShows.map(tvShow => {
-            //   return <li>{tvShow}</li>
-            // })
-          }
-        </ul>
+      <GeneralSearch /> */}
+
+      <button onClick={this.dummyData}>click for dummy data</button>
+
+        {/* <ul>
+          
+            {this.state.tvShows.map(tvShow => {
+              console.log(tvShow)
+            })}
+          
+        </ul> */}
         {/* <GeneralSearch /> */}
       </div>
     )
