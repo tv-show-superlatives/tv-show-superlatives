@@ -64,6 +64,7 @@ class GeneralSearch extends Component {
                         <p>{`${show.genres[0]}`}</p>
                         {/* <p>{`${show.network.name}`}</p> */}
                         <p>Average Rating: {`${show.rating.average}`}</p>
+                    
 
                         
                         <img src={`${show.image.medium}`} alt=""/>

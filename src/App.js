@@ -42,6 +42,9 @@ class App extends Component {
 
     return (
       <div className="App">
+        <StoreState />
+        <TvShowDetails />
+        <GeneralSearch />
         <ul>
           {
             // this.state.tvShows.map(tvShow => {
