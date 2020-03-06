@@ -4,6 +4,7 @@ import firebase from './firebase';
 import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 
 class App extends Component {
   constructor(){
@@ -54,6 +55,7 @@ class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div className="App">
         <h1>test</h1>
         {/* <StoreState />
@@ -71,6 +73,22 @@ class App extends Component {
         </ul> */}
         {/* <GeneralSearch /> */}
       </div>
+=======
+      <Router>
+        <div className="App">
+          <h1>Welcome</h1>
+          <Link to="/" exact>Home</Link>
+          <Link to="/GeneralSearch/">General Search</Link>
+          <Route path="/GeneralSearch/" component={GeneralSearch}/>
+          <Link to="/StoreState/">Store State</Link>
+          <Route path="/StoreState/" component={StoreState}/>
+          <Link to="/TvShowDetails/">TV Show Details</Link>
+          <Route path="/TvShowDetails/" component={TvShowDetails}/>
+
+
+          </div>
+        </Router>
+>>>>>>> master
     )
   }
 }

@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
+// import firebase from 'firebase.js'
 import './App.css';
 
 class StoreState extends Component {
     constructor(){
         super();
         this.state={
-            favShows:[],
+            tvShows:[],
             userInput:'',
         }
     }
     
+
+    // search(term) {
+    //     this.setState({ term });
+    // }
+    
+
     handleChange = (e) => {
         this.setState({userInput:e.target.value})
-        // console.log(this.handleChange, "hi")
+        console.log(e.target.value)
+        
     }
+    
 
     handleFormSubmit = (e) => {
         e.preventDefault();
         console.log(this.handleFormSubmit, "hello")
-        const dbRef=firebase.database().ref()
 
-        dbRef.push(this.state.userInput);
-
-        this.setState={
+        this.setState({
             userInput:'',
-            favShows:[]
-        }
+            // tvShows:[]
+        })
     }
 
     // componentDidMount() {
@@ -37,19 +42,29 @@ class StoreState extends Component {
     // }  
     
 
+    handleClick=(e)=>{
+        e.preventDefault();
+        // const dbRef = firebase.database().ref();
+        // dbRef.push(this.state.userInput);
+        this.setState({userInput:''})
+        console.log("clicked")
+    }
+
     render() {
+        console.log(this.state.userInput)
         return (
             <div>
-                <form action="submit" onSubmit={this.handleFormSubmit}>
+                <form className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
                     <label htmlFor="showSearch">Search for what you want to watch </label>
                     <input
+                        className="searchBar"
                         type="text"
                         id="showSearch"
                         onChange={this.handleChange}
                         value={this.state.userInput}
                         placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    <button type="submit">Search</button>
+                    <button type="submit" onClick={this.handleClick}>Search</button>
                 </form>
             </div>
         );
