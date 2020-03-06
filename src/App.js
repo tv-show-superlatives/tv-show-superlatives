@@ -17,25 +17,29 @@ class App extends Component {
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
+    console.log(dbRef)
+
     dbRef.on('value', (response) => {
       const newState = [];
       const data = response.val();
 
       for(let key in data){
         newState.push(data[key])
+        
       }
       this.setState({
-        tvShows:newState
+        tvShows:newState,
+        userInput:''
       })
-      console.log(response.val())
+      
     })
   }
   render() {
 
     return (
       <div className="App">
-        <TvShowDetails />
         <StoreState />
+        <TvShowDetails />
         <GeneralSearch />
       </div>
     )

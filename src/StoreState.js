@@ -9,15 +9,15 @@ class StoreState extends Component {
             userInput:'',
         }
     }
-
-
+    
     handleChange = (e) => {
         this.setState({userInput:e.target.value})
-        // console.log(this.handleChange)
+        // console.log(this.handleChange, "hi")
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault();
+        console.log(this.handleFormSubmit, "hello")
 
         this.setState={
             userInput:'',
@@ -36,13 +36,17 @@ class StoreState extends Component {
     render() {
         return (
             <div>
-                {/* {this.state.shows.map((show) => {
-                    return (
-                        <li>
-                            <p>{show}hihi</p>
-                        </li>
-                    )
-                })} */}
+                <form action="submit" onSubmit={this.handleFormSubmit}>
+                    <label htmlFor="showSearch">Search for what you want to watch </label>
+                    <input
+                        type="text"
+                        id="showSearch"
+                        onChange={this.handleChange}
+                        value={this.state.userInput}
+                        placeholder = 'ie. Larry David/ Comedy / HBO'
+                    />
+                    <button type="submit">Search</button>
+                </form>
             </div>
         );
     }
