@@ -8,7 +8,7 @@ class App extends Component {
     super();
 
     this.state={
-      favShows:[],
+      tvShows:[],
       userInput:''
     }
   }
@@ -23,14 +23,20 @@ class App extends Component {
         newState.push(data[key])
       }
       this.setState({
-        favShows:newState
+        tvShows:newState
       })
+      console.log(response.val())
     })
   }
   render() {
 
     return (
       <div className="App">
+        <ul>
+          {this.state.tvShows.map(tvShow => {
+            return<li>{tvShow}</li>
+          })}
+        </ul>
         <StoreState />
       </div>
     )
