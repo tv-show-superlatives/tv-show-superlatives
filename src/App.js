@@ -42,6 +42,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>test</h1>
         <StoreState />
         <TvShowDetails />
         <GeneralSearch />
