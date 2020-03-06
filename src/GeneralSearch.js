@@ -9,7 +9,7 @@ class GeneralSearch extends Component {
         }
     }
    
-    componentDidMount() {
+    componentDidMount() { 
         axios({
             url: `http://api.tvmaze.com/shows?`,
             method: 'GET',
@@ -23,7 +23,19 @@ class GeneralSearch extends Component {
             tv: tv,
             })
             console.log(tv)
-            console.log(this.state.tv.name);
+            const avgRating = this.state.tv.map(show => {
+                return show.rating.average
+            })
+            const network = this.state.tv.map(show => {
+                if (show.network === null) {
+                    console.log('shitttt')
+                } else {
+                    return show.network.name
+                }
+            })
+            console.log(network)
+
+
         })
     }
 
@@ -35,7 +47,7 @@ class GeneralSearch extends Component {
                     <div key={show.id} className="tv-titles">
                         <h2>{`${show.name}`}</h2>
                         {/* <p>{`${show.summary}`}</p> */}
-                        <p>{`${show.genres}`}</p>
+                        <p>{`${show.genres[0]}`}</p>
                         {/* <p>{`${show.network.name}`}</p> */}
                         <p>Average Rating: {`${show.rating.average}`}</p>
 
