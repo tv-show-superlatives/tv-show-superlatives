@@ -12,6 +12,7 @@ class AddListToFirebase extends Component {
               this.props.tvShows.reverse().map(list => {
                 return (
                 <ul key={list.id}>{list.name}
+                <p>test</p>
                   {
                     list.shows.map(show => {
                       return <li key={show.id}>{show.name}</li>
