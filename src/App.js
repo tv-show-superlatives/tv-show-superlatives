@@ -5,6 +5,8 @@ import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import AddToFirebase from './AddToFirebase'
+
 
 class App extends Component {
   constructor(){
@@ -65,11 +67,13 @@ class App extends Component {
           <Route path="/StoreState/" component={StoreState}/>
           {/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-          <button onClick={this.dummyData}>click for dummy data</button>
+          <Route path="/" exact render={() => <AddToFirebase tvShows={this.state.tvShows} dummyData={this.dummyData} />}/>
+          
+
+        </div>
+      </Router>
 
 
-          </div>
-        </Router>
     )
   }
 }
