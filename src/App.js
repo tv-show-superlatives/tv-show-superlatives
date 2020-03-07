@@ -79,10 +79,11 @@ class App extends Component {
         <div className="App">
           <h1>Welcome</h1>
           <Link to="/">Home</Link>
+          <StoreState />
           <Link to="/GeneralSearch/">General Search</Link>
           <Route path="/GeneralSearch/" component={GeneralSearch}/>
-          <Link to="/StoreState/">Store State</Link>
-          <Route path="/StoreState/" component={StoreState}/>
+          {/* <Link to="/StoreState/">Store State</Link>
+          <Route path="/StoreState/" component={StoreState}/> */}
           <Link to="/TvShowDetails/">TV Show Details</Link>
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
           <Route path="/" exact render={() => <AddListToFirebase tvShows={this.state.tvShows} dummyData={this.dummyData} />}/>

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 // import firebase from 'firebase.js'
 import './App.css';
 import { Route } from 'react-router-dom';
-import AddToFirebase from './AddToFirebase';
+import AddListToFirebase from './AddListToFirebase.js'
+
 
 class StoreState extends Component {
     constructor(){
@@ -70,7 +71,7 @@ class StoreState extends Component {
                         value={this.state.userInput}
                         placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    <button type="submit" onClick={this.handleClick, this.props.AddToFirebase}>Search</button>
+                    <button type="submit" onClick={this.handleClick}>Search</button>
                     {/* <AddToFirebase StoreState ={this.fromStorageParent}/> */}
                         
                     
