@@ -28,6 +28,7 @@ class TvShowDetails extends Component {
 			const officialNetwork = response.data.network.name;
 			const officialCountry = response.data.network.country.name;
 			const officialImage = response.data.image.medium;
+			// console.log((response.data.summary).slice(3, -4))
 
 			this.setState({
 				tv: tv,
@@ -54,7 +55,7 @@ class TvShowDetails extends Component {
 						src={this.state.officialImage}
 						alt={`A poster of ${this.state.tv.name}`}
 					/>
-					Description: {this.state.tv.summary}
+					<p>Description: {this.state.tv.summary}</p>
 					<p>Rating: {this.state.officialRating}</p>
 					<p>Network unknown</p>
 					<p>Country unknown</p>
@@ -62,7 +63,6 @@ class TvShowDetails extends Component {
 					<button>
 						<Link to="/GeneralSearch/">Close Window</Link>
 					</button>
-					//{" "}
 				</div>
 			);
 			} else {
