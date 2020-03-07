@@ -27,41 +27,41 @@ class TvShowDetails extends Component {
 	
 	// /when component is true, show title, image, description, rating, network, country, genre, close button
 	render() {
-		if (
-			this.state.tv.network.name === "" ||
-			this.state.tv.network.country.name === ""
-		) {
-			return (
-				<div className="single-show">
-					<h1>{this.state.tv.name}</h1>
-					<img
-						src={this.state.tv.image.medium}
-						alt={`A poster of ${this.state.tv.name}`}
-					/>
-					<p>{this.state.tv.summary}</p>
-					<p>{this.state.tv.rating.average}</p>
-					<p>{this.state.tv.genres}</p>
-					<button>Close</button>
-				</div>
-			);
-			} else {
+		// if (
+		// 	this.state.tv.network.name === "" ||
+		// 	this.state.tv.network.country.name === ""
+		// ) {
+		// 	return (
+		// 		<div className="single-show">
+		// 			<h1>{this.state.tv.name}</h1>
+		// 			<img
+		// 				src={this.state.tv.image.medium}
+		// 				alt={`A poster of ${this.state.tv.name}`}
+		// 			/>
+		// 			<p>{this.state.tv.summary}</p>
+		// 			<p>{this.state.tv.rating.average}</p>
+		// 			<p>{this.state.tv.genres}</p>
+		// 			<button>Close</button>
+		// 		</div>
+		// 	);
+		// 	} else {
 				return (
 					<div className="single-show">
 						<h1>{this.state.tv.name}</h1>
-						<img
+						{/* <img
 							src={this.state.tv.image.medium}
 							alt={`A poster of ${this.state.tv.name}`}
-						/>
+						/> */}
 						<p>{this.state.tv.summary}</p>
-						<p>{this.state.tv.rating.average}</p>
-						<p>{this.state.tv.network.name}</p>
-						<p>{this.state.tv.network.country.name}</p>
+						{/* <p>{this.state.tv.rating.average}</p> */}
+						{/* <p>{this.state.tv.network.name}</p>
+						<p>{this.state.tv.network.country.name}</p> */}
 						<p>{this.state.tv.genres}</p>
 						<button>Close</button>
 					</div>
 				);
 			}
 	}
-}
+// }
 		
 export default TvShowDetails;
