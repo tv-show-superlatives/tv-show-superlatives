@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 
-
-class AddToFirebase extends Component {
+class AddListToFirebase extends Component {
   
 
     render() {
         return(
           <div>
             <div>
-            {/* <button onClick={this.props.dummyData}>click for dummy data</button> */}
+            <button onClick={this.props.dummyData}>add list</button>
           </div>
             {
-              this.props.tvShows.map(list => {
+              this.props.tvShows.reverse().map(list => {
                 return (
                 <ul key={list.id}>{list.name}
                   {
@@ -30,4 +29,4 @@ class AddToFirebase extends Component {
     }
 }
 
-export default AddToFirebase
+export default AddListToFirebase
