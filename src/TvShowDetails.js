@@ -20,9 +20,15 @@ class TvShowDetails extends Component {
 			console.log(this.state.tv.name);
 		});
 	}
+
+	
 	// /when component is true, show title, image, description, rating, network, country, genre, close button
 	render() {
-		return (
+		if (
+			this.state.tv.network.name ||
+			this.state.tv.network.country.name === ""
+		) {
+			return (
 			<div>
 				<h1>{this.state.tv.name}</h1>
 				<p>{this.state.tv.summary}</p>
@@ -32,12 +38,30 @@ class TvShowDetails extends Component {
 					alt={`A poster of ${this.state.tv.name}`}
 				/>
 				{/* <p>{this.state.tv.network.name}</p> */}
-				{/* <p>{this.state.tv.rating.average}</p> */}
+				<p>{this.state.tv.rating.average}</p>
 				{/* <p>{this.state.tv.network.country.name}</p> */}
-				{/* 
-				<button>Close</button> */}
+				<button>Close</button>
 			</div>
+			)
+		} else {
+		return (
+			
+			<div>
+				<h1>{this.state.tv.name}</h1>
+				<p>{this.state.tv.summary}</p>
+				<p>{this.state.tv.genres}</p>
+				<img
+					src={this.state.tv.image.medium}
+					alt={`A poster of ${this.state.tv.name}`}
+				/>
+				<p>{this.state.tv.network.name}</p>
+				<p>{this.state.tv.rating.average}</p>
+				<p>{this.state.tv.network.country.name}</p>
+				<button>Close</button>
+			</div>
+		
 		);
+		}
 	}
 }
 export default TvShowDetails;
@@ -90,3 +114,5 @@ export default TvShowDetails;
 // }
 
 // export default TvShowDetails;
+
+
