@@ -58,13 +58,13 @@ class App extends Component {
       <Router>
         <div className="App">
           <h1>Welcome</h1>
-          <Link to="/" exact>Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/GeneralSearch/">General Search</Link>
           <Route path="/GeneralSearch/" component={GeneralSearch}/>
           <Link to="/StoreState/">Store State</Link>
           <Route path="/StoreState/" component={StoreState}/>
-          <Link to="/TvShowDetails/">TV Show Details</Link>
-          <Route path="/TvShowDetails/" component={TvShowDetails}/>
+          {/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
+          <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
           <button onClick={this.dummyData}>click for dummy data</button>
 
 
