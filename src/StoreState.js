@@ -33,7 +33,7 @@ class StoreState extends Component {
 
         this.setState({
             userInput:'',
-            // tvShows:[]
+            tvShows:[]
         })
     }
 
