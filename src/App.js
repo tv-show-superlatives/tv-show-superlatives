@@ -55,9 +55,23 @@ class App extends Component {
       ]
     };
 
+    
     const dbRef = firebase.database().ref();
     dbRef.push(dummyData);
-  }
+  };
+  
+  addTvShow = () => {
+    const addTvShow = {
+      shows: [
+        {
+          name: 'a new show?',
+          id: 302
+        }
+      ]
+    };
+
+    const dbRef = firebase.database
+  };
 
   render() {
     return (
