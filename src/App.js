@@ -5,7 +5,7 @@ import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import AddToFirebase from './AddToFirebase'
+import AddListToFirebase from './AddListToFirebase'
 
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
   dummyData = () => {
     const dummyData = {
       owner: 'celeste',
-      name: 'weekend soon thank god',
+      name: 'woohoo lists!!',
       shows: [
         {
           name: 'the best show',
@@ -47,6 +47,10 @@ class App extends Component {
         {
           name: 'a lesser show',
           id: 24,
+        },
+        {
+          name: 'a different show',
+          id: 135,
         }
       ]
     };
@@ -65,9 +69,9 @@ class App extends Component {
           <Route path="/GeneralSearch/" component={GeneralSearch}/>
           <Link to="/StoreState/">Store State</Link>
           <Route path="/StoreState/" component={StoreState}/>
-          {/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
+          <Link to="/TvShowDetails/">TV Show Details</Link>
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-          <Route path="/" exact render={() => <AddToFirebase tvShows={this.state.tvShows} dummyData={this.dummyData} />}/>
+          <Route path="/" exact render={() => <AddListToFirebase tvShows={this.state.tvShows} dummyData={this.dummyData} />}/>
           
 
         </div>
