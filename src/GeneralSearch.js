@@ -92,6 +92,9 @@ class GeneralSearch extends Component {
             })}
             <h2>HBO</h2>
             <h3>GIT ATTEM</h3>
+            <h3>GIT ATTEM</h3>
+            <h3>GIT ATTEM</h3>
+
                     {this.state.hboShows.map(show => {
                     return (
                         <div key={show.id} className="tv-titles tv-poster">
