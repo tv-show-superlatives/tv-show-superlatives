@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
+
 class AddToFirebase extends Component {
   
+
     render() {
         return(
           <div>
             <div>
-            <button onClick={this.props.dummyData}>click for dummy data</button>
+            {/* <button onClick={this.props.dummyData}>click for dummy data</button> */}
           </div>
             {
               this.props.tvShows.map(list => {
