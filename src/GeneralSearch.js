@@ -10,6 +10,7 @@ class GeneralSearch extends Component {
         this.state = {
             tv: [],
             topTen: [],
+            hboShows: [],
         }
     }
    
@@ -30,6 +31,7 @@ class GeneralSearch extends Component {
             const avgRating = this.state.tv.map(show => {
                 return show.rating.average
             })
+            console.log(avgRating);
             const network = this.state.tv.map(show => {
                 if (show.network === null) {
                     console.log('no network error catch')
@@ -37,6 +39,16 @@ class GeneralSearch extends Component {
                     return show.network.name
                 }
             })
+            console.log(network)
+            
+            const tvShowImage = this.state.tv.map(show => {
+                if (show.image.medium === null) {
+                    console.log('no network error catch')
+                } else {
+                    return show.image.medium
+                }
+            })
+            console.log(tvShowImage)
             const sortedTV = tv.sort(function(a, b) {
                 if (a.rating.average === null) {
                     console.log('no user rating error catch')
@@ -44,17 +56,28 @@ class GeneralSearch extends Component {
                     return a.rating.average - b.rating.average;
                 }
             });
-            const topTen = sortedTV.reverse().slice(0,40);
+            const hboShows = this.state.tv.filter(show => {
+                if (show.network === null) {
+                    console.log('no network error catch')
+                } else if (show.network.name === "HBO") {
+                    return show.network.name
+                }
+            }).slice(0,10);
+            this.setState({
+                hboShows: hboShows,
+            })
+            console.log(hboShows)
+            const topTen = sortedTV.reverse().slice(0,10);
             this.setState({
                 topTen: topTen,
             })
-
         })
     }
 
     render() {
         return (
             <div className="tv-catalogue">
+                <h2>Best Rated Shows on TV</h2>
                 {this.state.topTen.map(show => {
                 return (
                     <div key={show.id} className="tv-titles tv-poster">
@@ -63,20 +86,29 @@ class GeneralSearch extends Component {
                         </Link>
                         <Router>
                         <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-
                         </Router>
-                        
-                        
-                        {/* <h2>{`${show.name}`}</h2> */}
-                        {/* <p>{`${show.summary}`}</p> */}
-                        {/* <p>{`${show.genres[0]}`}</p>
-                        <p>{`${show.network.name}`}</p>
-                        <p>Average User Rating: {`${show.rating.average}`}</p> */}
+                    </div>
+                )
+            })}
+            <h2>HBO</h2>
+            <h3>GIT ATTEM</h3>
+            <h3>GIT ATTEM</h3>
+            <h3>GIT ATTEM</h3>
+
+                    {this.state.hboShows.map(show => {
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <Router>
+                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
                     </div>
                 )
             })}
         </div>
-    )
+        )
     }
 }
 export default GeneralSearch;
