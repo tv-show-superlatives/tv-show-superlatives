@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 
 class AddListToFirebase extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      tvShows:[],
+      userInput:''
+    }
+    
+  }
   
+
 
     render() {
         return(

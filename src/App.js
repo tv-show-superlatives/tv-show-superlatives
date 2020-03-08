@@ -56,6 +56,7 @@ class App extends Component {
     };
 
     
+    
     const dbRef = firebase.database().ref();
     dbRef.push(dummyData);
   };
@@ -79,7 +80,9 @@ class App extends Component {
         <div className="App">
           <h1>Welcome</h1>
           <Link to="/">Home</Link>
-          <StoreState />
+          <Route path="/" exact render ={() =>
+            <StoreState onClick={this.handleClick} tvShows={this.state.tvShows} dummyData={this.dummyData}/>}/>
+          
           <Link to="/GeneralSearch/">General Search</Link>
           <Route path="/GeneralSearch/" component={GeneralSearch}/>
           {/* <Link to="/StoreState/">Store State</Link>

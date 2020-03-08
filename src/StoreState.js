@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 // import firebase from 'firebase.js'
 import './App.css';
-import { Route } from 'react-router-dom';
-import AddListToFirebase from './AddListToFirebase.js'
+import AddListToFirebase from './AddListToFirebase';
+
 
 
 class StoreState extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             tvShows:[],
             userInput:'',
         }
+        
     }
     
+    AddListToFirebase = (props) =>{
+        console.log(this.props)
+            return (
+                props.tvShows,
+                props.dummyData  //also tried props.dummy=this.props.dummyData  
+        )}
 
     // search(term) {
     //     this.setState({ term });
@@ -26,6 +33,7 @@ class StoreState extends Component {
         
     }
     
+    
 
     handleFormSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +41,7 @@ class StoreState extends Component {
 
         this.setState({
             userInput:'',
-            tvShows:[]
+            // tvShows:[]
         })
     }
 
@@ -44,7 +52,7 @@ class StoreState extends Component {
     //     })
     // }  
     
-    
+
     handleClick=(e)=>{
         e.preventDefault();
         // const dbRef = firebase.database().ref();
@@ -53,10 +61,7 @@ class StoreState extends Component {
         console.log("clicked")
     }
 
-    // fromStorageParent = (AddToFirebase) =>{
-    //     this.setState({message:AddToFirebase})
-    // }
-
+        
     render() {
         console.log(this.state.userInput)
         return (
@@ -71,10 +76,12 @@ class StoreState extends Component {
                         value={this.state.userInput}
                         placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    <button type="submit" onClick={this.handleClick}>Search</button>
-                    {/* <AddToFirebase StoreState ={this.fromStorageParent}/> */}
-                        
-                    
+                    {/* <button type="submit" onClick={this.handleClick}>Search</button> */}
+                    <AddListToFirebase 
+                        type="submit" 
+                        onClick={this.handleClick}
+                        tvShows={this.state.tvShows}
+                        dummyData={this.state.dummyData}/>
                 </form>
             </div>
         );
