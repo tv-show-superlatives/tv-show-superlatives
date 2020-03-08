@@ -64,7 +64,7 @@ class GeneralSearch extends Component {
                 } else if (show.genres[0] === "Comedy") {
                     return show.genres[0]
                 }
-            }).slice(0,5)
+            }).slice(0,10)
             this.setState({
                 comedyTen: comedyTen,
             })
@@ -74,7 +74,7 @@ class GeneralSearch extends Component {
                 } else if (show.network.name === "HBO") {
                     return show.network.name
                 }
-            }).slice(0,5)
+            }).slice(0,10)
             this.setState({
                 hboShows: hboShows,
             });
@@ -84,7 +84,7 @@ class GeneralSearch extends Component {
                 } else if (show.network.name === "NBC") {
                     return show.network.name
                 }
-            }).slice(0,5)
+            }).slice(0,10)
             this.setState({
                 nbcShows: nbcShows,
             });
