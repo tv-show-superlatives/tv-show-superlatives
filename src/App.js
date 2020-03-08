@@ -28,12 +28,15 @@ class App extends Component {
 
 
       for (let key in data) {
-        const listInfo = data[key]
+        const listInfo = {
+          key: key,
+          info: data[key]
+        }
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
         newList.push(keys)
-        console.log(data.key)
+        // console.log(data.key)
         this.setState({
           tvShows: newState,
           list: newList
