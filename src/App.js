@@ -45,33 +45,39 @@ class App extends Component {
     })
   }
 
-  dummyData = () => {
-    const dummyData = {
-      owner: 'celeste',
-      name: 'woohoo lists!!',
-      shows: [
-        {
-          name: 'the best show',
-          id: 10,
-        },
-        {
-          name: 'a lesser show',
-          id: 24,
-        },
-        {
-          name: 'a different show',
-          id: 135,
-        }
-      ]
-    };
+  // dummyData = () => {
+  //   const dummyData = {
+  //     owner: 'celeste',
+  //     name: 'woohoo lists!!',
+  //     shows: [
+  //       {
+  //         name: 'the best show',
+  //         id: 10,
+  //       },
+  //       {
+  //         name: 'a lesser show',
+  //         id: 24,
+  //       },
+  //       {
+  //         name: 'a different show',
+  //         id: 135,
+  //       }
+  //     ]
+  //   };
 
     
-    
-    const dbRef = firebase.database().ref();
-    dbRef.push(dummyData);
-  };
+  handleClick = (e) => {
+    e.preventDefault();
+    // const dbRef = firebase.database().ref();
+    // dbRef.push(this.state.userInput);
+    this.setState({ userInput: '' })
+    console.log("clicked")
+  }
+  //   const dbRef = firebase.database().ref();
+  //   dbRef.push(dummyData);
+  // };
 
-  // addNewList = (userInput) => {
+    // addNewList = (userInput) => {
   //   const newList = {
   //     owner: '',
   //     name: userInput,
@@ -82,7 +88,8 @@ class App extends Component {
   //   dbRef.push(newList)
   // }
   
-  addTvShow = () => {
+  addTvShow = (e) => {
+    e.preventDefault()
     const addTvShow = {
       shows: [
         {
@@ -94,34 +101,32 @@ class App extends Component {
 
 
     const dbRef = firebase.database().ref();
+    // console.log(this)
     // console.log(dbRef.val)
     // dbRef.push(addTvShow)
   };
 
   render() {
-    console.log(this.addNewList)
     return (
       <Router>
         <div className="App">
           <h1>Welcome</h1>
           <Link to="/">Home</Link>
-          <Route path="/" exact render ={() =>
-            <StoreState onClick={this.handleClick} tvShows={this.state.tvShows} dummyData={this.dummyData}/>}/>
-          
           <Link to="/GeneralSearch/">General Search</Link>
           <Route path="/GeneralSearch/" component={GeneralSearch}/>
-          {/* <Link to="/StoreState/">Store State</Link>
-          <Route path="/StoreState/" component={StoreState}/> */}
+          <Link to="/StoreState/">Store State</Link>
+          <Route path="/StoreState/" component={StoreState}/>
           <Link to="/TvShowDetails/">TV Show Details</Link>
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
           <Route path="/" exact 
             render={ () => 
-            <AddListToFirebase 
+            <AddListToFirebase
+              handleClick={this.handleClick}
               tvShows={this.state.tvShows} 
               list={this.state.list}
-              dummyData={this.dummyData} 
+              // dummyData={this.dummyData} 
               addTvShow={this.addTvShow}
-              // addNewList={this.addNewList}
+              addNewList={this.addNewList}
             />
             }/>
           
