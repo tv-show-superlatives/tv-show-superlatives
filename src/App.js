@@ -108,7 +108,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/" >
         <div className="App">
           <h1>Welcome</h1>
           <Link to="/">Home</Link>

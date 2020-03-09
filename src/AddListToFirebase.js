@@ -9,7 +9,10 @@ class AddListToFirebase extends Component {
       tvShows:[],
       userInput:''
     }
-    
+  }
+
+  removeShow = () => {
+
   }
     
     render() {
@@ -23,9 +26,14 @@ class AddListToFirebase extends Component {
                 return (
                   <ul key={list.key}>{list.info.name}
                   
+                  <button onClick=""></button>
+
                   {
                     list.info.shows.map(show => {
-                      return <li key={show.id}>{show.name}</li>
+                      return <li key={show.id}>
+                        {show.name}
+                        <button onClick={this.removeShow}>remove</button>
+                        </li>
                     })
                   }
                   <button onClick={() => {
