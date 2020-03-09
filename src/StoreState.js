@@ -87,7 +87,7 @@ class StoreState extends Component {
             <div>
                 <form 
                 className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
-                    <label htmlFor="showSearch">Search for what you want to watch </label>
+                    <label htmlFor="showSearch">new list title: </label>
                     <input
                         className="searchBar"
                         type="text"
