@@ -58,7 +58,7 @@ class TvShowDetails extends Component {
 						alt={`A poster of ${this.state.tv.name}`}
 					/>
 					<p>Description: {this.state.officialDescription}</p>
-					<p>Rating: {this.state.officialRating}</p>
+					<p>Rating: {this.state.officialRating}/10</p>
 					<p>Network unknown</p>
 					<p>Country unknown</p>
 					<p>Genre: {this.state.genreName}</p>
@@ -76,7 +76,7 @@ class TvShowDetails extends Component {
 							alt={`A poster of ${this.state.tv.name}`}
 						/>
 						<p>Description: {this.state.officialDescription}</p>
-						<p>Rating: {this.state.officialRating}</p>
+						<p>Rating: {this.state.officialRating}/10</p>
 						<p>Network: {this.state.officialNetwork}</p>
 						<p>Country: {this.state.officialCountry}</p>
 						<p>Genre: {this.state.genreName}</p>
