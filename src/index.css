@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: ‘Montserrat’, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -40,6 +38,65 @@ element {
 }
 
 */
+
+
+.menu-wrapper {
+	position: relative;
+	max-width: 500px;
+	height: 100px; 
+	margin: 1em auto;
+	border: 1px solid black;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.menu	{
+	height: 120px; 
+	background: #f3f3f3;
+	box-sizing: border-box;
+	
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+	.item {
+		display: inline-block;
+		width: 100px;
+		height: 100%;
+		outline: 1px dotted gray;
+		padding: 1em;
+		box-sizing: border-box;
+	}
+
+/* ------------------------------------ARROW SCROLL BUTTONS-----------------------------
+.paddles {
+}
+.paddle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 3em;
+}
+.left-paddle {
+	left: 0;
+}
+.right-paddle {
+	right: 0;
+}
+.hidden {
+	display: none;
+}
+
+.print {
+	margin: auto;
+	max-width: 500px;
+}	
+	span {
+		display: inline-block;
+		width: 100px;
+	}
+ */
 
 :root {
   --primaryColor: #577f90;

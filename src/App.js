@@ -5,6 +5,7 @@ import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
+import '../src/index.css'
 
 
 class App extends Component {
