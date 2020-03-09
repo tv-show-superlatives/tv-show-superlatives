@@ -9,23 +9,31 @@ class AddListToFirebase extends Component {
       tvShows:[],
       userInput:''
     }
-    
   }
+
     
     render() {
         return(
           <div>
-            <div>
-            {/* <button className="badButton">add list</button> */}
-          </div>
             {
               this.props.tvShows.reverse().map(list => {
                 return (
                   <ul key={list.key}>{list.info.name}
                   
+                  <button onClick={() => {
+                    const key = list.key
+                    console.log(key)
+                    const dbRef = firebase.database().ref().child(key + '/')
+                  }}>
+                    why
+                  </button>
+
                   {
                     list.info.shows.map(show => {
-                      return <li key={show.id}>{show.name}</li>
+                      return <li key={show.id}>
+                        {show.name}
+                        {/* <button onClick={this.removeShow}>remove</button> */}
+                        </li>
                     })
                   }
                   <button onClick={() => {
