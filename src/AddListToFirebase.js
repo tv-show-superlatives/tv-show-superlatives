@@ -9,7 +9,10 @@ class AddListToFirebase extends Component {
       tvShows:[],
       userInput:''
     }
-    
+  }
+
+  removeShow = () => {
+
   }
     
     render() {
@@ -20,29 +23,34 @@ class AddListToFirebase extends Component {
                 return (
                   <ul key={list.key}>{list.info.name}
                   
+                  <button onClick=""></button>
+
                   {
                     list.info.shows.map(show => {
-                      return <li key={show.id}>{show.name}</li>
+                      return <li key={show.id}>
+                        {show.name}
+                        <button onClick={this.removeShow}>remove</button>
+                        </li>
                     })
                   }
                   <button onClick={() => {
 
                     const key = list.key
+                    const dataToPush = {
+                      id: 1235,
+                      name: 'bhlegnl?'
+                    }
+                    let prevListCopy;
                     const dbRef = firebase.database().ref().child(key + '/shows')
 
                     dbRef.on('value', response => {
                       const prevList = response.val();
-                      console.log(prevList)
-                      const prevListCopy = [...prevList]
-                      console.log(prevListCopy)
-                      
+                      prevListCopy = [...prevList];
+                      prevListCopy.push(dataToPush);
                     })
-                    console.log(dbRef)
-
-                    // dbRef.update({
-                    //   shows: 'a new show',
-                    //   id: 2013
-                    // })
+                    
+                    dbRef.update(prevListCopy);
+                    
 
                     }}>add to tv show</button>
                 </ul>
