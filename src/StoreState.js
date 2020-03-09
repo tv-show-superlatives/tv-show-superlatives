@@ -1,16 +1,43 @@
 import React, { Component } from 'react';
-// import firebase from 'firebase.js'
+import firebase from './firebase'
 import './App.css';
+import AddListToFirebase from './AddListToFirebase';
+
+
 
 class StoreState extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             tvShows:[],
             userInput:'',
         }
+        
+    }
+
+    addNewList = (userInput) => {
+        const newList = {
+            owner: '',
+            name: userInput,
+            shows: [
+                {
+                    id:12,
+                    name:"Pool of cool"
+                }
+            ]
+        };
+
+        const dbRef = firebase.database().ref();
+        dbRef.push(newList)
     }
     
+    addListToFirebase = (props) =>{
+        console.log(this.state.userInput)
+        //     return (
+        //         props.tvShows,
+        //         props.dummyData  //also tried props.dummy=this.props.dummyData  
+        // )
+    }
 
     // search(term) {
     //     this.setState({ term });
@@ -19,15 +46,18 @@ class StoreState extends Component {
 
     handleChange = (e) => {
         this.setState({userInput:e.target.value})
-        console.log(e.target.value)
+        // console.log(e.target.value)
         
     }
+    
     
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(this.handleFormSubmit, "hello")
-
+        this.addListToFirebase(this.state.userInput)
+        // console.log(this.handleFormSubmit, "hello")
+        const userInput = this.state.userInput
+        this.addNewList(userInput)
         this.setState({
             userInput:'',
             // tvShows:[]
@@ -50,8 +80,9 @@ class StoreState extends Component {
         console.log("clicked")
     }
 
+        
     render() {
-        console.log(this.state.userInput)
+        // console.log(this.state.userInput)
         return (
             <div>
                 <form className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
@@ -64,7 +95,13 @@ class StoreState extends Component {
                         value={this.state.userInput}
                         placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    <button type="submit" onClick={this.handleClick}>Search</button>
+                    {/* <button type="submit" onClick={this.handleClick}>Search</button> */}
+                    <AddListToFirebase 
+                        type="submit" 
+                        onClick={this.handleClick}
+                        tvShows={this.state.tvShows}
+                        dummyData={this.state.dummyData}
+                        addNewList={this.addNewList}/>
                 </form>
             </div>
         );
