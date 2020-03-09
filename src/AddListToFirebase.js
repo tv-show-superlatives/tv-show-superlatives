@@ -16,7 +16,7 @@ class AddListToFirebase extends Component {
         return(
           <div>
             <div>
-            <button onClick={this.props.dummyData}>add list</button>
+            {/* <button className="badButton">add list</button> */}
           </div>
             {
               this.props.tvShows.reverse().map(list => {
