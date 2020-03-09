@@ -70,6 +70,17 @@ class App extends Component {
     const dbRef = firebase.database().ref();
     dbRef.push(dummyData);
   };
+
+  // addNewList = (userInput) => {
+  //   const newList = {
+  //     owner: '',
+  //     name: userInput,
+  //     shows: []
+  //   };
+
+  //   const dbRef = firebase.database().ref();
+  //   dbRef.push(newList)
+  // }
   
   addTvShow = () => {
     const addTvShow = {
@@ -88,6 +99,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.addNewList)
     return (
       <Router>
         <div className="App">
@@ -109,6 +121,7 @@ class App extends Component {
               list={this.state.list}
               dummyData={this.dummyData} 
               addTvShow={this.addTvShow}
+              // addNewList={this.addNewList}
             />
             }/>
           
