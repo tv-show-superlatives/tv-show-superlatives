@@ -14,19 +14,30 @@ class GeneralSearch extends Component {
             comedyTen: [],
             hboShows: [],
             nbcShows: [],
+            shuffleTV: [],
         }
     }
-
-    shuffle = (array) => {
-        for (let i = array.length - 1; i > 0; i--){
-            let j = Math.floor(Math.random()* (i + 1))
-            let item = array[i]
-            array[i] = array[j]
-            array[j] = item
+    shuffle = (a) => {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
         }
+        return a;
     }
+    /////USER SEARCH FUNCTION 
+    // array = [
+    //     { name:"string 1", value:"this", other: "that" },
+    //     { name:"string 2", value:"this", other: "that" }
+    // ];
+    // search = (nameKey, myArray) => {
+    //     for (let i = 0; i < tv.length; i++) {
+    //         if (myArray[i].name === nameKey) {
+    //             return myArray[i];
+    //         }
+    //     }
+    // }
 
-
+//  resultObject = search("string 1", array);
 
     componentDidMount() { 
         axios({
@@ -97,16 +108,13 @@ class GeneralSearch extends Component {
                     return show.network.name
                 }
             }).slice(0,10);
-
-            
-
-            const shuffleTV = this.shuffle(sortedTV)
-            console.log(sortedTV)
-            console.log(shuffleTV)
-
             this.setState({
                 nbcShows: nbcShows,
             });
+            const shuffleTV = this.shuffle(tv).reverse().slice(0,10);
+            this.setState({
+                shuffleTV: shuffleTV,
+            })
             
         })
     }
@@ -115,6 +123,13 @@ class GeneralSearch extends Component {
         return (
             
             <div className="tv-catalogue">
+                
+                {/* <form action="">
+                    <input type="text" placeholder="Search.."></input>
+                    <button onClick={searchFunc}>SEARCH!</button>
+                </form> */}
+
+
                 <h2>Best Rated Shows on TV</h2>
                 {this.state.topTen.map(show => {
                 return (
@@ -154,8 +169,23 @@ class GeneralSearch extends Component {
                     </div>
                 )
             })}
-            <h2>HBO</h2>
+            <h2>NBC</h2>
                     {this.state.nbcShows.map(show => {
+                    return (
+                        
+                        <div key={show.id} className="tv-titles tv-poster">
+                            
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <Router>
+                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
+                    </div>
+                )
+            })}
+            <h2>TV Show Roulette!</h2>
+                    {this.state.shuffleTV.map(show => {
                     return (
                         
                         <div key={show.id} className="tv-titles tv-poster">
