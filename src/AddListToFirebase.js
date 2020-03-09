@@ -9,42 +9,66 @@ class AddListToFirebase extends Component {
       tvShows:[],
       userInput:''
     }
-    
   }
+
     
     render() {
         return(
           <div>
-            <div>
-            {/* <button className="badButton">add list</button> */}
-          </div>
             {
               this.props.tvShows.reverse().map(list => {
                 return (
                   <ul key={list.key}>{list.info.name}
                   
+                  <button onClick={() => {
+                    const key = list.key
+                    console.log(key)
+                    const dbRef = firebase.database().ref().child(key + '/')
+                    dbRef.remove()
+                  }}>
+                    remove
+                  </button>
+
                   {
                     list.info.shows.map(show => {
-                      return <li key={show.id}>{show.name}</li>
+                      return <li key={show.id}>
+                        {show.name}
+                        <button onClick={() => {
+                          const key = show.id
+                          const listKey = list.key
+                          // console.log(key)
+                          // console.log(list.key)
+                          const dbRef = firebase.database().ref().child(listKey + '/shows/' + key + '/')
+                          console.log(dbRef)
+                          // dbRef.remove()
+                        }}>remove</button>
+                        </li>
                     })
                   }
                   <button onClick={() => {
 
                     const key = list.key
+                    const dataToPush = {
+                      id: 1235,
+                      name: 'bhlegnl?'
+                    }
+                    let prevListCopy;
                     const dbRef = firebase.database().ref().child(key + '/shows')
 
                     dbRef.on('value', response => {
                       const prevList = response.val();
+<<<<<<< HEAD
                       console.log(prevList)
                       const prevListCopy = [...prevList]
                       console.log(prevListCopy)
+=======
+                      prevListCopy = [...prevList];
+                      prevListCopy.push(dataToPush);
+>>>>>>> master
                     })
-                    console.log(dbRef)
-
-                    // dbRef.update({
-                    //   shows: 'a new show',
-                    //   id: 2013
-                    // })
+                    
+                    dbRef.update(prevListCopy);
+                    
 
                     }}>add to tv show</button>
                 </ul>

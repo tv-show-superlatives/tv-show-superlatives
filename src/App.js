@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
 import firebase from './firebase';
 import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
+import '../src/index.css'
 
 
 class App extends Component {
@@ -32,6 +32,7 @@ class App extends Component {
           key: key,
           info: data[key]
         }
+        console.log(listInfo.key, listInfo)
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
@@ -45,26 +46,6 @@ class App extends Component {
     })
   }
 
-  // dummyData = () => {
-  //   const dummyData = {
-  //     owner: 'celeste',
-  //     name: 'woohoo lists!!',
-  //     shows: [
-  //       {
-  //         name: 'the best show',
-  //         id: 10,
-  //       },
-  //       {
-  //         name: 'a lesser show',
-  //         id: 24,
-  //       },
-  //       {
-  //         name: 'a different show',
-  //         id: 135,
-  //       }
-  //     ]
-  //   };
-
     
   handleClick = (e) => {
     e.preventDefault();
@@ -73,20 +54,7 @@ class App extends Component {
     this.setState({ userInput: '' })
     console.log("clicked")
   }
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.push(dummyData);
-  // };
 
-    // addNewList = (userInput) => {
-  //   const newList = {
-  //     owner: '',
-  //     name: userInput,
-  //     shows: []
-  //   };
-
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.push(newList)
-  // }
   
   addTvShow = (e) => {
     e.preventDefault()
@@ -108,28 +76,29 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/tv-show-superlatives/" >
         <div className="App">
-          <h1>Welcome</h1>
-          <Link to="/">Home</Link>
-          <Link to="/GeneralSearch/">General Search</Link>
-          <Route path="/GeneralSearch/" component={GeneralSearch}/>
-          <Link to="/StoreState/">Store State</Link>
-          <Route path="/StoreState/" component={StoreState}/>
-          <Link to="/TvShowDetails/">TV Show Details</Link>
-          <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-          <Route path="/" exact 
-            render={ () => 
-            <AddListToFirebase
-              handleClick={this.handleClick}
-              tvShows={this.state.tvShows} 
-              list={this.state.list}
-              // dummyData={this.dummyData} 
-              addTvShow={this.addTvShow}
-              addNewList={this.addNewList}
-            />
-            }/>
-          
+          <div className="wrapper">
+            <h1>Welcome</h1>
+            <Link to="/">Home</Link>
+            <Link to="/GeneralSearch/">General Search</Link>
+            <Route path="/GeneralSearch/" component={GeneralSearch}/>
+            <Link to="/StoreState/">Store State</Link>
+            <Route path="/StoreState/" component={StoreState}/>
+            <Link to="/TvShowDetails/">TV Show Details</Link>
+            <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
+            <Route path="/" exact 
+              render={ () => 
+              <AddListToFirebase
+                handleClick={this.handleClick}
+                tvShows={this.state.tvShows} 
+                list={this.state.list}
+                // dummyData={this.dummyData} 
+                addTvShow={this.addTvShow}
+                addNewList={this.addNewList}
+              />
+              }/>
+          </div>
 
         </div>
       </Router>
