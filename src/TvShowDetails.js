@@ -23,15 +23,17 @@ class TvShowDetails extends Component {
 			method: "GET"
 		}).then(response => {
 			const tv = response.data;
+			const regex = /(<([^>]+)>)/gi;
+			const officialDescription = response.data.summary.replace(regex, "");
 			const genreName = response.data.genres[0];
 			const officialRating = response.data.rating.average;
 			const officialNetwork = response.data.network.name;
 			const officialCountry = response.data.network.country.name;
 			const officialImage = response.data.image.medium;
-			// console.log((response.data.summary).slice(3, -4))
 
 			this.setState({
 				tv: tv,
+				officialDescription: officialDescription,
 				genreName: genreName,
 				officialRating: officialRating,
 				officialNetwork: officialNetwork,
@@ -55,7 +57,7 @@ class TvShowDetails extends Component {
 						src={this.state.officialImage}
 						alt={`A poster of ${this.state.tv.name}`}
 					/>
-					<p>Description: {this.state.tv.summary}</p>
+					<p>Description: {this.state.officialDescription}</p>
 					<p>Rating: {this.state.officialRating}</p>
 					<p>Network unknown</p>
 					<p>Country unknown</p>
@@ -73,7 +75,7 @@ class TvShowDetails extends Component {
 							src={this.state.officialImage}
 							alt={`A poster of ${this.state.tv.name}`}
 						/>
-						<p>Description: {this.state.tv.summary}</p>
+						<p>Description: {this.state.officialDescription}</p>
 						<p>Rating: {this.state.officialRating}</p>
 						<p>Network: {this.state.officialNetwork}</p>
 						<p>Country: {this.state.officialCountry}</p>
