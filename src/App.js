@@ -45,31 +45,37 @@ class App extends Component {
     })
   }
 
-  dummyData = () => {
-    const dummyData = {
-      owner: 'celeste',
-      name: 'woohoo lists!!',
-      shows: [
-        {
-          name: 'the best show',
-          id: 10,
-        },
-        {
-          name: 'a lesser show',
-          id: 24,
-        },
-        {
-          name: 'a different show',
-          id: 135,
-        }
-      ]
-    };
+  // dummyData = () => {
+  //   const dummyData = {
+  //     owner: 'celeste',
+  //     name: 'woohoo lists!!',
+  //     shows: [
+  //       {
+  //         name: 'the best show',
+  //         id: 10,
+  //       },
+  //       {
+  //         name: 'a lesser show',
+  //         id: 24,
+  //       },
+  //       {
+  //         name: 'a different show',
+  //         id: 135,
+  //       }
+  //     ]
+  //   };
 
     
-    
-    const dbRef = firebase.database().ref();
-    dbRef.push(dummyData);
-  };
+  handleClick = (e) => {
+    e.preventDefault();
+    // const dbRef = firebase.database().ref();
+    // dbRef.push(this.state.userInput);
+    this.setState({ userInput: '' })
+    console.log("clicked")
+  }
+  //   const dbRef = firebase.database().ref();
+  //   dbRef.push(dummyData);
+  // };
 
   // addNewList = (userInput) => {
   //   const newList = {
@@ -116,12 +122,13 @@ class App extends Component {
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
           <Route path="/" exact 
             render={ () => 
-            <AddListToFirebase 
+            <AddListToFirebase
+              handleClick={this.handleClick}
               tvShows={this.state.tvShows} 
               list={this.state.list}
-              dummyData={this.dummyData} 
+              // dummyData={this.dummyData} 
               addTvShow={this.addTvShow}
-              // addNewList={this.addNewList}
+              addNewList={this.addNewList}
             />
             }/>
           

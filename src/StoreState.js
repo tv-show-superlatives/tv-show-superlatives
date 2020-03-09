@@ -22,7 +22,7 @@ class StoreState extends Component {
             shows: [
                 {
                     id:12,
-                    name:"Pool of cool"
+                    name:"l"
                 }
             ]
         };
@@ -72,20 +72,21 @@ class StoreState extends Component {
     // }  
     
 
-    handleClick=(e)=>{
-        e.preventDefault();
-        // const dbRef = firebase.database().ref();
-        // dbRef.push(this.state.userInput);
-        this.setState({userInput:''})
-        console.log("clicked")
-    }
+    // handleClick=(e)=>{
+    //     e.preventDefault();
+    //     // const dbRef = firebase.database().ref();
+    //     // dbRef.push(this.state.userInput);
+    //     this.setState({userInput:''})
+    //     console.log("clicked")
+    // }
 
         
     render() {
         // console.log(this.state.userInput)
         return (
             <div>
-                <form className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
+                <form 
+                className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
                     <label htmlFor="showSearch">Search for what you want to watch </label>
                     <input
                         className="searchBar"
@@ -95,13 +96,14 @@ class StoreState extends Component {
                         value={this.state.userInput}
                         placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    {/* <button type="submit" onClick={this.handleClick}>Search</button> */}
-                    <AddListToFirebase 
+                    <button type="submit" onClick={this.handleClick}>Search</button>
+                    {/* <AddListToFirebase 
                         type="submit" 
                         onClick={this.handleClick}
                         tvShows={this.state.tvShows}
-                        dummyData={this.state.dummyData}
-                        addNewList={this.addNewList}/>
+                        // dummyData={this.state.dummyData}
+                        addNewList={this.addNewList}
+                        onSubmit={this.handleFormSubmit}/> */}
                 </form>
             </div>
         );
