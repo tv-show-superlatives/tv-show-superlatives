@@ -38,7 +38,6 @@ class AddListToFirebase extends Component {
                       console.log(prevList)
                       const prevListCopy = [...prevList]
                       console.log(prevListCopy)
-                      prevListCopy
                     })
                     console.log(dbRef)
 
