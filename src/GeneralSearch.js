@@ -16,6 +16,18 @@ class GeneralSearch extends Component {
             nbcShows: [],
         }
     }
+
+    shuffle = (array) => {
+        for (let i = array.length - 1; i > 0; i--){
+            let j = Math.floor(Math.random()* (i + 1))
+            let item = array[i]
+            array[i] = array[j]
+            array[j] = item
+        }
+    }
+
+
+
     componentDidMount() { 
         axios({
             url: `http://api.tvmaze.com/shows?`,
@@ -42,7 +54,7 @@ class GeneralSearch extends Component {
             })            
             const tvShowImage = this.state.tv.map(show => {
                 if (show.image.medium === null) {
-                    return false
+                    console.log('error handling')
                 } else {
                     return show.image.medium
                 }
@@ -60,7 +72,7 @@ class GeneralSearch extends Component {
             })
             const comedyTen = sortedTV.filter(show => {
                 if (show.genres[0] === null) {
-                    return false
+                    return false 
                 } else if (show.genres[0] === "Comedy") {
                     return show.genres[0]
                 }
@@ -84,14 +96,24 @@ class GeneralSearch extends Component {
                 } else if (show.network.name === "NBC") {
                     return show.network.name
                 }
-            }).slice(0,10)
+            }).slice(0,10);
+
+            
+
+            const shuffleTV = this.shuffle(sortedTV)
+            console.log(sortedTV)
+            console.log(shuffleTV)
+
             this.setState({
                 nbcShows: nbcShows,
             });
+            
         })
     }
     render() {
+        
         return (
+            
             <div className="tv-catalogue">
                 <h2>Best Rated Shows on TV</h2>
                 {this.state.topTen.map(show => {
@@ -132,10 +154,12 @@ class GeneralSearch extends Component {
                     </div>
                 )
             })}
-            <h2>NBC</h2>
+            <h2>HBO</h2>
                     {this.state.nbcShows.map(show => {
                     return (
+                        
                         <div key={show.id} className="tv-titles tv-poster">
+                            
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
