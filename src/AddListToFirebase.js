@@ -31,21 +31,21 @@ class AddListToFirebase extends Component {
                   <button onClick={() => {
 
                     const key = list.key
+                    const dataToPush = {
+                      id: 1235,
+                      name: 'bhlegnl?'
+                    }
+                    let prevListCopy;
                     const dbRef = firebase.database().ref().child(key + '/shows')
 
                     dbRef.on('value', response => {
                       const prevList = response.val();
-                      console.log(prevList)
-                      const prevListCopy = [...prevList]
-                      console.log(prevListCopy)
-                      prevListCopy
+                      prevListCopy = [...prevList];
+                      prevListCopy.push(dataToPush);
                     })
-                    console.log(dbRef)
-
-                    // dbRef.update({
-                    //   shows: 'a new show',
-                    //   id: 2013
-                    // })
+                    
+                    dbRef.update(prevListCopy);
+                    
 
                     }}>add to tv show</button>
                 </ul>
