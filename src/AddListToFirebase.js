@@ -9,13 +9,6 @@ class AddListToFirebase extends Component {
       tvShows:[],
       userInput:''
     }
-<<<<<<< HEAD
-=======
-  }
-
-  removeShow = () => {
-
->>>>>>> master
   }
 
     
