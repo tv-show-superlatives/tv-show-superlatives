@@ -98,12 +98,7 @@ class GeneralSearch extends Component {
                 shuffleTV: shuffleTV,
             })
             
-<<<<<<< HEAD
-        })
-    
-=======
         });
->>>>>>> master
     }
 
 
@@ -194,60 +189,28 @@ class GeneralSearch extends Component {
 
     render() {
         return (    
-            <div className="tv-catalogue">
-<<<<<<< HEAD
-                <h2>Best Rated Shows on TV</h2>
-                {this.state.topTen.map(show => {
-=======
-                
-                {/* <form action="">
-                    <input type="text" placeholder="Search.."></input>
-                    <button onClick={searchFunc}>SEARCH!</button>
-                </form> */}
-
-
+        <div className="tv-catalogue">
             <h2>Best Rated Shows on TV</h2>
-                <div className="scrollWrapper">
-                    <div className="showScroll">
-                        {this.state.topTen.map(show => {
-                        return (
-                            <div key={show.id} className="tv-titles tv-poster">
-                                <Link to={`/tvShows/${show.externals.tvrage}`}>
-                                <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                                </Link>
-                                <Router>
-                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                                </Router>
-                            </div>
-                            )
-                        })}
-                    </div>
-                    <div class="paddles">
-                        <button class="left-paddle paddle hidden">
-                                            
-                        </button>
-                        <button class="right-paddle paddle">
-                                                
-                        </button>
-                    </div>
-                </div>
-            <h2>HBO</h2>
-                <div className="showScroll">
-                    {this.state.hboShows.map(show => {
->>>>>>> master
+            <div className="showScroll">
+                {this.state.topTen.map(show => {
                     return (
                         <div key={show.id} className="tv-titles tv-poster">
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
                             <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
                         </div>
                     )
                 })}
-<<<<<<< HEAD
-                <h2>HBO</h2>
+            </div>
+            <div class="paddles">
+                <button class="left-paddle paddle hidden"></button>
+                <button class="right-paddle paddle"></button>
+            </div>   
+            <h2>HBO</h2>
+            <div className="showScroll">
                 {this.state.hboShows.map(show => {
                     return (
                         <div key={show.id} className="tv-titles tv-poster">
@@ -255,45 +218,44 @@ class GeneralSearch extends Component {
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
                             <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
                         </div>
                     )
                 })}
+            </div>    
             <h2>Comedy</h2>
+            <div className="showScroll">
                 {this.state.comedyTen.map(show => {
-=======
-            </div>
-            <h2>Comedy</h2>
-                <div className="showScroll">
-                    {this.state.comedyTen.map(show => {
->>>>>>> master
                     return (
                         <div key={show.id} className="tv-titles tv-poster">
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
                             <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
                         </div>
                     )
                 })}
-<<<<<<< HEAD
+            </div>
             <h2>NBC</h2>
+            <div className="showScroll">
                 {this.state.nbcShows.map(show => {
-                    return (    
-                        <div key={show.id} className="tv-titles tv-poster">
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">  
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
                             <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
                         </div>
                     )
                 })}
+            </div>
             <h2>TV Show Roulette!</h2>
+            <div className="showScroll">
                 {this.state.shuffleTV.map(show => {
                     return (
                         <div key={show.id} className="tv-titles tv-poster">
@@ -301,48 +263,12 @@ class GeneralSearch extends Component {
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
                             <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
                         </div>
                     )
                 })}
-=======
             </div>
-            <h2>NBC</h2>
-                <div className="showScroll">
-                    {this.state.nbcShows.map(show => {
-                    return (
-                            <div key={show.id} className="tv-titles tv-poster">
-                                
-                                <Link to={`/tvShows/${show.externals.tvrage}`}>
-                                <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                                </Link>
-                                <Router>
-                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                                </Router>
-                            </div>
-                        )
-                    })}
-                </div>
-            <h2>TV Show Roulette!</h2>
-                    <div className="showScroll">
-                        {this.state.shuffleTV.map(show => {
-                        return (
-                                <div key={show.id} className="tv-titles tv-poster">
-                                    
-                                    <Link to={`/tvShows/${show.externals.tvrage}`}>
-                                    <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                                    </Link>
-                                    <Router>
-                                    <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                                    </Router>
-                                </div>
-                    )
-                })}
-            </div>
-            
-
->>>>>>> master
         </div>
         )
     }

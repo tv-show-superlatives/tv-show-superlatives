@@ -57,14 +57,8 @@ class AddListToFirebase extends Component {
 
                     dbRef.on('value', response => {
                       const prevList = response.val();
-<<<<<<< HEAD
-                      console.log(prevList)
-                      const prevListCopy = [...prevList]
-                      console.log(prevListCopy)
-=======
                       prevListCopy = [...prevList];
                       prevListCopy.push(dataToPush);
->>>>>>> master
                     })
                     
                     dbRef.update(prevListCopy);
