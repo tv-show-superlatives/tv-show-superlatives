@@ -77,7 +77,7 @@ class App extends Component {
   //   dbRef.push(dummyData);
   // };
 
-  // addNewList = (userInput) => {
+    // addNewList = (userInput) => {
   //   const newList = {
   //     owner: '',
   //     name: userInput,
@@ -88,7 +88,8 @@ class App extends Component {
   //   dbRef.push(newList)
   // }
   
-  addTvShow = () => {
+  addTvShow = (e) => {
+    e.preventDefault()
     const addTvShow = {
       shows: [
         {
@@ -100,24 +101,21 @@ class App extends Component {
 
 
     const dbRef = firebase.database().ref();
+    // console.log(this)
     // console.log(dbRef.val)
     // dbRef.push(addTvShow)
   };
 
   render() {
-    console.log(this.addNewList)
     return (
       <Router>
         <div className="App">
           <h1>Welcome</h1>
           <Link to="/">Home</Link>
-          <Route path="/" exact render ={() =>
-            <StoreState onClick={this.handleClick} tvShows={this.state.tvShows} dummyData={this.dummyData}/>}/>
-          
           <Link to="/GeneralSearch/">General Search</Link>
           <Route path="/GeneralSearch/" component={GeneralSearch}/>
-          {/* <Link to="/StoreState/">Store State</Link>
-          <Route path="/StoreState/" component={StoreState}/> */}
+          <Link to="/StoreState/">Store State</Link>
+          <Route path="/StoreState/" component={StoreState}/>
           <Link to="/TvShowDetails/">TV Show Details</Link>
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
           <Route path="/" exact 
