@@ -15,9 +15,6 @@ class AddListToFirebase extends Component {
     render() {
         return(
           <div>
-            <div>
-            {/* <button className="badButton">add list</button> */}
-          </div>
             {
               this.props.tvShows.reverse().map(list => {
                 return (
@@ -38,7 +35,7 @@ class AddListToFirebase extends Component {
                       console.log(prevList)
                       const prevListCopy = [...prevList]
                       console.log(prevListCopy)
-                      prevListCopy
+                      
                     })
                     console.log(dbRef)
 

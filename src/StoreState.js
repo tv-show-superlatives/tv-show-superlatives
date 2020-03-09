@@ -22,7 +22,7 @@ class StoreState extends Component {
             shows: [
                 {
                     id:12,
-                    name:"l"
+                    name:""
                 }
             ]
         };

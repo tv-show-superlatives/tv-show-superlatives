@@ -36,28 +36,3 @@
     transform: rotate(360deg);
   }
 }
-.tv-titles {
-  display: inline-block;
-}
-
-
-
-
-
-
-
-/* TO USE THESE VARIABLES*/
-
-/*
-
-element {
-  background-color: var(--primaryColor);
-}
-
-*/
-
-:root {
-  --primaryColor: #577f90;
-  --secondaryColor: #86c2ae;
-  --primaryAccent: #f0917a;
-}

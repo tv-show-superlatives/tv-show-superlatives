@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.tv-titles {
+  display: inline-block;
+}
+
+/* .wrapper {
+  max-width: 1040px;
+  margin:0 auto;
+
+} */
+
+h1,
+h2 {
+  text-align: left;
+}
+
+
+.showScroll{
+  display: flex;
+}
+
+/* TO USE THESE VARIABLES*/
+
+/*
+
+element {
+  background-color: var(--primaryColor);
+}
+
+*/
+
+:root {
+  --primaryColor: #577f90;
+  --secondaryColor: #86c2ae;
+  --primaryAccent: #f0917a;
+}
