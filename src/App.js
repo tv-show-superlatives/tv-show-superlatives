@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
 import firebase from './firebase';
 import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
+import '../src/index.css'
 
 
 class App extends Component {
@@ -110,26 +110,27 @@ class App extends Component {
     return (
       <Router basename="/tv-show-superlatives/" >
         <div className="App">
-          <h1>Welcome</h1>
-          <Link to="/">Home</Link>
-          <Link to="/GeneralSearch/">General Search</Link>
-          <Route path="/GeneralSearch/" component={GeneralSearch}/>
-          <Link to="/StoreState/">Store State</Link>
-          <Route path="/StoreState/" component={StoreState}/>
-          <Link to="/TvShowDetails/">TV Show Details</Link>
-          <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-          <Route path="/" exact 
-            render={ () => 
-            <AddListToFirebase
-              handleClick={this.handleClick}
-              tvShows={this.state.tvShows} 
-              list={this.state.list}
-              // dummyData={this.dummyData} 
-              addTvShow={this.addTvShow}
-              addNewList={this.addNewList}
-            />
-            }/>
-          
+          <div className="wrapper">
+            <h1>Welcome</h1>
+            <Link to="/">Home</Link>
+            <Link to="/GeneralSearch/">General Search</Link>
+            <Route path="/GeneralSearch/" component={GeneralSearch}/>
+            <Link to="/StoreState/">Store State</Link>
+            <Route path="/StoreState/" component={StoreState}/>
+            <Link to="/TvShowDetails/">TV Show Details</Link>
+            <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
+            <Route path="/" exact 
+              render={ () => 
+              <AddListToFirebase
+                handleClick={this.handleClick}
+                tvShows={this.state.tvShows} 
+                list={this.state.list}
+                // dummyData={this.dummyData} 
+                addTvShow={this.addTvShow}
+                addNewList={this.addNewList}
+              />
+              }/>
+          </div>
 
         </div>
       </Router>
