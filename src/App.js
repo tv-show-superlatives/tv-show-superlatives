@@ -62,7 +62,7 @@ class App extends Component {
       shows: [
         {
           name: 'a new show?',
-          id: 302
+          key: 302
         }
       ]
     };

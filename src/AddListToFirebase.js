@@ -31,16 +31,16 @@ class AddListToFirebase extends Component {
 
                   {
                     list.info.shows.map(show => {
-                      return <li key={show.id}>
+                      return <li key={show.key}>
                         {show.name}
                         <button onClick={() => {
-                          const key = show.id
+                          const key = show.key
                           const listKey = list.key
-                          // console.log(key)
-                          // console.log(list.key)
+                          console.log(key)
+                          console.log(list.key)
                           const dbRef = firebase.database().ref().child(listKey + '/shows/' + key + '/')
-                          console.log(dbRef)
-                          // dbRef.remove()
+                          console.log(dbRef.key)
+                          dbRef.remove()
                         }}>remove</button>
                         </li>
                     })
@@ -49,7 +49,7 @@ class AddListToFirebase extends Component {
 
                     const key = list.key
                     const dataToPush = {
-                      id: 1235,
+                      key: 1235,
                       name: 'bhlegnl?'
                     }
                     let prevListCopy;
