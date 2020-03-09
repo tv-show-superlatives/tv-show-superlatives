@@ -24,15 +24,24 @@ class AddListToFirebase extends Component {
                     const key = list.key
                     console.log(key)
                     const dbRef = firebase.database().ref().child(key + '/')
+                    dbRef.remove()
                   }}>
-                    why
+                    remove
                   </button>
 
                   {
                     list.info.shows.map(show => {
                       return <li key={show.id}>
                         {show.name}
-                        {/* <button onClick={this.removeShow}>remove</button> */}
+                        <button onClick={() => {
+                          const key = show.id
+                          const listKey = list.key
+                          // console.log(key)
+                          // console.log(list.key)
+                          const dbRef = firebase.database().ref().child(listKey + '/shows/' + key + '/')
+                          console.log(dbRef)
+                          // dbRef.remove()
+                        }}>remove</button>
                         </li>
                     })
                   }
