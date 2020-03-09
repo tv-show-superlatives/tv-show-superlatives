@@ -14,7 +14,8 @@ class App extends Component {
 
     this.state={
       tvShows:[],
-      userInput:''
+      userInput:'',
+      list: [],
     }
   }
 
@@ -22,14 +23,23 @@ class App extends Component {
     const dbRef = firebase.database().ref();
     dbRef.on('value', response => {
       const newState = [];
+      const newList = [];
       const data = response.val();
 
 
       for (let key in data) {
-
-        newState.push(data[key])
+        const listInfo = {
+          key: key,
+          info: data[key]
+        }
+        const keys = key
+        const listArray = data[key]
+        newState.push(listInfo)
+        newList.push(keys)
+        // console.log(data.key)
         this.setState({
-          tvShows: newState
+          tvShows: newState,
+          list: newList
         })
       }
     })
@@ -71,7 +81,10 @@ class App extends Component {
       ]
     };
 
-    const dbRef = firebase.database
+
+    const dbRef = firebase.database().ref();
+    // console.log(dbRef.val)
+    // dbRef.push(addTvShow)
   };
 
   render() {
@@ -89,7 +102,15 @@ class App extends Component {
           <Route path="/StoreState/" component={StoreState}/> */}
           <Link to="/TvShowDetails/">TV Show Details</Link>
           <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-          <Route path="/" exact render={() => <AddListToFirebase tvShows={this.state.tvShows} dummyData={this.dummyData} />}/>
+          <Route path="/" exact 
+            render={ () => 
+            <AddListToFirebase 
+              tvShows={this.state.tvShows} 
+              list={this.state.list}
+              dummyData={this.dummyData} 
+              addTvShow={this.addTvShow}
+            />
+            }/>
           
 
         </div>
