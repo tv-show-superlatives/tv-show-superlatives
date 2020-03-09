@@ -70,7 +70,8 @@ class App extends Component {
     dbRef.push(dummyData);
   };
   
-  addTvShow = () => {
+  addTvShow = (e) => {
+    e.preventDefault()
     const addTvShow = {
       shows: [
         {
@@ -82,6 +83,7 @@ class App extends Component {
 
 
     const dbRef = firebase.database().ref();
+    // console.log(this)
     // console.log(dbRef.val)
     // dbRef.push(addTvShow)
   };
