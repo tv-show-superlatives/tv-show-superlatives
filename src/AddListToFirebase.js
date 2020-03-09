@@ -3,8 +3,15 @@ import firebase from "./firebase"
 
 class AddListToFirebase extends Component {
 
-
-  
+  constructor(props){
+    super(props);
+    this.state={
+      tvShows:[],
+      userInput:''
+    }
+    
+  }
+    
     render() {
         return(
           <div>
@@ -31,6 +38,7 @@ class AddListToFirebase extends Component {
                       console.log(prevList)
                       const prevListCopy = [...prevList]
                       console.log(prevListCopy)
+                      prevListCopy
                     })
                     console.log(dbRef)
 
