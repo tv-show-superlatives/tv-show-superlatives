@@ -81,6 +81,10 @@ class TvShowDetails extends Component {
 						<p>Country: {this.state.officialCountry}</p>
 						<p>Genre: {this.state.genreName}</p>
 						<button>
+							<Route path="/addNewList:list" />
+							Add To List
+						</button>
+						<button>
 							<Link to="/GeneralSearch/">Close Window</Link>
 						</button>
 					</div>

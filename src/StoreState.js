@@ -87,16 +87,15 @@ class StoreState extends Component {
             <div>
                 <form 
                 className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
-                    <label htmlFor="showSearch">Search for what you want to watch </label>
+                    <label htmlFor="showSearch">Add your favourite shows to your list </label>
                     <input
                         className="searchBar"
                         type="text"
                         id="showSearch"
                         onChange={this.handleChange}
                         value={this.state.userInput}
-                        placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    <button type="submit" onClick={this.handleClick}>Search</button>
+                    <button type="submit" onClick={this.handleClick}> + </button>
                     {/* <AddListToFirebase 
                         type="submit" 
                         onClick={this.handleClick}

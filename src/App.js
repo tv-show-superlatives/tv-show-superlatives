@@ -115,8 +115,7 @@ class App extends Component {
             <Link to="/">Home</Link>
             <Link to="/GeneralSearch/">General Search</Link>
             <Route path="/GeneralSearch/" component={GeneralSearch}/>
-            <Link to="/StoreState/">Store State</Link>
-            <Route path="/StoreState/" component={StoreState}/>
+            <Route path="/" component={StoreState}/>
             <Link to="/TvShowDetails/">TV Show Details</Link>
             <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
             <Route path="/" exact 

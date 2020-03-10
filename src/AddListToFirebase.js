@@ -7,7 +7,8 @@ class AddListToFirebase extends Component {
     super(props);
     this.state={
       tvShows:[],
-      userInput:''
+      userInput:'',
+      marginLeft:0
     }
   }
 

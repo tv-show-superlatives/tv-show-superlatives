@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TvShowDetails from './TvShowDetails';
-import ScrollButtons from './ScrollButtons';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 
@@ -139,22 +138,19 @@ class GeneralSearch extends Component {
 
 
             <h2>Best Rated Shows on TV</h2>
-                <div className="scrollWrapper">
-                    <div className="showScroll">
-                        <ScrollButtons />
-                        {this.state.topTen.map(show => {
-                        return (
-                            <div key={show.id} className="tv-titles tv-poster">
-                                <Link to={`/tvShows/${show.externals.tvrage}`}>
-                                <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                                </Link>
-                                <Router>
-                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                                </Router>
-                            </div>
-                            )
-                        })}
-                    </div>
+                <div className="showScroll">
+                    {this.state.topTen.map(show => {
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <Router>
+                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
+                        </div>
+                        )
+                    })}
                 </div>
             <h2>HBO</h2>
                 <div className="showScroll">
