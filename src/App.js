@@ -6,6 +6,7 @@ import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
 import '../src/index.css'
+import NewListPage from './NewListPage';
 
 
 class App extends Component {
@@ -76,35 +77,53 @@ class App extends Component {
 
   render() {
     return (
-      <Router basename="/tv-show-superlatives/" >
-        <div className="App">
-          <div className="wrapper">
-            <h1>Welcome</h1>
-            <Link to="/">Home</Link>
-            <Link to="/GeneralSearch/">General Search</Link>
-            <Route path="/GeneralSearch/" component={GeneralSearch}/>
-            <Link to="/StoreState/">Store State</Link>
-            <Route path="/StoreState/" component={StoreState}/>
-            <Link to="/TvShowDetails/">TV Show Details</Link>
-            <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-            <Route path="/" exact 
-              render={ () => 
-              <AddListToFirebase
-                handleClick={this.handleClick}
-                tvShows={this.state.tvShows} 
-                list={this.state.list}
-                // dummyData={this.dummyData} 
-                addTvShow={this.addTvShow}
-                addNewList={this.addNewList}
-              />
-              }/>
-          </div>
-
-        </div>
-      </Router>
-
-
-    )
+			<Router basename="/tv-show-superlatives/">
+				<div className="App">
+					<div className="wrapper">
+						<ul>
+							<li>
+								<h1>Welcome</h1>
+							</li>
+							<li>
+								<Link to="/">Home</Link>
+							</li>
+							<li>
+								<Link to="/GeneralSearch/">General Search</Link>
+								<Route path="/GeneralSearch/" component={GeneralSearch} />
+							</li>
+							<li>
+								<Link to="/NewListPage/">New List</Link>
+								<Route path="/NewListPage/" component={NewListPage} />
+							</li>
+							<li>
+								{/* <Link to="/StoreState/">Store State</Link> */}
+								<Route path="/StoreState/" component={StoreState} />
+							</li>
+							<li>
+								{/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
+								<Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
+							</li>
+							<li>
+								<Route
+									path="/"
+									exact
+									render={() => (
+										<AddListToFirebase
+											handleClick={this.handleClick}
+											tvShows={this.state.tvShows}
+											list={this.state.list}
+											// dummyData={this.dummyData}
+											addTvShow={this.addTvShow}
+											addNewList={this.addNewList}
+										/>
+									)}
+								/>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</Router>
+		);
   }
 }
 
