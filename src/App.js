@@ -95,10 +95,10 @@ class App extends Component {
 								<Link to="/NewListPage/">New List</Link>
 								<Route path="/NewListPage/" component={NewListPage} />
 							</li>
-							<li>
+							{/* <li> */}
 								{/* <Link to="/StoreState/">Store State</Link> */}
-								<Route path="/StoreState/" component={StoreState} />
-							</li>
+								{/* <Route path="/StoreState/" component={StoreState} />
+							</li> */}
 							<li>
 								{/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
 								<Route path="/tvShows/:tvShowsID" component={TvShowDetails} />

@@ -21,8 +21,8 @@ class StoreState extends Component {
             name: userInput,
             shows: [
                 {
-                    key: 12,
-                    name: ""
+                    name: 'none',
+                    key: 0,
                 }
             ]
         };
