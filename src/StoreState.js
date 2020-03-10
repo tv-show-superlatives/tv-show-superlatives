@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from './firebase'
 import './App.css';
+import NewListPage from './NewListPage'
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase';
 
 
@@ -84,27 +86,30 @@ class StoreState extends Component {
     render() {
         // console.log(this.state.userInput)
         return (
-            <div>
-                <form 
-                className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
-                    <label htmlFor="showSearch">new list title: </label>
-                    <input
-                        className="searchBar"
-                        type="text"
-                        id="showSearch"
-                        onChange={this.handleChange}
-                        value={this.state.userInput}
-                    />
-                    <button type="submit" onClick={this.handleClick}> + </button>
-                    {/* <AddListToFirebase 
-                        type="submit" 
-                        onClick={this.handleClick}
-                        tvShows={this.state.tvShows}
-                        // dummyData={this.state.dummyData}
-                        addNewList={this.addNewList}
-                        onSubmit={this.handleFormSubmit}/> */}
-                </form>
-            </div>
+            <Switch>
+                <div>
+                    <form 
+                    className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
+                        <label htmlFor="showSearch">new list title: </label>
+                        <input
+                            className="searchBar"
+                            type="text"
+                            id="showSearch"
+                            onChange={this.handleChange}
+                            value={this.state.userInput}
+                        />
+                        
+                            <button type="submit" onClick={this.handleClick}> 
+                                <Link to="/NewListPage">
+                                    +
+                                </Link>
+                                <Route path="/NewListPage/" component={NewListPage} />
+                            </button>
+                        
+                        
+                    </form>
+                </div>
+            </Switch>
         );
     }
 }
