@@ -55,6 +55,7 @@ class App extends Component {
     // dbRef.push(this.state.userInput);
     this.setState({ userInput: '' })
     console.log("clicked")
+    
 
   }
 
