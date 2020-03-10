@@ -19,6 +19,95 @@ code {
 
 } */
 
+
+/* *** Blair - NewListPage Section Styles are below *** */
+
+ul {
+	list-style-type: none;
+	padding: 5%;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+/* li {
+	border: 1px solid black;
+} */
+
+h1,
+h3 {
+	margin: 0;
+}
+
+.listButton {
+	font-weight: 700;
+	background-color: #86c2ae;
+	border: 1px solid black;
+	padding: 1px 10px;
+}
+
+.listButton:hover {
+	background-color: black;
+	color: #86c2ae;
+	transition: 0.5s;
+}
+
+.listSearchBar {
+	border: 1px solid black;
+}
+
+.listVsChoicesFlex {
+	display: flex;
+}
+
+.listPageFlex,
+.searchBarFlex {
+	display: flex;
+	justify-content: space-around;
+}
+
+.listPageFlex {
+	justify-content: space-between;
+}
+
+.listPageFlex4 {
+	display: flex;
+	flex-direction: column;
+}
+
+.listPageFlex2,
+.listPageFlex3,
+.listPageFlex5 {
+	display: flex;
+	justify-content: space-around;
+}
+
+.listPageFlex3 {
+	margin-top: 25px;
+}
+
+.userList,
+.userOptions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 5px;
+	border: 3px solid black;
+	margin-top: 25px;
+}
+
+.userList {
+	margin-right: 5%;
+}
+.userOptions {
+	margin-left: 5%;
+}
+
+
+/* ***End of Blair's NewListPage Stylings*** */
+
 h1,
 h2 {
   text-align: left;
