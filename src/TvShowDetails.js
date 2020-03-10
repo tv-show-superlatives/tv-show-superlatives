@@ -52,7 +52,7 @@ class TvShowDetails extends Component {
 		) {
 			return (
 				<div className="single-show">
-					<h1>{this.state.tv.name}</h1>
+					<h2 className="showName">{this.state.tv.name}</h2>
 					<img
 						src={this.state.officialImage}
 						alt={`A poster of ${this.state.tv.name}`}
@@ -70,7 +70,7 @@ class TvShowDetails extends Component {
 			} else {
 				return (
 					<div className="single-show">
-						<h1>{this.state.tv.name}</h1>
+						<h2 className="showName">{this.state.tv.name}</h2>
 						<img
 							src={this.state.officialImage}
 							alt={`A poster of ${this.state.tv.name}`}
