@@ -34,39 +34,9 @@ class GeneralSearch extends Component {
           count: this.state.count + 1
         });
     }    
-      //         const limitPerPage=250;
-      //         const apiUrl="http://api.tvmaze.com/shows";
-      
-      // const getUsers = async function(pageNo = 1) {
-          
-          // let actualUrl=apiUrl + `?page=${pageNo}&limit=${limitPerPage}language=English`;
-          // var apiResults=await fetch(actualUrl)
-          // .then(resp=>{
-              // return resp.json();
-              // });
-              
-              // return apiResults;
-              
-              // }
-              
-              // const getEntireUserList = async function(pageNo = 1) {
-//   const results = await getUsers(pageNo);
-//   console.log("Retreiving data from API for page : " + pageNo);
-//   if (results.length>0) {
-//     return results.concat(await getEntireUserList(pageNo+1));
-//   } else {
-//     return results;
     
-//   }
-// };
-// (async ()=>{
-
-//     const entireList=await getEntireUserList();
-//     console.log(entireList);
-
-// })();
-componentDidMount() { 
-    axios.get(`http://api.tvmaze.com/shows?page=${this.state.count}`).then(response => {
+    componentDidMount() { 
+    axios.get(`http://api.tvmaze.com/shows?page=1`).then(response => {
                 const tv = response.data;
                     this.setState({
                     tv: tv,
@@ -150,10 +120,7 @@ componentDidMount() {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
-                            <AddToListButton 
-                                // key={this.key} 
-                                // title={this.title}
-                            />
+                            <AddToListButton />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
