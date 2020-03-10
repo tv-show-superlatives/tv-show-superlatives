@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TvShowDetails from './TvShowDetails';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import AddToListButton from './AddToListButton'
 
 
 class GeneralSearch extends Component {
@@ -13,7 +14,7 @@ class GeneralSearch extends Component {
             topTen: [],
             comedyTen: [],
             hboShows: [],
-            nbcShows: [],
+            foodShows: [],
             shuffleTV: [],
             marginLeft:0,
         }
@@ -25,73 +26,51 @@ class GeneralSearch extends Component {
         }
         return a;
     }
-    /////USER SEARCH FUNCTION 
-    // array = [
-    //     { name:"string 1", value:"this", other: "that" },
-    //     { name:"string 2", value:"this", other: "that" }
-    // ];
-    // search = (nameKey, myArray) => {
-    //     for (let i = 0; i < tv.length; i++) {
-    //         if (myArray[i].name === nameKey) {
-    //             return myArray[i];
-    //         }
-    //     }
-    // }
-
-//  resultObject = search("string 1", array);
-
     componentDidMount() { 
-        axios({
-            url: `http://api.tvmaze.com/shows?`,
-            method: 'GET',
-            params: {
-                page: 'X',
-                language: 'English',
-            }
-        }).then(response => {
-            const tv = response.data;
-            this.setState({
-            tv: tv,
-        })
-            console.log(tv)
-            const avgRating = this.state.tv.map(show => {
-                return show.rating.average
-            })
-            const network = this.state.tv.map(show => {
+        axios.get(`http://api.tvmaze.com/shows?page=2`).then(response => {
+                const tv = response.data;
+                    this.setState({
+                    tv: tv,
+                });
+                console.log(tv)
+                const sortedTV = tv.sort(function(a, b) {
+                    if (a.rating.average === null) {
+                        return false
+                    } else {
+                        return a.rating.average - b.rating.average;
+                    }
+                });
+                const topTen = sortedTV.reverse().slice(0,10);
+                this.setState({
+                    topTen: topTen,
+                })
+                const comedyTen = sortedTV.filter(show => {
+                    if (show.genres[0] === null) {
+                        return false 
+                    } else if (show.genres[0] === "Comedy") {
+                        return show.genres[0]
+                }
+                }).slice(0,10)
+                this.setState({
+                    comedyTen: comedyTen,
+                })
+//////////////////userInput attachment to search field needs to be done
+            let userInput = "France"
+            const searchArray = tv.filter(show => {
                 if (show.network === null) {
-                    return false
-                } else {
-                    return show.network.name
-                }
-            })            
-            const tvShowImage = this.state.tv.map(show => {
-                if (show.image.medium === null) {
-                    console.log('error handling')
-                } else {
-                    return show.image.medium
-                }
-            })
-            const sortedTV = tv.sort(function(a, b) {
-                if (a.rating.average === null) {
-                    return false
-                } else {
-                    return a.rating.average - b.rating.average;
-                }
-            });
-            const topTen = sortedTV.reverse().slice(0,10);
-            this.setState({
-                topTen: topTen,
-            })
-            const comedyTen = sortedTV.filter(show => {
-                if (show.genres[0] === null) {
                     return false 
-                } else if (show.genres[0] === "Comedy") {
+                } else if (show.network.name === userInput) {
+                    return show.network.name
+                }  else if (show.genres[0] === userInput) {
                     return show.genres[0]
-                }
-            }).slice(0,10)
-            this.setState({
-                comedyTen: comedyTen,
+                } else if (show.name === userInput) {
+                    return show.name
+                } else if (show.network.country.name === userInput) {
+                    return show.network.country.name
+                } 
             })
+            console.log(searchArray)
+
             const hboShows = sortedTV.filter(show => {
                 if (show.network === null) {
                     return false
@@ -102,15 +81,15 @@ class GeneralSearch extends Component {
             this.setState({
                 hboShows: hboShows,
             });
-            const nbcShows = sortedTV.filter(show => {
-                if (show.network === null) {
+            const foodShows = sortedTV.filter(show => {
+                if (show.genres[0] === null) {
                     return false
-                } else if (show.network.name === "NBC") {
-                    return show.network.name
+                } else if (show.genres[0] === "Food") {
+                    return show.genres[0]
                 }
             }).slice(0,10);
             this.setState({
-                nbcShows: nbcShows,
+                foodShows: foodShows,
             });
             const shuffleTV = this.shuffle(tv).reverse().slice(0,10);
             this.setState({
@@ -126,96 +105,91 @@ class GeneralSearch extends Component {
 
     
     render() {
-        
-        return (
-            
-            <div className="tv-catalogue">
-                
-                {/* <form action="">
-                    <input type="text" placeholder="Search.."></input>
-                    <button onClick={searchFunc}>SEARCH!</button>
-                </form> */}
-
-
+        return (    
+        <div className="tv-catalogue">
             <h2>Best Rated Shows on TV</h2>
-                <div className="showScroll">
-                    {this.state.topTen.map(show => {
+            <div className="showScroll">
+                {this.state.topTen.map(show => {
                     return (
                         <div key={show.id} className="tv-titles tv-poster">
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
+                            <AddToListButton 
+                                // key={this.key} 
+                                // title={this.title}
+                            />
                             <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                            </Router>
-                        </div>
-                        )
-                    })}
-                </div>
-            <h2>HBO</h2>
-                <div className="showScroll">
-                    {this.state.hboShows.map(show => {
-                    return (
-                        <div key={show.id} className="tv-titles tv-poster">
-                            <Link to={`/tvShows/${show.externals.tvrage}`}>
-                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                            </Link>
-                            <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                            </Router>
-                        </div>
-                    )
-                })}
-            </div>
-            <h2>Comedy</h2>
-                <div className="showScroll">
-                    {this.state.comedyTen.map(show => {
-                    return (
-                        <div key={show.id} className="tv-titles tv-poster">
-                            <Link to={`/tvShows/${show.externals.tvrage}`}>
-                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                            </Link>
-                            <Router>
-                            <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                            </Router>
-                        </div>
-                    )
-                })}
-            </div>
-            <h2>NBC</h2>
-                <div className="showScroll">
-                    {this.state.nbcShows.map(show => {
-                    return (
-                            <div key={show.id} className="tv-titles tv-poster">
-                                
-                                <Link to={`/tvShows/${show.externals.tvrage}`}>
-                                <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                                </Link>
-                                <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                                </Router>
-                            </div>
-                        )
-                    })}
-                </div>
-            <h2>TV Show Roulette!</h2>
-                    <div className="showScroll">
-                        {this.state.shuffleTV.map(show => {
-                        return (
-                                <div key={show.id} className="tv-titles tv-poster">
-                                    
-                                    <Link to={`/tvShows/${show.externals.tvrage}`}>
-                                    <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
-                                    </Link>
-                                    <Router>
-                                    <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                                    </Router>
-                                </div>
+                            </Router>
+                        </div>
                     )
                 })}
             </div>
-            
-
+            <h2>HBO</h2>
+            <div className="showScroll">
+                {this.state.hboShows.map(show => {
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <AddToListButton />
+                            <Router>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
+                        </div>
+                    )
+                })}
+            </div>    
+            <h2>Comedy</h2>
+            <div className="showScroll">
+                {this.state.comedyTen.map(show => {
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <AddToListButton />
+                            <Router>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
+                        </div>
+                    )
+                })}
+            </div>
+            <h2>Food shows</h2>
+            <div className="showScroll">
+                {this.state.foodShows.map(show => {
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">  
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <AddToListButton />
+                            <Router>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
+                        </div>
+                    )
+                })}
+            </div>
+            <h2>TV Show Roulette!</h2>
+            <div className="showScroll">
+                {this.state.shuffleTV.map(show => {
+                    return (
+                        <div key={show.id} className="tv-titles tv-poster">
+                            <Link to={`/tvShows/${show.externals.tvrage}`}>
+                            <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
+                            </Link>
+                            <AddToListButton />
+                            <Router>
+                                <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            </Router>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
         )
     }

@@ -12,9 +12,6 @@ class AddListToFirebase extends Component {
     }
   }
 
-  removeShow = () => {
-
-  }
     
     render() {
         return(
@@ -24,13 +21,28 @@ class AddListToFirebase extends Component {
                 return (
                   <ul key={list.key}>{list.info.name}
                   
-                  <button onClick=""></button>
+                  <button onClick={() => {
+                    const key = list.key
+                    console.log(key)
+                    const dbRef = firebase.database().ref().child(key + '/')
+                    dbRef.remove()
+                  }}>
+                    remove
+                  </button>
 
                   {
                     list.info.shows.map(show => {
-                      return <li key={show.id}>
+                      return <li key={show.key}>
                         {show.name}
-                        <button onClick={this.removeShow}>remove</button>
+                        <button onClick={() => {
+                          const key = show.key
+                          const listKey = list.key
+                          console.log(key)
+                          console.log(list.key)
+                          const dbRef = firebase.database().ref().child(listKey + '/shows/' + key + '/')
+                          console.log(dbRef.key)
+                          dbRef.remove()
+                        }}>remove</button>
                         </li>
                     })
                   }
@@ -38,7 +50,7 @@ class AddListToFirebase extends Component {
 
                     const key = list.key
                     const dataToPush = {
-                      id: 1235,
+                      key: 1235,
                       name: 'bhlegnl?'
                     }
                     let prevListCopy;

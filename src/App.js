@@ -6,6 +6,7 @@ import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
 import '../src/index.css'
+import NewListPage from './NewListPage';
 
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
           key: key,
           info: data[key]
         }
+        console.log(listInfo.key, listInfo)
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
@@ -45,26 +47,6 @@ class App extends Component {
     })
   }
 
-  // dummyData = () => {
-  //   const dummyData = {
-  //     owner: 'celeste',
-  //     name: 'woohoo lists!!',
-  //     shows: [
-  //       {
-  //         name: 'the best show',
-  //         id: 10,
-  //       },
-  //       {
-  //         name: 'a lesser show',
-  //         id: 24,
-  //       },
-  //       {
-  //         name: 'a different show',
-  //         id: 135,
-  //       }
-  //     ]
-  //   };
-
     
   handleClick = (e) => {
     e.preventDefault();
@@ -73,20 +55,7 @@ class App extends Component {
     this.setState({ userInput: '' })
     console.log("clicked")
   }
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.push(dummyData);
-  // };
 
-    // addNewList = (userInput) => {
-  //   const newList = {
-  //     owner: '',
-  //     name: userInput,
-  //     shows: []
-  //   };
-
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.push(newList)
-  // }
   
   addTvShow = (e) => {
     e.preventDefault()
@@ -94,7 +63,7 @@ class App extends Component {
       shows: [
         {
           name: 'a new show?',
-          id: 302
+          key: 302
         }
       ]
     };
@@ -108,34 +77,53 @@ class App extends Component {
 
   render() {
     return (
-      <Router basename="/tv-show-superlatives/" >
-        <div className="App">
-          <div className="wrapper">
-            <h1>Welcome</h1>
-            <Link to="/">Home</Link>
-            <Link to="/GeneralSearch/">General Search</Link>
-            <Route path="/GeneralSearch/" component={GeneralSearch}/>
-            <Route path="/" component={StoreState}/>
-            <Link to="/TvShowDetails/">TV Show Details</Link>
-            <Route path="/tvShows/:tvShowsID" component={TvShowDetails}/>
-            <Route path="/" exact 
-              render={ () => 
-              <AddListToFirebase
-                handleClick={this.handleClick}
-                tvShows={this.state.tvShows} 
-                list={this.state.list}
-                // dummyData={this.dummyData} 
-                addTvShow={this.addTvShow}
-                addNewList={this.addNewList}
-              />
-              }/>
-          </div>
-
-        </div>
-      </Router>
-
-
-    )
+			<Router basename="/tv-show-superlatives/">
+				<div className="App">
+					<div className="wrapper">
+						<ul>
+							<li>
+								<h1>Welcome</h1>
+							</li>
+							<li>
+								<Link to="/">Home</Link>
+							</li>
+							<li>
+								<Link to="/GeneralSearch/">General Search</Link>
+								<Route path="/GeneralSearch/" component={GeneralSearch} />
+							</li>
+							<li>
+								<Link to="/NewListPage/">New List</Link>
+								<Route path="/NewListPage/" component={NewListPage} />
+							</li>
+							<li>
+								{/* <Link to="/StoreState/">Store State</Link> */}
+								<Route path="/StoreState/" component={StoreState} />
+							</li>
+							<li>
+								{/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
+								<Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
+							</li>
+							<li>
+								<Route
+									path="/"
+									exact
+									render={() => (
+										<AddListToFirebase
+											handleClick={this.handleClick}
+											tvShows={this.state.tvShows}
+											list={this.state.list}
+											// dummyData={this.dummyData}
+											addTvShow={this.addTvShow}
+											addNewList={this.addNewList}
+										/>
+									)}
+								/>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</Router>
+		);
   }
 }
 

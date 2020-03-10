@@ -21,8 +21,8 @@ class StoreState extends Component {
             name: userInput,
             shows: [
                 {
-                    id:12,
-                    name:""
+                    key: 12,
+                    name: ""
                 }
             ]
         };
@@ -87,7 +87,7 @@ class StoreState extends Component {
             <div>
                 <form 
                 className="searchForm" action="submit" onSubmit={this.handleFormSubmit}>
-                    <label htmlFor="showSearch">Add your favourite shows to your list </label>
+                    <label htmlFor="showSearch">new list title: </label>
                     <input
                         className="searchBar"
                         type="text"
