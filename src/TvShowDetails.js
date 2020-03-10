@@ -56,6 +56,7 @@ class TvShowDetails extends Component {
 					<img
 						src={this.state.officialImage}
 						alt={`A poster of ${this.state.tv.name}`}
+						title={`${this.state.tv.name}`}
 					/>
 					<p><span className="bolded">Description:</span> {this.state.officialDescription}</p>
 					<p><span className="bolded">Rating:</span> {this.state.officialRating}/10</p>
@@ -74,6 +75,7 @@ class TvShowDetails extends Component {
 						<img
 							src={this.state.officialImage}
 							alt={`A poster of ${this.state.tv.name}`}
+							title={`${this.state.tv.name}`}
 						/>
 						<p>
 							<span className="bolded">Description: </span>

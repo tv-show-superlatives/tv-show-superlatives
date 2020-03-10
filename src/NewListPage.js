@@ -21,36 +21,25 @@ class NewListPage extends Component {
 			searchedShows: [],
 		};
 	}
-	// userSearchFunction = () => {
-	// 	axios.get(`http://api.tvmaze.com/search/shows?q=${this.state.userSearchQuery}`).then(response => {
-	// 		const userTV = response.data;
-	// 		this.setState({
-	// 			userTV: userTV,
-	// 		})
-	// 	})
-	// }
 	handleChange = (e) => {
 		this.setState({userInput: e.target.value})
-	  }
+	}
 	handleFormSubmit = (e) => {
 		e.preventDefault();
 		axios.get(`http://api.tvmaze.com/search/shows?q=${this.state.userInput}`).then(response => {
 			const userTV = response.data;
+			// const officialDescription = show.show.summary.replace(regex, "");
 			this.setState({
 				userTV: userTV,
 			})
 		})
 	}  
 	
-	
-	
-	
 	componentDidMount() {
 	}
 	
 	render() {
-		
-		console.log(this.state.userTV)
+		const regex = /(<([^>]+)>)/gi;
 		return (
 			<Router>
 				<div className="listPageFlex">
@@ -127,33 +116,31 @@ class NewListPage extends Component {
 										<img
 											src={this.state.officialImage}
 											alt={`A poster of ${this.state.tv.name}`}
-										/>
-									</li>
-								</ul>
-							</div>
-							<div className="userOptions">
-								<div>
-									<ul>
-										{this.state.userTV.map((show, index) => {
-											return (
-												<div key={index} className="searchResults">
-													<Link to={`/tvShows/${show.show.externals.tvrage}`}>
-														<h3>{show.show.name}</h3>
-														<img src={show.show.image.medium}
-										title={`${show.show.name}`}
-										alt={`${show.show.name}`}/>
-													</Link>
-													<AddToListButton />
-													<Router>
-														<Route
-															path="/tvShow/:tvShowID"
-															component={TvShowDetails}
-														/>
-													</Router>
-												</div>
-											);
-										})}
+											/>
+										</li>
 									</ul>
+								</div>
+								<div className="userOptions">
+								<ul>
+						{
+							this.state.userTV.map((show, index) => {
+								return (
+									<div key={index} className="searchResults">
+										<Link to={`/tvShows/${show.show.externals.tvrage}`}>
+										{show.show.image === null ? <p>No Image!</p> : <img src={show.show.image.medium} alt={`A poster of ${show.show.name}`} title={`An image of ${show.show.name}`}/>} 
+										<h3>{show.show.name}</h3>
+										<p>{show.show.summary === null ? <p>No description available</p> : show.show.summary.replace(regex, "")}</p>
+										<p>{show.show.rating.average === null ? <p>No Rating Available</p> : <p>Rating:{show.show.rating.average}/10</p>}</p>
+										</Link>
+										<AddToListButton />
+                            			<Router>
+                                			<Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
+                            			</Router>
+									</div>
+								)
+							})
+						}
+					</ul>
 								</div>
 							</div>
 						</div>
