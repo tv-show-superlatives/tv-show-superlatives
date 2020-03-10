@@ -57,14 +57,14 @@ class TvShowDetails extends Component {
 						src={this.state.officialImage}
 						alt={`A poster of ${this.state.tv.name}`}
 					/>
-					<p>Description: {this.state.officialDescription}</p>
-					<p>Rating: {this.state.officialRating}/10</p>
-					<p>Network unknown</p>
-					<p>Country unknown</p>
-					<p>Genre: {this.state.genreName}</p>
-					<button>
-						<Link to="/GeneralSearch/">Close Window</Link>
-					</button>
+					<p><span className="bolded">Description:</span> {this.state.officialDescription}</p>
+					<p><span className="bolded">Rating:</span> {this.state.officialRating}/10</p>
+					<p><span className="bolded">Network: </span> unknown</p>
+					<p><span className="bolded">Country:</span> unknown</p>
+					<p><span className="bolded">Genre: </span>{this.state.genreName}</p>
+					<Link to="/GeneralSearch/">
+						<button>Close Window</button>
+					</Link>
 				</div>
 			);
 			} else {
@@ -75,18 +75,32 @@ class TvShowDetails extends Component {
 							src={this.state.officialImage}
 							alt={`A poster of ${this.state.tv.name}`}
 						/>
-						<p>Description: {this.state.officialDescription}</p>
-						<p>Rating: {this.state.officialRating}/10</p>
-						<p>Network: {this.state.officialNetwork}</p>
-						<p>Country: {this.state.officialCountry}</p>
-						<p>Genre: {this.state.genreName}</p>
+						<p>
+							<span className="bolded">Description: </span>
+							{this.state.officialDescription}
+						</p>
+						<p>
+							<span className="bolded">Rating:</span>{" "}
+							{this.state.officialRating}/10
+						</p>
+						<p>
+							<span className="bolded">Network:</span>{" "}
+							{this.state.officialNetwork}
+						</p>
+						<p>
+							<span className="bolded">Country:</span>{" "}
+							{this.state.officialCountry}
+						</p>
+						<p>
+							<span className="bolded">Genre:</span> {this.state.genreName}
+						</p>
 						<button>
 							<Route path="/addNewList:list" />
 							Add To List
 						</button>
-						<button>
-							<Link to="/GeneralSearch/">Close Window</Link>
-						</button>
+						<Link to="/GeneralSearch/">
+							<button>Close Window</button>
+						</Link>
 					</div>
 				);
 			}
