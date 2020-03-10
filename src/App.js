@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import firebase from './firebase';
 import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
-import StoreState from './StoreState';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
 import '../src/index.css'
@@ -33,7 +32,7 @@ class App extends Component {
           key: key,
           info: data[key]
         }
-        console.log(listInfo.key, listInfo)
+        // console.log(listInfo.key, listInfo)
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
@@ -53,7 +52,7 @@ class App extends Component {
     // const dbRef = firebase.database().ref();
     // dbRef.push(this.state.userInput);
     this.setState({ userInput: '' })
-    console.log("clicked")
+    // console.log("clicked")
   }
 
   
