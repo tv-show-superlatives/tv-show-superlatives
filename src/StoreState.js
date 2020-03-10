@@ -56,14 +56,16 @@ class StoreState extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
+        // this.setState({
+        //     userInput: fuck off
+        //     // tvShows:[]
+        // })
         this.addListToFirebase(this.state.userInput)
         // console.log(this.handleFormSubmit, "hello")
         const userInput = this.state.userInput
         this.addNewList(userInput)
-        this.setState({
-            userInput:'',
-            // tvShows:[]
-        })
+        console.log(this.state.userInput)
+        
     }
 
     // componentDidMount() {
@@ -97,15 +99,14 @@ class StoreState extends Component {
                             id="showSearch"
                             onChange={this.handleChange}
                             value={this.state.userInput}
+                        
                         />
-                        
-                            <button type="submit" onClick={this.handleClick}> 
-                                <Link to="/NewListPage">
-                                    +
-                                </Link>
-                                <Route path="/NewListPage/" component={NewListPage} />
+                        <Link to="/NewListPage">
+                            <button type="submit" onClick={this.handleClick} >
+                                +
+                                {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                             </button>
-                        
+                        </Link>  {/*   */}
                         
                     </form>
                 </div>
