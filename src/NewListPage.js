@@ -46,123 +46,118 @@ class NewListPage extends Component {
 			<Router>
 				<div>
 					<div className="listPageFlex">
-						<h1>LOGO</h1>
-					</div>
-					<div className="listPageFlex">
 						<h2>New List</h2>
 					</div>
 					<div className="listPageFlex2">
 						<h3>List Name</h3>
 						<button className="listButton">Add to list</button>
 					</div>
-					<div className="listPageFlex3">
-						<div className="listPageFlex4">
-							<div className="listPageFlex">
-								<h3>User's List Items</h3>
-								<form
-									className="searchForm"
-									action="submit"
-									onSubmit={this.handleFormSubmit}
+					<div className="listPageFlex4">
+						<div className="listPageFlex">
+							<h3>User's List Items</h3>
+							<form
+								className="searchForm"
+								action="submit"
+								onSubmit={this.handleFormSubmit}
+							>
+								<label htmlFor="listSearch"></label>
+								<input
+									className="listSearchBar"
+									type="text"
+									id="listSearch"
+									onChange={this.handleChange}
+									value={this.state.userInput}
+									placeholder="search for a show"
+								/>
+								<button
+									type="submit"
+									className="listButton"
+									onClick={this.handleClick}
 								>
-									<label htmlFor="listSearch"></label>
-									<input
-										className="listSearchBar"
-										type="text"
-										id="listSearch"
-										onChange={this.handleChange}
-										value={this.state.userInput}
-										placeholder="search for a show"
-									/>
-									<button
-										type="submit"
-										className="listButton"
-										onClick={this.handleClick}
-									>
-										<i className="fas fa-search"></i>
-									</button>
-								</form>
+									<i className="fas fa-search"></i>
+								</button>
+							</form>
+						</div>
+						<div className="listVsChoicesFlex">
+							<div className="userList">
+								<ul>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+								</ul>
 							</div>
-							<div className="listVsChoicesFlex">
-								<div className="userList">
-									<ul>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-									</ul>
-								</div>
-								<div className="userOptions">
-									<ul>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-												src={this.state.officialImage}
-												alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-									</ul>
-								</div>
+							<div className="userOptions">
+								<ul>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>

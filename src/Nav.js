@@ -24,7 +24,9 @@ class Nav extends Component {
   render() {
     return (
 			<div>
-				<h1>Welcome</h1>
+				<div>
+					<h1>ADD LOGO</h1>
+				</div>
 				<nav>
 					<ul>
 						<li>
