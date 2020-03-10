@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class AddToListButton extends Component {
     render() {
         return (
-            <button>add to list</button>
+            <button className="addToList">add to list</button>
         )
     }
 }

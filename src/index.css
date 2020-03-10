@@ -10,7 +10,8 @@ code {
     monospace;
 }
 .tv-titles {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapper {
@@ -188,7 +189,7 @@ element {
 		box-sizing: border-box;
 	}
 
-/* ------------------------------------ARROW SCROLL BUTTONS-----------------------------*/
+  
 
 :root {
   --primaryColor: #577f90;
