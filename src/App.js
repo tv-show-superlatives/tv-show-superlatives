@@ -57,24 +57,6 @@ class App extends Component {
     // console.log("clicked")
   }
 
-  
-  addTvShow = (e) => {
-    e.preventDefault()
-    const addTvShow = {
-      shows: [
-        {
-          name: 'a new show?',
-          key: 302
-        }
-      ]
-    };
-
-
-    const dbRef = firebase.database().ref();
-    // console.log(this)
-    // console.log(dbRef.val)
-    // dbRef.push(addTvShow)
-  };
 
   render() {
     return (

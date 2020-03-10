@@ -26,43 +26,38 @@ class AddListToFirebase extends Component {
                   
                   <button onClick={() => {
                     const key = list.key
-                    // console.log(key)
                     const dbRef = firebase.database().ref().child(key + '/')
                     dbRef.remove()
                   }}>
-                    remove
+                    remove list
                   </button>
 
               
                   
-                  {/* {console.log(list.info.shows.length)} */}
                   {
                     (list.info.shows !== undefined) &&
-                      list.info.shows.map((show, index) => {
+                      
+                      list.info.shows.filter(show => show.name !== 'none').map((show, index) => {
                         return <li key={show.key}>
                           {show.name}
                           <button onClick={() => {
-                            // const key = show.key
                             const listKey = list.key;
                             let showListCopy;
-                            // console.log(show)
                             const dbRef = firebase.database().ref().child(listKey + '/shows/' + index + '/')
-                              // const dbRef = firebase.database.ref()
-                              // console.log(dbRef)
-                              // console.log(key)
-
-                              
+                            
+                            
                             dbRef.on('value', response => {
-                              console.log(list.info.shows);
-                              console.log(index);
+                              console.log(response.val())
                               const showList = list.info.shows;
                               showListCopy = [...showList];
-                              console.log(showListCopy)
                               showListCopy.splice(index, 1)
-                              console.log(showListCopy)
-                              console.log(response)
                             })
                             console.log(showListCopy)
+
+
+                            const otherDbRef = firebase.database().ref().child(listKey +   '/shows/')
+                            otherDbRef.set(showListCopy)
+                            
                           }}>remove</button>
                           </li>
                       })
@@ -87,7 +82,7 @@ class AddListToFirebase extends Component {
                     dbRef.update(prevListCopy);
                     
 
-                    }}>add to tv show</button>
+                    }}>add to list</button>
                 </ul>
                 )
               })
