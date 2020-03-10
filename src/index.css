@@ -23,6 +23,9 @@ code {
 
 /* *** Blair - NewListPage Section Styles are below *** */
 
+nav ul {
+	justify-content: flex-end;
+}
 ul {
 	list-style-type: none;
 	padding: 5%;
@@ -47,6 +50,7 @@ h3 {
 	background-color: #86c2ae;
 	border: 1px solid black;
 	padding: 1px 10px;
+	border-radius: 5px;
 }
 
 .listButton:hover {
@@ -79,13 +83,13 @@ h3 {
 }
 
 .listPageFlex2,
-.listPageFlex3,
 .listPageFlex5 {
 	display: flex;
 	justify-content: space-around;
 }
 
 .listPageFlex3 {
+	display: flex;
 	margin-top: 25px;
 }
 
@@ -97,6 +101,7 @@ h3 {
 	margin: 0 5px;
 	border: 3px solid black;
 	margin-top: 25px;
+	min-width: 100%;
 }
 
 .userList {
