@@ -53,146 +53,106 @@ class NewListPage extends Component {
 		console.log(this.state.userTV)
 		return (
 			<Router>
-				<div>
-					<ul>
-						{
-							this.state.userTV.map((show, index) => {
-								return (
-									<div key={index} className="searchResults">
-										<Link to={`/tvShows/${show.show.externals.tvrage}`}>
-
-										<h3>{show.show.name}</h3>
-										{/* <img src={show.show.image.medium}
-										title={`${show.show.name}`}
-										alt={`${show.show.name}`}/> */}
-										</Link>
-										<AddToListButton />
-                            			<Router>
-                                			<Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                            			</Router>
-									</div>
-								)
-							})
-						}
-					</ul>
-					
-					<div className="listPageFlex">
-						<h1>LOGO</h1>
-							<button className="listButton">cancel</button>
-					</div>
-					<div className="listPageFlex">
-						<h2>New List</h2>
-					</div>
-					<div className="listPageFlex2">
-						<h3>List Name</h3>
-						<button className="listButton">Add to list</button>
-					</div>
-					<div className="listPageFlex3">
-						<div className="listPageFlex4">
-							<div className="listPageFlex">
-								<h3>User's List Items</h3>
-								<form
-									className="searchForm"
-									action="submit"
-									onSubmit={this.handleFormSubmit}
-									>
-									<label htmlFor="listSearch"></label>
-									<input
-										className="listSearchBar"
-										type="text"
-										id="listSearch"
-										onChange={this.handleChange}
-										value={this.state.userInput}
-										placeholder="search for a show"
+				<div className="listPageFlex">
+					<h1>LOGO</h1>
+				</div>
+				<div className="listPageFlex">
+					<h2>New List</h2>
+				</div>
+				<div className="listPageFlex2">
+					<h3>List Name</h3>
+					<button className="listButton">Add to list</button>
+				</div>
+				<div className="listPageFlex3">
+					<div className="listPageFlex4">
+						<div className="listPageFlex">
+							<h3>User's List Items</h3>
+							<form
+								className="searchForm"
+								action="submit"
+								onSubmit={this.handleFormSubmit}
+							>
+								<label htmlFor="listSearch"></label>
+								<input
+									className="listSearchBar"
+									type="text"
+									id="listSearch"
+									onChange={this.handleChange}
+									value={this.state.userInput}
+									placeholder="search for a show"
+								/>
+								<button
+									type="submit"
+									className="listButton"
+									onClick={this.handleClick}
+								>
+									<i className="fas fa-search"></i>
+								</button>
+							</form>
+						</div>
+						<div className="listVsChoicesFlex">
+							<div className="userList">
+								<ul>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
 										/>
-									<button
-										type="submit"
-										className="listButton"
-										onClick={this.handleClick}
-									>
-										<i className="fas fa-search"></i>
-									</button>
-								</form>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+									<li>
+										<img
+											src={this.state.officialImage}
+											alt={`A poster of ${this.state.tv.name}`}
+										/>
+									</li>
+								</ul>
 							</div>
-							<div className="listVsChoicesFlex">
-								<div className="userList">
+							<div className="userOptions">
+								<div>
 									<ul>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-									</ul>
-								</div>
-								<div className="userOptions">
-									<ul>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
-										<li>
-											<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-											/>
-										</li>
+										{this.state.userTV.map((show, index) => {
+											return (
+												<div key={index} className="searchResults">
+													<Link to={`/tvShows/${show.show.externals.tvrage}`}>
+														<h3>{show.show.name}</h3>
+														<img src={show.show.image.medium}
+										title={`${show.show.name}`}
+										alt={`${show.show.name}`}/>
+													</Link>
+													<AddToListButton />
+													<Router>
+														<Route
+															path="/tvShow/:tvShowID"
+															component={TvShowDetails}
+														/>
+													</Router>
+												</div>
+											);
+										})}
 									</ul>
 								</div>
 							</div>
@@ -200,7 +160,7 @@ class NewListPage extends Component {
 					</div>
 				</div>
 			</Router>
-			);
+		);
     }
 }
 
