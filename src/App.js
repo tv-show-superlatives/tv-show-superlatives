@@ -17,6 +17,7 @@ class App extends Component {
       tvShows:[],
       userInput:'',
       list: [],
+      page: 1,
     }
   }
 

@@ -17,7 +17,9 @@ class GeneralSearch extends Component {
             foodShows: [],
             shuffleTV: [],
             marginLeft:0,
+            count: 0,
         }
+        
     }
     shuffle = (a) => {
         for (let i = a.length - 1; i > 0; i--) {
@@ -26,13 +28,49 @@ class GeneralSearch extends Component {
         }
         return a;
     }
-    componentDidMount() { 
-        axios.get(`http://api.tvmaze.com/shows?page=2`).then(response => {
+
+    handleClick = () => {
+        this.setState({
+          count: this.state.count + 1
+        });
+    }    
+      //         const limitPerPage=250;
+      //         const apiUrl="http://api.tvmaze.com/shows";
+      
+      // const getUsers = async function(pageNo = 1) {
+          
+          // let actualUrl=apiUrl + `?page=${pageNo}&limit=${limitPerPage}language=English`;
+          // var apiResults=await fetch(actualUrl)
+          // .then(resp=>{
+              // return resp.json();
+              // });
+              
+              // return apiResults;
+              
+              // }
+              
+              // const getEntireUserList = async function(pageNo = 1) {
+//   const results = await getUsers(pageNo);
+//   console.log("Retreiving data from API for page : " + pageNo);
+//   if (results.length>0) {
+//     return results.concat(await getEntireUserList(pageNo+1));
+//   } else {
+//     return results;
+    
+//   }
+// };
+// (async ()=>{
+
+//     const entireList=await getEntireUserList();
+//     console.log(entireList);
+
+// })();
+componentDidMount() { 
+    axios.get(`http://api.tvmaze.com/shows?page=${this.state.count}`).then(response => {
                 const tv = response.data;
                     this.setState({
                     tv: tv,
                 });
-                console.log(tv)
                 const sortedTV = tv.sort(function(a, b) {
                     if (a.rating.average === null) {
                         return false
@@ -97,16 +135,13 @@ class GeneralSearch extends Component {
             })
             
         });
-    
     }
 
-
-//--------------------- HERE IS THE ARROW BUTTON SCROLLER CRAP------------------------------------//
-
-    
     render() {
         return (    
         <div className="tv-catalogue">
+            <p>I am currently on page number: {this.state.count}</p>
+        <button onClick={this.handleClick}>Gimme More</button>
             <h2>Best Rated Shows on TV</h2>
             <div className="showScroll">
                 {this.state.topTen.map(show => {
