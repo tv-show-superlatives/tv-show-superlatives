@@ -33,6 +33,7 @@ class App extends Component {
           key: key,
           info: data[key]
         }
+        console.log(listInfo.key, listInfo)
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
@@ -46,26 +47,6 @@ class App extends Component {
     })
   }
 
-  // dummyData = () => {
-  //   const dummyData = {
-  //     owner: 'celeste',
-  //     name: 'woohoo lists!!',
-  //     shows: [
-  //       {
-  //         name: 'the best show',
-  //         id: 10,
-  //       },
-  //       {
-  //         name: 'a lesser show',
-  //         id: 24,
-  //       },
-  //       {
-  //         name: 'a different show',
-  //         id: 135,
-  //       }
-  //     ]
-  //   };
-
     
   handleClick = (e) => {
     e.preventDefault();
@@ -74,20 +55,7 @@ class App extends Component {
     this.setState({ userInput: '' })
     console.log("clicked")
   }
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.push(dummyData);
-  // };
 
-    // addNewList = (userInput) => {
-  //   const newList = {
-  //     owner: '',
-  //     name: userInput,
-  //     shows: []
-  //   };
-
-  //   const dbRef = firebase.database().ref();
-  //   dbRef.push(newList)
-  // }
   
   addTvShow = (e) => {
     e.preventDefault()
@@ -95,7 +63,7 @@ class App extends Component {
       shows: [
         {
           name: 'a new show?',
-          id: 302
+          key: 302
         }
       ]
     };
