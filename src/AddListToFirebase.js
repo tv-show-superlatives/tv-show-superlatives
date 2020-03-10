@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import firebase from "./firebase"
+import firebase from "./firebase";
+import StoreState from "./StoreState"
+
 
 class AddListToFirebase extends Component {
 
@@ -16,6 +18,7 @@ class AddListToFirebase extends Component {
     render() {
         return(
           <div>
+            <StoreState />
             {
               this.props.tvShows.reverse().map(list => {
                 return (
@@ -23,29 +26,48 @@ class AddListToFirebase extends Component {
                   
                   <button onClick={() => {
                     const key = list.key
-                    console.log(key)
+                    // console.log(key)
                     const dbRef = firebase.database().ref().child(key + '/')
                     dbRef.remove()
                   }}>
                     remove
                   </button>
 
+              
+                  
+                  {/* {console.log(list.info.shows.length)} */}
                   {
-                    list.info.shows.map(show => {
-                      return <li key={show.key}>
-                        {show.name}
-                        <button onClick={() => {
-                          const key = show.key
-                          const listKey = list.key
-                          console.log(key)
-                          console.log(list.key)
-                          const dbRef = firebase.database().ref().child(listKey + '/shows/' + key + '/')
-                          console.log(dbRef.key)
-                          dbRef.remove()
-                        }}>remove</button>
-                        </li>
-                    })
-                  }
+                    (list.info.shows !== undefined) &&
+                      list.info.shows.map((show, index) => {
+                        return <li key={show.key}>
+                          {show.name}
+                          <button onClick={() => {
+                            // const key = show.key
+                            const listKey = list.key;
+                            let showListCopy;
+                            // console.log(show)
+                            const dbRef = firebase.database().ref().child(listKey + '/shows/' + index + '/')
+                              // const dbRef = firebase.database.ref()
+                              // console.log(dbRef)
+                              // console.log(key)
+
+                              
+                            dbRef.on('value', response => {
+                              console.log(list.info.shows);
+                              console.log(index);
+                              const showList = list.info.shows;
+                              showListCopy = [...showList];
+                              console.log(showListCopy)
+                              showListCopy.splice(index, 1)
+                              console.log(showListCopy)
+                              console.log(response)
+                            })
+                            console.log(showListCopy)
+                          }}>remove</button>
+                          </li>
+                      })
+                    }
+                  
                   <button onClick={() => {
 
                     const key = list.key

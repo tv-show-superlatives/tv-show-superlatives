@@ -10,18 +10,42 @@ code {
     monospace;
 }
 .tv-titles {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
-/* .wrapper {
+.wrapper {
   max-width: 1040px;
-  margin:0 auto;
+  margin: 5%;
 
-} */
+}
+
+img {
+	border: 3px solid black;
+	border-radius: 4px;
+}
+
+a img:hover,
+a img:focus {
+	border: 3px solid #f0917a;
+}
 
 
 /* *** Blair - NewListPage Section Styles are below *** */
 
+nav ul {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	font-weight: 700;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul a:hover,
+nav ul a:focus {
+	color: #f0917a;
+}
 ul {
 	list-style-type: none;
 	padding: 5%;
@@ -36,19 +60,29 @@ a {
 	border: 1px solid black;
 } */
 
+h1 {
+	color: #f0917a;
+}
 h1,
 h3 {
 	margin: 0;
 }
 
-.listButton {
+.showName {
+	text-align: center;
+}
+
+.listButton,
+button {
 	font-weight: 700;
 	background-color: #86c2ae;
 	border: 1px solid black;
 	padding: 1px 10px;
+	border-radius: 5px;
 }
 
-.listButton:hover {
+.listButton:hover,
+button:hover {
 	background-color: black;
 	color: #86c2ae;
 	transition: 0.5s;
@@ -60,32 +94,30 @@ h3 {
 
 .listVsChoicesFlex {
 	display: flex;
+	justify-content: space-between;
 }
 
-.listPageFlex,
+
 .searchBarFlex {
 	display: flex;
 	justify-content: space-around;
 }
 
-.listPageFlex {
+/* .listPageFlex {
+	display: flex;
 	justify-content: space-between;
-}
+} */
 
 .listPageFlex4 {
 	display: flex;
 	flex-direction: column;
 }
 
+.listPageFlex,
 .listPageFlex2,
-.listPageFlex3,
 .listPageFlex5 {
 	display: flex;
 	justify-content: space-around;
-}
-
-.listPageFlex3 {
-	margin-top: 25px;
 }
 
 .userList,
@@ -96,14 +128,15 @@ h3 {
 	margin: 0 5px;
 	border: 3px solid black;
 	margin-top: 25px;
+	min-width: 43%;
 }
 
-.userList {
+/* .userList {
 	margin-right: 5%;
 }
 .userOptions {
 	margin-left: 5%;
-}
+} */
 
 
 /* ***End of Blair's NewListPage Stylings*** */
@@ -156,7 +189,7 @@ element {
 		box-sizing: border-box;
 	}
 
-/* ------------------------------------ARROW SCROLL BUTTONS-----------------------------*/
+  
 
 :root {
   --primaryColor: #577f90;
