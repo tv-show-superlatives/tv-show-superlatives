@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TvShowDetails from './TvShowDetails';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import AddToListButton from './AddToListButton'
 
 
 class GeneralSearch extends Component {
@@ -194,6 +195,10 @@ class GeneralSearch extends Component {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
+                            <AddToListButton 
+                                // key={this.key} 
+                                // title={this.title}
+                            />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
@@ -209,6 +214,7 @@ class GeneralSearch extends Component {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
+                            <AddToListButton />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
@@ -224,6 +230,7 @@ class GeneralSearch extends Component {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
+                            <AddToListButton />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
@@ -239,6 +246,7 @@ class GeneralSearch extends Component {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
+                            <AddToListButton />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
@@ -254,6 +262,7 @@ class GeneralSearch extends Component {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
+                            <AddToListButton />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>
