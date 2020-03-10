@@ -34,7 +34,7 @@ class StoreState extends Component {
     }
     
     addListToFirebase = (props) =>{
-        console.log(this.state.userInput)
+        // console.log(this.state.userInput)
         //     return (
         //         props.tvShows,
         //         props.dummyData  //also tried props.dummy=this.props.dummyData  
