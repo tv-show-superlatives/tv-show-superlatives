@@ -99,14 +99,12 @@ class StoreState extends Component {
                             value={this.state.userInput}
                         />
                         
-                        
-                            <button type="submit" onClick={this.handleClick}>
-                                    <Link to="/NewListPage/"> 
+                        <Link to={handleClick => ({ ...handleClick, pathname: "/NewListPage" })} >
+                            <button type="submit" onClick={this.handleClick}> 
                                     +
-                                    </Link>
-                                    <Route path="/NewListPage/" component={NewListPage} />
                             </button>
-                            
+                        </Link>
+                        <Route path="/NewListPage/" component={NewListPage} />
                     </form>
                 </div>
             </Switch>
