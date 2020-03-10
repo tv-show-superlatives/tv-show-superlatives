@@ -3,7 +3,7 @@ import firebase from './firebase';
 import TvShowDetails from './TvShowDetails';
 import GeneralSearch from './GeneralSearch';
 import StoreState from './StoreState';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
 import '../src/index.css'
 import NewListPage from './NewListPage';
@@ -54,6 +54,7 @@ class App extends Component {
     // dbRef.push(this.state.userInput);
     this.setState({ userInput: '' })
     console.log("clicked")
+
   }
 
   
