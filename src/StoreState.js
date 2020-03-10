@@ -94,9 +94,8 @@ class StoreState extends Component {
                         id="showSearch"
                         onChange={this.handleChange}
                         value={this.state.userInput}
-                        placeholder = 'ie. Larry David/ Comedy / HBO'
                     />
-                    <button type="submit" onClick={this.handleClick}>Search</button>
+                    <button type="submit" onClick={this.handleClick}> + </button>
                     {/* <AddListToFirebase 
                         type="submit" 
                         onClick={this.handleClick}
