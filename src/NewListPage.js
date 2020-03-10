@@ -46,9 +46,7 @@ class NewListPage extends Component {
 	
 	
 	componentDidMount() {
-		
 	}
-	
 	
 	render() {
 		
@@ -64,9 +62,9 @@ class NewListPage extends Component {
 										<Link to={`/tvShows/${show.show.externals.tvrage}`}>
 
 										<h3>{show.show.name}</h3>
-										<img src={show.show.image.medium} 
+										{/* <img src={show.show.image.medium}
 										title={`${show.show.name}`}
-										alt={`${show.show.name}`}/>
+										alt={`${show.show.name}`}/> */}
 										</Link>
 										<AddToListButton />
                             			<Router>
