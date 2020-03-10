@@ -17,7 +17,9 @@ class GeneralSearch extends Component {
             foodShows: [],
             shuffleTV: [],
             marginLeft:0,
+            count: 0,
         }
+        
     }
     shuffle = (a) => {
         for (let i = a.length - 1; i > 0; i--) {
@@ -26,13 +28,23 @@ class GeneralSearch extends Component {
         }
         return a;
     }
+
+    handleClick = () => {
+        this.setState({
+          count: this.state.count + 1
+        });
+    }    
+    
     componentDidMount() { 
+<<<<<<< HEAD
+    axios.get(`http://api.tvmaze.com/shows?page=1`).then(response => {
+=======
         axios.get(`https://api.tvmaze.com/shows?page=2`).then(response => {
+>>>>>>> master
                 const tv = response.data;
                     this.setState({
                     tv: tv,
                 });
-                console.log(tv)
                 const sortedTV = tv.sort(function(a, b) {
                     if (a.rating.average === null) {
                         return false
@@ -97,16 +109,13 @@ class GeneralSearch extends Component {
             })
             
         });
-    
     }
 
-
-//--------------------- HERE IS THE ARROW BUTTON SCROLLER CRAP------------------------------------//
-
-    
     render() {
         return (    
         <div className="tv-catalogue">
+            <p>I am currently on page number: {this.state.count}</p>
+        <button onClick={this.handleClick}>Gimme More</button>
             <h2>Best Rated Shows on TV</h2>
             <div className="showScroll">
                 {this.state.topTen.map(show => {
@@ -115,10 +124,7 @@ class GeneralSearch extends Component {
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
                             <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                             </Link>
-                            <AddToListButton 
-                                // key={this.key} 
-                                // title={this.title}
-                            />
+                            <AddToListButton />
                             <Router>
                                 <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                             </Router>

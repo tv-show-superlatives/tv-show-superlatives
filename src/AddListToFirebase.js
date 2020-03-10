@@ -35,20 +35,34 @@ class AddListToFirebase extends Component {
 
               
                   
-                  {console.log(list.info.shows)}
+                  {/* {console.log(list.info.shows.length)} */}
                   {
                     (list.info.shows !== undefined) &&
-                      list.info.shows.map(show => {
+                      list.info.shows.map((show, index) => {
                         return <li key={show.key}>
                           {show.name}
                           <button onClick={() => {
-                            const key = show.key
-                            const listKey = list.key
-                            // console.log(key)
-                            // console.log(list.key)
-                            const dbRef = firebase.database().ref().child(listKey + '/shows/' + key + '/')
-                            // console.log(dbRef.key)
-                            // dbRef.remove()
+                            // const key = show.key
+                            const listKey = list.key;
+                            let showListCopy;
+                            // console.log(show)
+                            const dbRef = firebase.database().ref().child(listKey + '/shows/' + index + '/')
+                              // const dbRef = firebase.database.ref()
+                              // console.log(dbRef)
+                              // console.log(key)
+
+                              
+                            dbRef.on('value', response => {
+                              console.log(list.info.shows);
+                              console.log(index);
+                              const showList = list.info.shows;
+                              showListCopy = [...showList];
+                              console.log(showListCopy)
+                              showListCopy.splice(index, 1)
+                              console.log(showListCopy)
+                              console.log(response)
+                            })
+                            console.log(showListCopy)
                           }}>remove</button>
                           </li>
                       })
