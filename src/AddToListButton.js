@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import firebase from "./firebase";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class AddToListButton extends Component {
     constructor(){
         super();
         this.state = {
-
+            shows:[],
         }
         
     }
@@ -14,12 +15,12 @@ class AddToListButton extends Component {
         return (
             <button className="addToList" onClick=
                 {
-                    this.state.userTV.map((show, index) => {
+                    this.state.shows.map((show, index) => {
                         return (
                             <div key={index} className="searchResults">
                                 <Switch>
                                     <Link
-                                        to={`/tvShows/${show.show.externals.tvrage}`}
+                                        to={`/shows/${show.show.externals.tvrage}`}
                                     >
                                         {show.show.image === null ? (
                                             <p>No Image!</p>
@@ -32,7 +33,6 @@ class AddToListButton extends Component {
                                             )}
                                     </Link>
                                 </Switch>
-                                <AddToListButton />
                             </div>
                         );
                     })
