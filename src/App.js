@@ -19,8 +19,61 @@ class App extends Component {
       userInput:'',
       list: [],
       page: 1,
+      newListPage: ''
     }
   }
+
+  addNewList = (userInput) => {
+    const newList = {
+        owner: '',
+        name: userInput,
+        shows: [
+            {
+                name: 'none',
+                key: 0,
+            }
+        ]
+    };
+
+    const dbRef = firebase.database().ref();
+    dbRef.push(newList)
+}
+
+// addListToFirebase = (props) =>{
+    // console.log(this.state.userInput)
+    //     return (
+    //         props.tvShows,
+    //         props.dummyData  //also tried props.dummy=this.props.dummyData  
+    // )
+// }
+
+
+handleChange = (e) => {
+    this.setState({userInput:e.target.value})
+    // console.log(e.target.value)
+    
+}
+
+
+
+handleFormSubmit = (e) => {
+    e.preventDefault();
+    // this.setState({
+    //     userInput: fuck off
+    //     // tvShows:[]
+    // })
+    // this.addListToFirebase(this.state.userInput)
+    // console.log(this.handleFormSubmit, "hello")
+    const userInput = this.state.userInput
+    this.addNewList(userInput)
+    this.setState({
+        newListPage: userInput,
+        redirect:"/NewListPage"
+    })
+    console.log(this.state.userInput)
+    this.setState({ userInput: '' })
+};
+
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
@@ -50,10 +103,9 @@ class App extends Component {
   }
 
     
-  handleClick = (e) => {
-    e.preventDefault();
-    this.setState({ userInput: '' })
-  }
+  // handleClick = (e) => {
+  //   e.preventDefault();
+  // }
 
 
   render() {
@@ -70,9 +122,13 @@ class App extends Component {
               exact
               render={() => (
                 <AddListToFirebase
+                  handleFormSubmit={this.handleFormSubmit}
                   handleClick={this.handleClick}
+                  handleChange={this.handleChange}
+                  userInput={this.userInput}
                   tvShows={this.state.tvShows}
                   list={this.state.list}
+                  newListPage={this.state.newListPage}
                   // dummyData={this.dummyData}
                   addTvShow={this.addTvShow}
                   addNewList={this.addNewList}

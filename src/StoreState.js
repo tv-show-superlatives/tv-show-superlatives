@@ -13,7 +13,8 @@ class StoreState extends Component {
         this.state={
             tvShows:[],
             userInput:'',
-            newListPage: ''
+            newListPage: '',
+            redirect:null
         }
         
     }
@@ -31,13 +32,7 @@ class StoreState extends Component {
         };
 
         const dbRef = firebase.database().ref();
-        const generatedKey = dbRef.push(newList);
-
-        console.log(generatedKey.key)
-
-        this.setState({
-            newListPage: generatedKey.key
-        })
+        dbRef.push(newList)
     }
     
     // addListToFirebase = (props) =>{
@@ -53,7 +48,6 @@ class StoreState extends Component {
         this.setState({userInput:e.target.value})
         // console.log(e.target.value)
         
-        
     }
     
     
@@ -68,6 +62,11 @@ class StoreState extends Component {
         // console.log(this.handleFormSubmit, "hello")
         const userInput = this.state.userInput
         this.addNewList(userInput)
+        this.setState({
+            newListPage: userInput,
+            redirect:"/NewListPage"
+        })
+        console.log(this.state.userInput)
         
     };
 
@@ -93,15 +92,11 @@ class StoreState extends Component {
                         {/* {console.log(this.props.history)} */}
                         <button type="submit" onClick={this.handleClick} >
                             +
-                            {/* <Redirect to="/NewListPage" push /> */}
                             {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                         </button>
 
-                        
+                        {this.state.newListPage? <Redirect to={`/newListPage/${this.state.NewListPage}`} /> : null}
                     </form>
-                    
-
-                    {this.state.newListPage ? <Redirect to={`/NewListPage/${this.state.newListPage}`} /> : null}
                 </div>
             </Switch>
         );
