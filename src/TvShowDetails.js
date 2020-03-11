@@ -88,6 +88,7 @@ class TvShowDetails extends Component {
 						<p>
 							<span className="bolded">Network:</span>{" "}
 							{this.state.officialNetwork}
+							
 						</p>
 						<p>
 							<span className="bolded">Country:</span>{" "}

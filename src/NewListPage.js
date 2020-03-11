@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TvShowDetails from './TvShowDetails';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import AddToListButton from './AddToListButton'
-
-import {
-	BrowserRouter as Router,
-	Route,
-	Link,
-	NavLink
-} from "react-router-dom";
 
 class NewListPage extends Component {
 	constructor() {
@@ -28,7 +22,6 @@ class NewListPage extends Component {
 		e.preventDefault();
 		axios.get(`http://api.tvmaze.com/search/shows?q=${this.state.userInput}`).then(response => {
 			const userTV = response.data;
-			// const officialDescription = show.show.summary.replace(regex, "");
 			this.setState({
 				userTV: userTV,
 			})
@@ -41,7 +34,7 @@ class NewListPage extends Component {
 	render() {
 		const regex = /(<([^>]+)>)/gi;
 		return (
-			<Router>
+			<div>
 				<div className="listPageFlex">
 					<h1>LOGO</h1>
 				</div>
@@ -126,16 +119,12 @@ class NewListPage extends Component {
 							this.state.userTV.map((show, index) => {
 								return (
 									<div key={index} className="searchResults">
-										<Link to={`/tvShows/${show.show.externals.tvrage}`}>
-										{show.show.image === null ? <p>No Image!</p> : <img src={show.show.image.medium} alt={`A poster of ${show.show.name}`} title={`An image of ${show.show.name}`}/>} 
-										<h3>{show.show.name}</h3>
-										<p>{show.show.summary === null ? <p>No description available</p> : show.show.summary.replace(regex, "")}</p>
-										<p>{show.show.rating.average === null ? <p>No Rating Available</p> : <p>Rating:{show.show.rating.average}/10</p>}</p>
-										</Link>
+										<Switch>
+											<Link to={`/tvShows/${show.show.externals.tvrage}`}>
+											{show.show.image === null ? <p>No Image!</p> : <img src={show.show.image.medium} alt={`A poster of ${show.show.name}`} title={`An image of ${show.show.name}`}/>} 
+											</Link>
+										</Switch>
 										<AddToListButton />
-                            			<Router>
-                                			<Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
-                            			</Router>
 									</div>
 								)
 							})
@@ -145,8 +134,7 @@ class NewListPage extends Component {
 							</div>
 						</div>
 					</div>
-				</div>
-			</Router>
+			</div>
 		);
     }
 }
