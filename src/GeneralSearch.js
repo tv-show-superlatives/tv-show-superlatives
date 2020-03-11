@@ -41,6 +41,7 @@ class GeneralSearch extends Component {
                         return a.rating.average - b.rating.average;
                     }
                 });
+                console.log(tv)
                 const topTen = sortedTV.reverse().slice(0,15);
                 this.setState({
                     topTen: topTen,
