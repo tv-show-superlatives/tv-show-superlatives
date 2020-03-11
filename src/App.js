@@ -7,6 +7,7 @@ import AddListToFirebase from './AddListToFirebase'
 import '../src/index.css'
 import NewListPage from './NewListPage';
 import Nav from './Nav';
+import NewListFirebase from './NewListFirebase';
 
 
 class App extends Component {
@@ -51,10 +52,7 @@ class App extends Component {
     
   handleClick = (e) => {
     e.preventDefault();
-    // const dbRef = firebase.database().ref();
-    // dbRef.push(this.state.userInput);
     this.setState({ userInput: '' })
-    // console.log("clicked")
   }
 
 
@@ -64,10 +62,9 @@ class App extends Component {
 				<div className="App">
 					<div className="wrapper">
 						<Nav />
-								{/* <Link to="/StoreState/">Store State</Link> */}
-								{/* <Route path="/StoreState/" component={StoreState} />
-								{/* <Link to="/TvShowDetails/">TV Show Details</Link> */}
             <Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
+            <Route path="newList/" component={NewListFirebase} />
+            {/* <Route path="newList/:listKey" component={} /> */}
             <Route
               path="/"
               exact
