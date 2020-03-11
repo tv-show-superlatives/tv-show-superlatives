@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from "./firebase";
-import StoreState from "./StoreState"
+import { BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 
 
 class AddListToFirebase extends Component {
@@ -16,11 +16,43 @@ class AddListToFirebase extends Component {
 
     
     render() {
+
+      
+        const tvShows = this.props.tvShows;
+        const tvShowsCopy = [...tvShows]
+      
         return(
           <div>
-            <StoreState />
+            {/* <StoreState /> */}
             {
-              this.props.tvShows.reverse().map(list => {
+              <Switch>
+                <div>
+                    <form 
+                    className="searchForm" action="submit" onSubmit={this.props.handleFormSubmit}>
+                        <label htmlFor="showSearch">new list title: </label>
+                        <input
+                            className="searchBar"
+                            type="text"
+                            id="showSearch"
+                            onChange={this.props.handleChange}
+                            value={this.props.userInput}
+                        
+                        />
+                        {/* <Link to="/NewListPage"> */}
+                        {/* <Redirect /> */}
+                        {/* {console.log(this.props.history)} */}
+                        <button type="submit">
+                            +
+                            {/* <Route path="/NewListPage/" component={NewListPage} /> */}
+                        </button>
+
+                        {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.NewListPage}`} /> : null}
+                    </form>
+                </div>
+            </Switch>
+            }
+            {
+              tvShowsCopy.reverse().map(list => {
                 return (
                   <ul key={list.key}>{list.info.name}
                   

@@ -66,8 +66,12 @@ class TvShowDetails extends Component {
 				<div className="button-flex">
 					<button className="button-space"><Route path="/addNewList:list" />Add To List</button>
 						<Link to="/GeneralSearch/">
-					<button>Close Window</button>
+					<button>General Search</button>
+						</Link>		
+						<Link to="/NewListPage/">
+					<button>New List Page</button>
 						</Link>
+						
 				</div>
 			</div>
 		);

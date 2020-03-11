@@ -35,13 +35,13 @@ class Nav extends Component {
 						<li>
 							<Link to="/GeneralSearch/">General Search</Link>
 						</li>
-						<li>
+						{/* <li>
 							<Link to="/NewListPage/">New List</Link>
-						</li>
+						</li> */}
 					</ul>
 				</nav>
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
-				<Route path="/NewListPage/" component={NewListPage} />
+				<Route path="/NewList/" component={NewListPage} />
 			</div>
 		);
 	}
