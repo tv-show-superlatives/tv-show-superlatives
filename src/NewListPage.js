@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import TvShowDetails from './TvShowDetails';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import AddToListButton from './AddToListButton'
+import AddToListButton from './AddToListButton'; 
 
 class NewListPage extends Component {
 	constructor() {
@@ -32,7 +32,6 @@ class NewListPage extends Component {
 	}
 	
 	render() {
-		const regex = /(<([^>]+)>)/gi;
 		return (
 			<div>
 				<div className="listPageFlex">
@@ -43,11 +42,10 @@ class NewListPage extends Component {
 				</div>
 				<div className="listPageFlex2">
 					<h3>List Name</h3>
-					<button className="listButton">Add to list</button>
 				</div>
 				<div className="listPageFlex3">
 					<div className="listPageFlex4">
-						<div className="listPageFlex">
+						<div className="listPageSearchFlex">
 							<h3>User's List Items</h3>
 							<form
 								className="searchForm"
@@ -72,7 +70,7 @@ class NewListPage extends Component {
 								</button>
 							</form>
 						</div>
-						<div className="listVsChoicesFlex">
+						<div className="listVsChoicesFlex wrapper">
 							<div className="userList">
 								<ul>
 									<li>
@@ -110,30 +108,40 @@ class NewListPage extends Component {
 											src={this.state.officialImage}
 											alt={`A poster of ${this.state.tv.name}`}
 											/>
-										</li>
-									</ul>
-								</div>
-								<div className="userOptions">
+									</li>
+								</ul>
+							</div>
+							<div className="userOptions">
 								<ul>
-						{
-							this.state.userTV.map((show, index) => {
-								return (
-									<div key={index} className="searchResults">
-										<Switch>
-											<Link to={`/tvShows/${show.show.externals.tvrage}`}>
-											{show.show.image === null ? <p>No Image!</p> : <img src={show.show.image.medium} alt={`A poster of ${show.show.name}`} title={`An image of ${show.show.name}`}/>} 
-											</Link>
-										</Switch>
-										<AddToListButton />
-									</div>
-								)
-							})
-						}
-					</ul>
-								</div>
+									{
+										this.state.userTV.map((show, index) => {
+											return (
+												<div key={index} className="searchResults">
+													<Switch>
+														<Link
+															to={`/tvShows/${show.show.externals.tvrage}`}
+														>
+															{show.show.image === null ? (
+																<p>No Image!</p>
+															) : (
+																<img
+																	src={show.show.image.medium}
+																	alt={`A poster of ${show.show.name}`}
+																	title={`An image of ${show.show.name}`}
+																/>
+															)}
+														</Link>
+													</Switch>
+													<AddToListButton />
+												</div>
+											);
+										})
+									}
+								</ul>
 							</div>
 						</div>
 					</div>
+				</div>
 			</div>
 		);
     }
