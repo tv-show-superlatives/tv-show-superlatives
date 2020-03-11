@@ -51,19 +51,19 @@ class TvShowDetails extends Component {
 		console.log(this.state.tv.network)
 		return (
 			<div className="single-show">
-						<h2 className="showName">{this.state.tv.name}</h2>
-						<img
+						<h2 className="showName">{this.state.tv.name == null || undefined ? <p>N/A</p> : this.state.tv.name}</h2>
+						{this.state.officialImage == null || undefined ? <p>N/A</p> : <img
 							src={this.state.officialImage}
 							alt={`A poster of ${this.state.tv.name}`}
 							title={`${this.state.tv.name}`}
-							/>
+							/>}
 						<p>
 							<span className="bolded">Description: </span>
-							{this.state.officialDescription}
+							{this.state.officialDescription == null || undefined ? <p>N/A</p> : this.state.officialDescription}
 						</p>
 						<p>
 							<span className="bolded">Rating:</span>{" "}
-							{this.state.officialRating}/10
+							{this.state.officialRating == null || undefined ? <p>N/A</p> : this.state.officialRating}/10
 						</p>
 						<p>
 							<span className="bolded">Network:</span>{" "}
@@ -74,7 +74,7 @@ class TvShowDetails extends Component {
 							{this.state.tv.network == null || undefined ? <p>N/A</p> : this.state.tv.network.country.name}
 						</p>
 						<p>
-							<span className="bolded">Genre:</span> {this.state.genreName}
+							<span className="bolded">Genre:</span> {this.state.genreName == null || undefined ? <p>N/A</p> : this.state.genreName}
 						</p>
 						<button>
 							<Route path="/addNewList:list" />
