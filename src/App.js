@@ -13,33 +13,40 @@ import NewListFirebase from './NewListFirebase';
 class App extends Component {
   constructor(){
     super();
-
     this.state={
       tvShows:[],
       userInput:'',
       list: [],
       page: 1,
-      newListPage: ''
+      newListPage: '',
+      newListPageObj: '',
+      currentListObj: {}
+
     }
   }
+
+
 
   addNewList = (userInput) => {
     const newList = {
         owner: '',
         name: userInput,
-        shows: [
-            {
-                name: 'none',
-                key: 0,
-            }
-        ]
+        shows: []
     };
 
     const dbRef = firebase.database().ref();
     const listKey = dbRef.push(newList)
+    console.log('list key')
+    listKey.on('value', response => {
+      this.setState({
+        newListPageObj: response.val()
+      })
+    })
     console.log(listKey.key)
     this.setState({
-      newListPage: listKey.key
+      newListPage: listKey.key,
+      currentListObj: newList,
+
     })
 }
 
@@ -111,7 +118,12 @@ handleFormSubmit = (e) => {
 			<Router basename="/tv-show-superlatives/">
 				<div className="App">
 					<div className="wrapper">
-						<Nav />
+						<Nav 
+              newListStateObj={this.state.newListPageObj}
+              newListPage={this.state.newListPage}
+              currentListObj={this.state.currentListObj}
+
+            />
             <Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
             <Route path="newList/" component={NewListFirebase} />
             {/* <Route path="newList/:listKey" component={} /> */}
