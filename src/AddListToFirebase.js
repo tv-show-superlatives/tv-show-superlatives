@@ -17,13 +17,11 @@ class AddListToFirebase extends Component {
     
     render() {
 
-        // console.log(this.props.newListPage)
         const tvShows = this.props.tvShows;
         const tvShowsCopy = [...tvShows]
       
         return(
           <div>
-            {/* <StoreState /> */}
             {
               <Switch>
                 <div>
@@ -38,12 +36,8 @@ class AddListToFirebase extends Component {
                             value={this.props.userInput}
                         
                         />
-                        {/* <Link to="/NewListPage"> */}
-                        {/* <Redirect /> */}
-                        {/* {console.log(this.props.history)} */}
-                        <button type="submit">
+                        <button className="addAList" type="submit">
                             +
-                            {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                         </button>
 
                         {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.newListPage}`} /> : null}
@@ -51,21 +45,11 @@ class AddListToFirebase extends Component {
                 </div>
             </Switch>
             }
-            {
+            {/* {
               tvShowsCopy.reverse().map(list => {
                 return (
                   <ul key={list.key}>{list.info.name}
-                  
-                  <button onClick={() => {
-                    const key = list.key
-                    const dbRef = firebase.database().ref().child(key + '/')
-                    dbRef.remove()
-                  }}>
-                    remove list
-                  </button>
 
-              
-                  
                   {
                     (list.info.shows !== undefined) &&
                       
@@ -118,7 +102,7 @@ class AddListToFirebase extends Component {
                 </ul>
                 )
               })
-            }
+            } */}
 
           </div>
 
