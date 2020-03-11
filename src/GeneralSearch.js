@@ -84,12 +84,12 @@ class GeneralSearch extends Component {
 
     render() {
         return (    
-            <div className="tv-catalogue">
+            <div className="tvCatalogue">
                 <h2>Best Rated Shows on TV</h2>
                 <div className="showScroll">
                     {this.state.topTen.map(show => {
                         return (
-                            <div key={show.id} className="tv-titles tv-poster">
+                            <div key={show.id} className="tvTitles">
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
@@ -105,7 +105,7 @@ class GeneralSearch extends Component {
                 <div className="showScroll">
                     {this.state.hboShows.map(show => {
                         return (
-                            <div key={show.id} className="tv-titles tv-poster">
+                            <div key={show.id} className="tvTitles">
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
@@ -121,7 +121,7 @@ class GeneralSearch extends Component {
                 <div className="showScroll">
                     {this.state.comedyTen.map(show => {
                         return (
-                            <div key={show.id} className="tv-titles tv-poster">
+                            <div key={show.id} className="tvTitles">
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
@@ -137,7 +137,7 @@ class GeneralSearch extends Component {
                 <div className="showScroll">
                     {this.state.dramaShows.map(show => {
                         return (
-                            <div key={show.id} className="tv-titles tv-poster">  
+                            <div key={show.id} className="tvTitles">  
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
@@ -153,7 +153,7 @@ class GeneralSearch extends Component {
                 <div className="showScroll">
                     {this.state.shuffleTV.map(show => {
                         return (
-                            <div key={show.id} className="tv-titles tv-poster">
+                            <div key={show.id} className="tvTitles">
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>

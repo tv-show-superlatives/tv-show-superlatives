@@ -25,7 +25,8 @@ class Nav extends Component {
     	return (
 			<div>
 				<div>
-					<h1>ADD LOGO</h1>
+				<Link to="/"><h1>TV PARTY</h1></Link>
+					
 				</div>
 				<nav>
 					<ul>
@@ -41,7 +42,7 @@ class Nav extends Component {
 					</ul>
 				</nav>
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
-				<Route path="/NewList/" component={NewListPage} />
+				<Route path="/NewListPage/" component={NewListPage} />
 			</div>
 		);
 	}

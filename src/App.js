@@ -36,7 +36,11 @@ class App extends Component {
     };
 
     const dbRef = firebase.database().ref();
-    dbRef.push(newList)
+    const listKey = dbRef.push(newList)
+    console.log(listKey.key)
+    this.setState({
+      newListPage: listKey.key
+    })
 }
 
 // addListToFirebase = (props) =>{
@@ -66,12 +70,7 @@ handleFormSubmit = (e) => {
     // console.log(this.handleFormSubmit, "hello")
     const userInput = this.state.userInput
     this.addNewList(userInput)
-    this.setState({
-        newListPage: userInput,
-        redirect:"/NewListPage"
-    })
-    console.log(this.state.userInput)
-    this.setState({ userInput: '' })
+    // this.setState({ userInput: '' })
 };
 
 

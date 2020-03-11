@@ -17,7 +17,7 @@ class AddListToFirebase extends Component {
     
     render() {
 
-      
+        console.log(this.props.newListPage)
         const tvShows = this.props.tvShows;
         const tvShowsCopy = [...tvShows]
       
@@ -46,7 +46,7 @@ class AddListToFirebase extends Component {
                             {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                         </button>
 
-                        {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.NewListPage}`} /> : null}
+                        {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.newListPage}`} /> : null}
                     </form>
                 </div>
             </Switch>
