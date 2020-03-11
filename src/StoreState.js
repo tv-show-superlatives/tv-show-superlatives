@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from './firebase'
 import './App.css';
 import NewListPage from './NewListPage'
-import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase';
 
 
@@ -40,10 +40,6 @@ class StoreState extends Component {
         //         props.dummyData  //also tried props.dummy=this.props.dummyData  
         // )
     }
-
-    // search(term) {
-    //     this.setState({ term });
-    // }
     
 
     handleChange = (e) => {
@@ -68,25 +64,9 @@ class StoreState extends Component {
         
     }
 
-    // componentDidMount() {
-    //     const dbRef=firebase.database().ref();
-    //     dbRef.on('value', (response) => {
-    //         console.log(response.val())
-    //     })
-    // }  
-    
-
-    // handleClick=(e)=>{
-    //     e.preventDefault();
-    //     // const dbRef = firebase.database().ref();
-    //     // dbRef.push(this.state.userInput);
-    //     this.setState({userInput:''})
-    //     console.log("clicked")
-    // }
-
+   
         
     render() {
-        // console.log(this.state.userInput)
         return (
             <Switch>
                 <div>
@@ -101,12 +81,12 @@ class StoreState extends Component {
                             value={this.state.userInput}
                         
                         />
-                        <Link to="/NewListPage">
                             <button type="submit" onClick={this.handleClick} >
+                            {/* <Redirect to="/NewListPage" push /> */}
                                 +
                                 {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                             </button>
-                        </Link>  {/*   */}
+                         {/*   */}
                         
                     </form>
                 </div>

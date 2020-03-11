@@ -145,7 +145,6 @@ class NewListPage extends Component {
 							</div>
 						</div>
 					</div>
-				</div>
 			</Router>
 		);
     }
