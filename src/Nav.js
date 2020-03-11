@@ -48,11 +48,8 @@ class Nav extends Component {
 						newListStateObj={this.props.newListStateObj}
 						newListPage={this.props.newListPage}
 						currentListObj={this.props.currentListObj}
-
-
 					/>
 				)} />
-				
 			</div>
 		);
 	}

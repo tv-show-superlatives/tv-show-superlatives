@@ -24,6 +24,7 @@ code {
 }
 h1 {
 	color: #f0917a;
+	font-size: 3rem;
 }
 h1,
 h2 {
@@ -69,7 +70,7 @@ input {
 }
 nav ul a:hover,
 nav ul a:focus {
-	color: #f0917a;
+	color: white;
 }
 input {
 	font-size: 1.5rem;
@@ -98,6 +99,12 @@ button {
 	border-radius: 2px;
 	text-transform: uppercase;
 }
+.listButton,
+.addAList {
+	font-size: 1.25rem;
+	border-radius: 5px;
+	padding: 14px 25px 16px;
+}
 .listButton:hover,
 button:hover {
 	transition: 0.2s;
@@ -119,9 +126,10 @@ button:active {
 	margin-bottom: 60px;
 }
 .listSearchBar {
-	border: 1px solid white;
+	border: 2px solid white;
 	padding: 15px 25px;
 	border-radius: 5px; 
+	font-size: 1rem;
 }
 .listVsChoicesFlex {
 	display: flex;
@@ -229,6 +237,11 @@ element {
 	outline: 1px dotted gray;
 	padding: 1em;
 	box-sizing: border-box;
+}
+footer {
+	font-weight: 700;
+	text-align: center;
+	padding-top: 50px;
 }
 
 :root {

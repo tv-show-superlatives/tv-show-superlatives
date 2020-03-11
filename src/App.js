@@ -118,33 +118,35 @@ handleFormSubmit = (e) => {
 			<Router basename="/tv-show-superlatives/">
 				<div className="App">
 					<div className="wrapper">
-						<Nav 
-              newListStateObj={this.state.newListPageObj}
-              newListPage={this.state.newListPage}
-              currentListObj={this.state.currentListObj}
-
-            />
-            <Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
-            <Route path="newList/" component={NewListFirebase} />
-            {/* <Route path="newList/:listKey" component={} /> */}
-            <Route
-              path="/"
-              exact
-              render={() => (
-                <AddListToFirebase
-                  handleFormSubmit={this.handleFormSubmit}
-                  handleClick={this.handleClick}
-                  handleChange={this.handleChange}
-                  userInput={this.userInput}
-                  tvShows={this.state.tvShows}
-                  list={this.state.list}
-                  newListPage={this.state.newListPage}
-                  // dummyData={this.dummyData}
-                  addTvShow={this.addTvShow}
-                  addNewList={this.addNewList}
-                />
-              )}
-            />
+						<Nav
+							newListStateObj={this.state.newListPageObj}
+							newListPage={this.state.newListPage}
+							currentListObj={this.state.currentListObj}
+						/>
+						<Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
+						<Route path="newList/" component={NewListFirebase} />
+						{/* <Route path="newList/:listKey" component={} /> */}
+						<Route
+							path="/"
+							exact
+							render={() => (
+								<AddListToFirebase
+									handleFormSubmit={this.handleFormSubmit}
+									handleClick={this.handleClick}
+									handleChange={this.handleChange}
+									userInput={this.userInput}
+									tvShows={this.state.tvShows}
+									list={this.state.list}
+									newListPage={this.state.newListPage}
+									// dummyData={this.dummyData}
+									addTvShow={this.addTvShow}
+									addNewList={this.addNewList}
+								/>
+							)}
+						/>
+						<footer>
+							<p> &copy; 2020 Team Celeste, Lucas, Michael, and Blair</p>
+						</footer>
 					</div>
 				</div>
 			</Router>
