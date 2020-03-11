@@ -42,6 +42,7 @@ class Nav extends Component {
 				</nav>
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
 				<Route path="/NewListPage/" component={NewListPage} />
+				
 			</div>
 		);
 	}

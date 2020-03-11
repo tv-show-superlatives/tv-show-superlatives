@@ -13,15 +13,17 @@ import NewListFirebase from './NewListFirebase';
 class App extends Component {
   constructor(){
     super();
-
     this.state={
       tvShows:[],
       userInput:'',
       list: [],
       page: 1,
-      newListPage: ''
+      newListPage: '',
+      newListPageObj: ''
     }
   }
+
+
 
   addNewList = (userInput) => {
     const newList = {
@@ -37,9 +39,14 @@ class App extends Component {
 
     const dbRef = firebase.database().ref();
     const listKey = dbRef.push(newList)
+    listKey.on('value', response => {
+      this.setState({
+        newListPageObj: response.val()
+      })
+    })
     console.log(listKey.key)
     this.setState({
-      newListPage: listKey.key
+      newListPage: listKey.key,
     })
 }
 
