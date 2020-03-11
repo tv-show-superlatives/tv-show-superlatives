@@ -49,12 +49,10 @@ class App extends Component {
     })
   }
 
-    
   handleClick = (e) => {
     e.preventDefault();
     this.setState({ userInput: '' })
   }
-
 
   render() {
     return (
@@ -85,6 +83,5 @@ class App extends Component {
 		);
   }
 }
-
 
 export default App;
