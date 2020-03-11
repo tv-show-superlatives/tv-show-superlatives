@@ -14,10 +14,9 @@ class GeneralSearch extends Component {
             topTen: [],
             comedyTen: [],
             hboShows: [],
-            foodShows: [],
+            dramaShows: [],
             shuffleTV: [],
             marginLeft:0,
-            count: 0,
         }
         
     }
@@ -29,14 +28,8 @@ class GeneralSearch extends Component {
         return a;
     }
 
-    handleClick = () => {
-        this.setState({
-          count: this.state.count + 1
-        });
-    }    
-    
     componentDidMount() { 
-    axios.get(`http://api.tvmaze.com/shows?page=1`).then(response => {
+    axios.get(`http://api.tvmaze.com/shows?page=X`).then(response => {
                 const tv = response.data;
                     this.setState({
                     tv: tv,
@@ -48,7 +41,8 @@ class GeneralSearch extends Component {
                         return a.rating.average - b.rating.average;
                     }
                 });
-                const topTen = sortedTV.reverse().slice(0,10);
+                console.log(tv)
+                const topTen = sortedTV.reverse().slice(0,15);
                 this.setState({
                     topTen: topTen,
                 })
@@ -58,26 +52,10 @@ class GeneralSearch extends Component {
                     } else if (show.genres[0] === "Comedy") {
                         return show.genres[0]
                 }
-                }).slice(0,10)
+                }).slice(0,15)
                 this.setState({
                     comedyTen: comedyTen,
                 })
-//////////////////userInput attachment to search field needs to be done
-            let userInput = "France"
-            const searchArray = tv.filter(show => {
-                if (show.network === null) {
-                    return false 
-                } else if (show.network.name === userInput) {
-                    return show.network.name
-                }  else if (show.genres[0] === userInput) {
-                    return show.genres[0]
-                } else if (show.name === userInput) {
-                    return show.name
-                } else if (show.network.country.name === userInput) {
-                    return show.network.country.name
-                } 
-            })
-            console.log(searchArray)
 
             const hboShows = sortedTV.filter(show => {
                 if (show.network === null) {
@@ -85,33 +63,32 @@ class GeneralSearch extends Component {
                 } else if (show.network.name === "HBO") {
                     return show.network.name
                 }
-            }).slice(0,10)
+            }).slice(0,15)
             this.setState({
                 hboShows: hboShows,
             });
-            const foodShows = sortedTV.filter(show => {
+            const dramaShows = sortedTV.filter(show => {
                 if (show.genres[0] === null) {
                     return false
-                } else if (show.genres[0] === "Food") {
+                } else if (show.genres[0] === "Drama") {
                     return show.genres[0]
                 }
             }).slice(0,10);
             this.setState({
-                foodShows: foodShows,
+                dramaShows: dramaShows,
             });
             const shuffleTV = this.shuffle(tv).reverse().slice(0,10);
             this.setState({
                 shuffleTV: shuffleTV,
             })
             
+            console.log(shuffleTV)
         });
     }
 
     render() {
         return (    
         <div className="tv-catalogue">
-            <p>I am currently on page number: {this.state.count}</p>
-        <button onClick={this.handleClick}>Gimme More</button>
             <h2>Best Rated Shows on TV</h2>
             <div className="showScroll">
                 {this.state.topTen.map(show => {
@@ -160,9 +137,9 @@ class GeneralSearch extends Component {
                     )
                 })}
             </div>
-            <h2>Food shows</h2>
+            <h2>Dramas</h2>
             <div className="showScroll">
-                {this.state.foodShows.map(show => {
+                {this.state.dramaShows.map(show => {
                     return (
                         <div key={show.id} className="tv-titles tv-poster">  
                             <Link to={`/tvShows/${show.externals.tvrage}`}>
