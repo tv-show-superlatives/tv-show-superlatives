@@ -32,11 +32,24 @@ class NewListPage extends Component {
 	}
 	
 	render() {
+		const hello = this.props.newListStateObj.shows
+	
+
+		// console.log(shows)
+
+		console.log('this is hello', hello)
+		console.log(this.state.userTV)
+		
+		// if (hello !== undefined) {
+		// 	hello.on('value', response => {
+		// 		console.log(response.val())
+		// 	})
+		// }
 		return (
 			<div>
 				<div className="listPageTopFlex">
 				<div className="listPageFlex">
-					<h3>List Name</h3>
+				<h3>{this.props.newListStateObj.name}</h3>
 					<h3>User's List Items</h3>
 				</div>					
 				<form
@@ -64,44 +77,21 @@ class NewListPage extends Component {
 				</div>		
 				<div className="listVsChoicesFlex">
 					<div className="userList">
-						<ul>
-							<li>
-								<img
-								src={this.state.officialImage}
-								alt={`A poster of ${this.state.tv.name}`}
-								/>
-							</li>
-							<li>
-								<img
-								src={this.state.officialImage}
-								alt={`A poster of ${this.state.tv.name}`}
-								/>
-							</li>
-							<li>
-								<img
-								src={this.state.officialImage}
-								alt={`A poster of ${this.state.tv.name}`}
-								/>
-							</li>
-							<li>
-								<img
-								src={this.state.officialImage}
-								alt={`A poster of ${this.state.tv.name}`}
-								/>
-							</li>
-							<li>
-								<img
-								src={this.state.officialImage}
-								alt={`A poster of ${this.state.tv.name}`}
-								/>
-							</li>
-							<li>
-								<img
-								src={this.state.officialImage}
-								alt={`A poster of ${this.state.tv.name}`}
-								/>
-							</li>
-						</ul>
+					{hello !== undefined &&
+									<ul>
+
+										{hello.map(show => {
+											return (
+											<li>
+												<img
+												src={this.state.officialImage}
+												alt={`A poster of ${show.name}`}
+												/>
+											</li>
+											)
+										})} 
+									</ul>
+							}
 					</div>
 					<div className="userOptions">
 						<ul>
@@ -114,7 +104,14 @@ class NewListPage extends Component {
 										{show.show.image === null ? <p>No Image!</p> : <img src={show.show.image.medium} alt={`A poster of ${show.show.name}`} title={`An image of ${show.show.name}`}/>} 
 										</Link>
 									</Switch>
-									<AddToListButton />
+									<AddToListButton 
+										showName={show.show.name}
+										showId={show.show.id}
+										newListPage={this.props.newListPage}
+										currentListObj={this.props.currentListObj}
+
+
+									/>
 								</div>
 							)
 							})
