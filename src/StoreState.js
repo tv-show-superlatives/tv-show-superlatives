@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import firebase from './firebase'
 import './App.css';
 import NewListPage from './NewListPage'
-import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase';
 
 
 
 class StoreState extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state={
             tvShows:[],
             userInput:'',
+            newListPage: ''
         }
         
     }
@@ -33,16 +34,12 @@ class StoreState extends Component {
         dbRef.push(newList)
     }
     
-    addListToFirebase = (props) =>{
+    // addListToFirebase = (props) =>{
         // console.log(this.state.userInput)
         //     return (
         //         props.tvShows,
         //         props.dummyData  //also tried props.dummy=this.props.dummyData  
         // )
-    }
-
-    // search(term) {
-    //     this.setState({ term });
     // }
     
 
@@ -60,33 +57,20 @@ class StoreState extends Component {
         //     userInput: fuck off
         //     // tvShows:[]
         // })
-        this.addListToFirebase(this.state.userInput)
+        // this.addListToFirebase(this.state.userInput)
         // console.log(this.handleFormSubmit, "hello")
         const userInput = this.state.userInput
         this.addNewList(userInput)
+        this.setState({
+            newListPage: userInput,
+        })
         console.log(this.state.userInput)
         
-    }
+    };
 
-    // componentDidMount() {
-    //     const dbRef=firebase.database().ref();
-    //     dbRef.on('value', (response) => {
-    //         console.log(response.val())
-    //     })
-    // }  
-    
-
-    // handleClick=(e)=>{
-    //     e.preventDefault();
-    //     // const dbRef = firebase.database().ref();
-    //     // dbRef.push(this.state.userInput);
-    //     this.setState({userInput:''})
-    //     console.log("clicked")
-    // }
-
+   
         
     render() {
-        // console.log(this.state.userInput)
         return (
             <Switch>
                 <div>
@@ -101,12 +85,15 @@ class StoreState extends Component {
                             value={this.state.userInput}
                         
                         />
-                        <Link to="/NewListPage">
-                            <button type="submit" onClick={this.handleClick} >
-                                +
-                                {/* <Route path="/NewListPage/" component={NewListPage} /> */}
-                            </button>
-                        </Link>  {/*   */}
+                        {/* <Link to="/NewListPage"> */}
+                        {/* <Redirect /> */}
+                        {/* {console.log(this.props.history)} */}
+                        <button type="submit" onClick={this.handleClick} >
+                        {/* <Redirect to="/NewListPage" push /> */}
+                            +
+                            {/* <Route path="/NewListPage/" component={NewListPage} /> */}
+                        </button>
+
                         
                     </form>
                 </div>
