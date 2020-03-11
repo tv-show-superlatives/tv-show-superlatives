@@ -102,10 +102,15 @@ button {
 }
 .listButton:hover,
 button:hover {
-	background-color: black;
-	color: #86c2ae;
-	transition: 0.5s;
-	box-shadow: #577f90 4px 4px;
+	/* background-color: black;
+	color: #86c2ae; */
+	transition: 0.2s;
+	box-shadow: 1px 1px 4px #f0917a, -1px -1px 4px #f0917a;
+}
+button:focus {
+	background: #f0917a;
+	box-shadow: 1px 1px 4px #577f90, -1px -1px 4px #577f90;
+
 }
 .listButton:active,
 button:active {

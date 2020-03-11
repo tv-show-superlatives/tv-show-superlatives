@@ -24,16 +24,15 @@ class Nav extends Component {
 	render() {
     	return (
 			<div>
-				<div>
-				<Link to="/"><h1>TV PARTY</h1></Link>
-					
+				<div tabIndex="0">
+					<Link to="/"><h1>TV PARTY</h1></Link>
 				</div>
 				<nav>
 					<ul>
-						<li>
+						<li tabIndex="0">
 							<Link to="/">Home</Link>
 						</li>
-						<li>
+						<li tabIndex="0">
 							<Link to="/GeneralSearch/">General Search</Link>
 						</li>
 						{/* <li>
