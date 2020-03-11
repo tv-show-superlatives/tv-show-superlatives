@@ -13,7 +13,8 @@ class StoreState extends Component {
         this.state={
             tvShows:[],
             userInput:'',
-            newListPage: ''
+            newListPage: '',
+            redirect:null
         }
         
     }
@@ -63,6 +64,7 @@ class StoreState extends Component {
         this.addNewList(userInput)
         this.setState({
             newListPage: userInput,
+            redirect:"/NewListPage"
         })
         console.log(this.state.userInput)
         
@@ -88,8 +90,8 @@ class StoreState extends Component {
                         {/* <Link to="/NewListPage"> */}
                         {/* <Redirect /> */}
                         {/* {console.log(this.props.history)} */}
+                        <Redirect to="/NewListPage" push />
                         <button type="submit" onClick={this.handleClick} >
-                        {/* <Redirect to="/NewListPage" push /> */}
                             +
                             {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                         </button>
