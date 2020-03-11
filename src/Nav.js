@@ -25,7 +25,7 @@ class Nav extends Component {
     	return (
 			<div>
 				<div>
-					<h1>ADD LOGO</h1>
+					<h1>TV PARTY</h1>
 				</div>
 				<nav>
 					<ul>
