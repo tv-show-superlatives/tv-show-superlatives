@@ -92,7 +92,7 @@ class StoreState extends Component {
                         {/* <Link to="/NewListPage"> */}
                         {/* <Redirect /> */}
                         {/* {console.log(this.props.history)} */}
-                        <Redirect to="/NewListPage" push />
+                        {/* <Redirect to="/NewListPage" push /> */}
                         <button type="submit" onClick={this.handleClick} >
                             +
                             {/* <Redirect to="/NewListPage" push /> */}
@@ -111,3 +111,5 @@ class StoreState extends Component {
 }
 
 export default StoreState;
+
+//storeState -> 
