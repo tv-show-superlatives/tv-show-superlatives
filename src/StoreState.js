@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from './firebase'
 import './App.css';
 import NewListPage from './NewListPage'
-import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase';
 
 
@@ -13,6 +13,7 @@ class StoreState extends Component {
         this.state={
             tvShows:[],
             userInput:'',
+            newListPage: ''
         }
         
     }
@@ -33,13 +34,13 @@ class StoreState extends Component {
         dbRef.push(newList)
     }
     
-    addListToFirebase = (props) =>{
+    // addListToFirebase = (props) =>{
         // console.log(this.state.userInput)
         //     return (
         //         props.tvShows,
         //         props.dummyData  //also tried props.dummy=this.props.dummyData  
         // )
-    }
+    // }
 
     // search(term) {
     //     this.setState({ term });
@@ -60,13 +61,16 @@ class StoreState extends Component {
         //     userInput: fuck off
         //     // tvShows:[]
         // })
-        this.addListToFirebase(this.state.userInput)
+        // this.addListToFirebase(this.state.userInput)
         // console.log(this.handleFormSubmit, "hello")
         const userInput = this.state.userInput
         this.addNewList(userInput)
+        this.setState({
+            newListPage: userInput,
+        })
         console.log(this.state.userInput)
         
-    }
+    };
 
     // componentDidMount() {
     //     const dbRef=firebase.database().ref();
@@ -101,12 +105,14 @@ class StoreState extends Component {
                             value={this.state.userInput}
                         
                         />
-                        <Link to="/NewListPage">
+                        {/* <Link to="/NewListPage"> */}
+                        {/* <Redirect /> */}
+                        {console.log(this.props.history)}
                             <button type="submit" onClick={this.handleClick} >
                                 +
                                 {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                             </button>
-                        </Link>  {/*   */}
+                        {/* </Link>    */}
                         
                     </form>
                 </div>
