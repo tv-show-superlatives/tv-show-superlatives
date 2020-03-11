@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from "./firebase";
 import { BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect } from 'react-router-dom';
-import StoreState from "./StoreState"
 
 
 class AddListToFirebase extends Component {
@@ -17,6 +16,11 @@ class AddListToFirebase extends Component {
 
     
     render() {
+
+      
+        const tvShows = this.props.tvShows;
+        const tvShowsCopy = [...tvShows]
+      
         return(
           <div>
             {/* <StoreState /> */}
@@ -42,13 +46,13 @@ class AddListToFirebase extends Component {
                             {/* <Route path="/NewListPage/" component={NewListPage} /> */}
                         </button>
 
-                        {this.props.newListPage? <Redirect to={`/newListPage/${this.props.NewListPage}`} /> : null}
+                        {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.NewListPage}`} /> : null}
                     </form>
                 </div>
             </Switch>
             }
             {
-              this.props.tvShows.reverse().map(list => {
+              tvShowsCopy.reverse().map(list => {
                 return (
                   <ul key={list.key}>{list.info.name}
                   

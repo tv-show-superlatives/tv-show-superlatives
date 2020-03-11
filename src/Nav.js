@@ -11,18 +11,18 @@ import GeneralSearch from "./GeneralSearch";
 import NewListPage from "./NewListPage";
 
 class Nav extends Component {
-  constructor(){
-    super();
+	constructor(){
+	super();
 
-    this.state={
-      tvShows:[],
-      userInput:'',
-      list: [],
-    }
-  }
+	this.state={
+		tvShows:[],
+		userInput:'',
+		list: [],
+    	}
+	}
 
-  render() {
-    return (
+	render() {
+    	return (
 			<div>
 				<div>
 					<h1>ADD LOGO</h1>
@@ -43,7 +43,8 @@ class Nav extends Component {
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
 				<Route path="/NewList/" component={NewListPage} />
 			</div>
-		);}
+		);
+	}
 }  
 
 export default Nav;

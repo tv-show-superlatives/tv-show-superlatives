@@ -107,7 +107,6 @@ handleFormSubmit = (e) => {
   //   e.preventDefault();
   // }
 
-
   render() {
     return (
 			<Router basename="/tv-show-superlatives/">
@@ -141,6 +140,5 @@ handleFormSubmit = (e) => {
 		);
   }
 }
-
 
 export default App;
