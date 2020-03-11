@@ -63,6 +63,10 @@ nav ul {
 	margin: 0;
 	padding: 0;
 }
+li {
+	text-decoration: none;
+	list-style-type: none;
+}
 nav ul a,
 nav ul a,
 button,
@@ -102,8 +106,6 @@ button {
 }
 .listButton:hover,
 button:hover {
-	/* background-color: black;
-	color: #86c2ae; */
 	transition: 0.2s;
 	box-shadow: 1px 1px 4px #f0917a, -1px -1px 4px #f0917a;
 }

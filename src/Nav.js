@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import {
 	BrowserRouter as Router,
+	useHistory,
 	Route,
 	Link,
 	NavLink,
@@ -25,13 +26,10 @@ class Nav extends Component {
 	}
 
 	render() {
-    	return (
+    	return (			
 			<div>
 				<div tabIndex="0">
-					<Link to="/"><h1>TV PARTY</h1></Link>
-					{/* <button type="button"  onClick={handleClick}>
-						Go home
-    				</button> */}
+					<Link to="/" exact ><h1>TV PARTY</h1></Link>
 				</div>
 				<nav>
 					<ul>
