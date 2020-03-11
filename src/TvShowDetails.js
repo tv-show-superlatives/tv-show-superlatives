@@ -27,9 +27,6 @@ class TvShowDetails extends Component {
 			const officialDescription = response.data.summary.replace(regex, "");
 			const genreName = response.data.genres[0];
 			const officialRating = response.data.rating.average;
-			// const officialNetworkCatch = response.data.network;
-			// const officialNetwork = response.data.network.name;
-			// const officialCountry = response.data.network.country.name;
 			const officialImage = response.data.image.medium;
 			
 			this.setState({
@@ -37,9 +34,6 @@ class TvShowDetails extends Component {
 				officialDescription: officialDescription,
 				genreName: genreName,
 				officialRating: officialRating,
-				// officialNetworkCatch: officialNetworkCatch,
-				// officialNetwork: officialNetwork,
-				// officialCountry: officialCountry,
 				officialImage: officialImage,
 			});
 		});
@@ -62,15 +56,15 @@ class TvShowDetails extends Component {
 							{this.state.officialDescription == null || undefined ? <p>N/A</p> : this.state.officialDescription}
 						</p>
 						<p>
-							<span className="bolded">Rating:</span>{" "}
+							<span className="bolded">Rating: </span>
 							{this.state.officialRating == null || undefined ? <p>N/A</p> : this.state.officialRating}/10
 						</p>
 						<p>
-							<span className="bolded">Network:</span>{" "}
+							<span className="bolded">Network: </span>
 							{this.state.tv.network == null || undefined ? <p>N/A</p> : this.state.tv.network.name}
 						</p>
 						<p>
-							<span className="bolded">Country:</span>{" "}
+							<span className="bolded">Country: </span>
 							{this.state.tv.network == null || undefined ? <p>N/A</p> : this.state.tv.network.country.name}
 						</p>
 						<p>
