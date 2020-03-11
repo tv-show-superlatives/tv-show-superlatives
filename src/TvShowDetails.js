@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import AddToListButton from './AddToListButton'
 import {
 	BrowserRouter as Router,
 	Route,
@@ -42,7 +43,7 @@ class TvShowDetails extends Component {
 	render() {
 		console.log(this.state.tv.network)
 		return (
-			<div className="single-show">
+			<div className="singleShow">
 				<h2 className="showName">{this.state.tv.name == null || undefined ? <p>N/A</p> : this.state.tv.name}</h2>
 				{this.state.officialImage == null || undefined ? <p>N/A</p> : <img
 					src={this.state.officialImage}
@@ -63,12 +64,12 @@ class TvShowDetails extends Component {
 				<p><span className="bolded">Genre:</span> 
 					{this.state.genreName == null || undefined ? <p>N/A</p> : this.state.genreName}
 				</p>
-				<div className="button-flex">
-					<button className="button-space"><Route path="/addNewList:list" />Add To List</button>
+				<div className="buttonFlex">
+					<AddToListButton />
 						<Link to="/GeneralSearch/">
 					<button>General Search</button>
 						</Link>		
-						<Link to="/NewListPage/">
+						<Link to="/NewList/">
 					<button>New List Page</button>
 						</Link>
 						
