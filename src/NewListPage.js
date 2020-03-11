@@ -32,6 +32,19 @@ class NewListPage extends Component {
 	}
 	
 	render() {
+		const hello = this.props.newListStateObj.shows
+	
+
+		// console.log(shows)
+
+		console.log('this is hello', hello)
+		console.log(this.state.userTV)
+		
+		// if (hello !== undefined) {
+		// 	hello.on('value', response => {
+		// 		console.log(response.val())
+		// 	})
+		// }
 		return (
 			<div>
 				<div className="listPageFlex">
@@ -41,7 +54,7 @@ class NewListPage extends Component {
 					<h2>New List</h2>
 				</div>
 				<div className="listPageFlex2">
-					<h3>List Name</h3>
+					<h3>{this.props.newListStateObj.name}</h3>
 				</div>
 				<div className="listPageFlex3">
 					<div className="listPageFlex4">
@@ -72,59 +85,52 @@ class NewListPage extends Component {
 						</div>
 						<div className="listVsChoicesFlex wrapper">
 							<div className="userList">
-								<ul>
-									<li>
-										<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-										/>
-									</li>
-									<li>
-										<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-										/>
-									</li>
-									<li>
-										<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-										/>
-									</li>
-									<li>
-										<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-										/>
-									</li>
-									<li>
-										<img
-											src={this.state.officialImage}
-											alt={`A poster of ${this.state.tv.name}`}
-										/>
-									</li>
-									<li>
-										<img
+							{hello !== undefined &&
+									<ul>
+
+										{hello.map(show => {
+											return (
+											<li>
+												<img
+												src={this.state.officialImage}
+												alt={`A poster of ${show.name}`}
+												/>
+											</li>
+											)
+										})} 
+
+										{/* {hello.map(show => {
+											return (
+												console.log(show)
+												
+											)} 
+
+
+
+										/* <li>
+											<img
 											src={this.state.officialImage}
 											alt={`A poster of ${this.state.tv.name}`}
 											/>
-									</li>
-								</ul>
+											</li> */}
+									</ul>
+							}
 							</div>
 							<div className="userOptions">
 								<ul>
 									{
 										this.state.userTV.map((show, index) => {
+											// console.log(this.state.userTV)
 											return (
 												<div key={index} className="searchResults">
 													<Switch>
 														<Link
 															to={`/tvShows/${show.show.externals.tvrage}`}
-														>
+															>
 															{show.show.image === null ? (
 																<p>No Image!</p>
-															) : (
-																<img
+																) : (
+																	<img
 																	src={show.show.image.medium}
 																	alt={`A poster of ${show.show.name}`}
 																	title={`An image of ${show.show.name}`}
@@ -132,7 +138,14 @@ class NewListPage extends Component {
 															)}
 														</Link>
 													</Switch>
-													<AddToListButton />
+													<AddToListButton 
+														showName={show.show.name}
+														showId={show.show.id}
+														newListPage={this.props.newListPage}
+														currentListObj={this.props.currentListObj}
+
+
+													/>
 												</div>
 											);
 										})

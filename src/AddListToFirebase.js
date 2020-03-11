@@ -17,7 +17,7 @@ class AddListToFirebase extends Component {
     
     render() {
 
-        console.log(this.props.newListPage)
+        // console.log(this.props.newListPage)
         const tvShows = this.props.tvShows;
         const tvShowsCopy = [...tvShows]
       
@@ -79,12 +79,12 @@ class AddListToFirebase extends Component {
                             
                             
                             dbRef.on('value', response => {
-                              console.log(response.val())
+                              // console.log(response.val())
                               const showList = list.info.shows;
                               showListCopy = [...showList];
                               showListCopy.splice(index, 1)
                             })
-                            console.log(showListCopy)
+                            // console.log(showListCopy)
 
 
                             const otherDbRef = firebase.database().ref().child(listKey +   '/shows/')
