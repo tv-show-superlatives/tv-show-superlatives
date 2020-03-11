@@ -8,11 +8,12 @@ import AddListToFirebase from './AddListToFirebase';
 
 
 class StoreState extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state={
             tvShows:[],
             userInput:'',
+            newListPage: ''
         }
         
     }
@@ -33,13 +34,13 @@ class StoreState extends Component {
         dbRef.push(newList)
     }
     
-    addListToFirebase = (props) =>{
+    // addListToFirebase = (props) =>{
         // console.log(this.state.userInput)
         //     return (
         //         props.tvShows,
         //         props.dummyData  //also tried props.dummy=this.props.dummyData  
         // )
-    }
+    // }
     
 
     handleChange = (e) => {
@@ -56,13 +57,16 @@ class StoreState extends Component {
         //     userInput: fuck off
         //     // tvShows:[]
         // })
-        this.addListToFirebase(this.state.userInput)
+        // this.addListToFirebase(this.state.userInput)
         // console.log(this.handleFormSubmit, "hello")
         const userInput = this.state.userInput
         this.addNewList(userInput)
+        this.setState({
+            newListPage: userInput,
+        })
         console.log(this.state.userInput)
         
-    }
+    };
 
    
         
@@ -81,12 +85,15 @@ class StoreState extends Component {
                             value={this.state.userInput}
                         
                         />
-                            <button type="submit" onClick={this.handleClick} >
-                            {/* <Redirect to="/NewListPage" push /> */}
-                                +
-                                {/* <Route path="/NewListPage/" component={NewListPage} /> */}
-                            </button>
-                         {/*   */}
+                        {/* <Link to="/NewListPage"> */}
+                        {/* <Redirect /> */}
+                        {/* {console.log(this.props.history)} */}
+                        <button type="submit" onClick={this.handleClick} >
+                        {/* <Redirect to="/NewListPage" push /> */}
+                            +
+                            {/* <Route path="/NewListPage/" component={NewListPage} /> */}
+                        </button>
+
                         
                     </form>
                 </div>
