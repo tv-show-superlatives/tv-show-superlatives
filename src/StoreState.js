@@ -8,7 +8,7 @@ import AddListToFirebase from './AddListToFirebase';
 
 
 class StoreState extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state={
             tvShows:[],
@@ -41,10 +41,6 @@ class StoreState extends Component {
         //         props.dummyData  //also tried props.dummy=this.props.dummyData  
         // )
     // }
-
-    // search(term) {
-    //     this.setState({ term });
-    // }
     
 
     handleChange = (e) => {
@@ -72,25 +68,9 @@ class StoreState extends Component {
         
     };
 
-    // componentDidMount() {
-    //     const dbRef=firebase.database().ref();
-    //     dbRef.on('value', (response) => {
-    //         console.log(response.val())
-    //     })
-    // }  
-    
-
-    // handleClick=(e)=>{
-    //     e.preventDefault();
-    //     // const dbRef = firebase.database().ref();
-    //     // dbRef.push(this.state.userInput);
-    //     this.setState({userInput:''})
-    //     console.log("clicked")
-    // }
-
+   
         
     render() {
-        // console.log(this.state.userInput)
         return (
             <Switch>
                 <div>
@@ -107,12 +87,13 @@ class StoreState extends Component {
                         />
                         {/* <Link to="/NewListPage"> */}
                         {/* <Redirect /> */}
-                        {console.log(this.props.history)}
-                            <button type="submit" onClick={this.handleClick} >
-                                +
-                                {/* <Route path="/NewListPage/" component={NewListPage} /> */}
-                            </button>
-                        {/* </Link>    */}
+                        {/* {console.log(this.props.history)} */}
+                        <button type="submit" onClick={this.handleClick} >
+                        {/* <Redirect to="/NewListPage" push /> */}
+                            +
+                            {/* <Route path="/NewListPage/" component={NewListPage} /> */}
+                        </button>
+
                         
                     </form>
                 </div>
