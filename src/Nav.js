@@ -24,16 +24,15 @@ class Nav extends Component {
 	render() {
     	return (
 			<div>
-				<div>
-				<Link to="/"><h1>TV PARTY</h1></Link>
-					
+				<div tabIndex="0">
+					<Link to="/"><h1>TV PARTY</h1></Link>
 				</div>
 				<nav>
 					<ul>
-						<li>
+						<li tabIndex="0">
 							<Link to="/">Home</Link>
 						</li>
-						<li>
+						<li tabIndex="0">
 							<Link to="/GeneralSearch/">General Search</Link>
 						</li>
 						{/* <li>
@@ -42,7 +41,17 @@ class Nav extends Component {
 					</ul>
 				</nav>
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
-				<Route path="/NewListPage/" component={NewListPage} />
+				{/* <Route path="/NewListPage/" component={NewListPage} /> */}
+				<Route path="/NewListPage/" render={() => (
+					<NewListPage 
+						newListStateObj={this.props.newListStateObj}
+						newListPage={this.props.newListPage}
+						currentListObj={this.props.currentListObj}
+
+
+					/>
+				)} />
+				
 			</div>
 		);
 	}
