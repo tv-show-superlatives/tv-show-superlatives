@@ -39,8 +39,6 @@ class TvShowDetails extends Component {
 		});
 	}
 	
-	
-	// /when component is true, show title, image, description, rating, network, country, genre, close button
 	render() {
 		console.log(this.state.tv.network)
 		return (
@@ -70,17 +68,20 @@ class TvShowDetails extends Component {
 						<p>
 							<span className="bolded">Genre:</span> {this.state.genreName == null || undefined ? <p>N/A</p> : this.state.genreName}
 						</p>
-						<button>
-							<Route path="/addNewList:list" />
-							Add To List
-						</button>
-						<Link to="/GeneralSearch/">
-							<button>Close Window</button>
-						</Link>
+						<div className="button-flex">
+							<button className="button-space">
+								<Route path="/addNewList:list" />
+								Add To List
+							</button>
+							<Link to="/GeneralSearch/">
+								<button>Close Window</button>
+							</Link>
+						</div>
 					</div>
-				);
-			}
+				</div>
+			</div>
+		);
 	}
+}
 
-		
 export default TvShowDetails;
