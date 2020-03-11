@@ -6,6 +6,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
+.wrapper {
+	max-width: 1040px;
+	margin: 0 auto;
+}
 body {
 	margin: 0;
 	font-family: "Montserrat", sans-serif;
@@ -14,43 +18,37 @@ body {
 	background-color: black;
 	color: white;
 }
-
-img {
-	max-width: 100%;
-}
-
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 	monospace;
 }
-.tv-titles {
-	display: flex;
-	flex-direction: column;
-	margin: 0 3px;
+h1 {
+	color: #f0917a;
 }
-
-.wrapper {
-	max-width: 1040px;
-	margin: 0 auto;
+h1,
+h2 {
+	text-align: left;
 }
-
+a {
+	text-decoration: none;
+}
+h1,
+h3 {
+	margin: 0;
+}
 img {
+	max-width: 100%;
 	border: 3px solid black;
 	border-radius: 4px;
 }
-
 a img:hover,
 a img:focus {
 	border: 3px solid #f0917a;
 }
-
 /* *** (mostly) NewListPage Section Styles are below *** */
-
 nav ul a {
 	color: #f0917a;
 }
-
 nav ul {
 	display: flex;
 	flex-direction: column;
@@ -59,35 +57,34 @@ nav ul {
 	margin: 0;
 	padding: 0;
 }
-
+nav ul a,
+nav ul a,
+button,
+input {
+	border: 2px solid rgba(0,0,0,1);
+}
 nav ul a:hover,
 nav ul a:focus {
 	color: #f0917a;
 }
-
-ul {
-	list-style-type: none;
-	padding: 5%;
+input {
+	font-size: 1.5rem;
+	padding: 10px 0;
+	border-radius: 5px;
+}	
+input:focus {
+	border: 2px solid rgba(240,145,122,1);
+	box-shadow: 2px 2px 2px 0px rgba(240,145,122,1);
 }
 
-a {
-	text-decoration: none;
-	color: black;
+.tvTitles {
+	display: flex;
+	flex-direction: column;
+	margin: 0 3px;
 }
-
-h1 {
-	color: #f0917a;
-}
-
-h1,
-h3 {
-	margin: 0;
-}
-
 .showName {
 	text-align: center;
 }
-
 .listButton,
 button {
 	font-weight: 700;
@@ -97,7 +94,6 @@ button {
 	border-radius: 2px;
 	text-transform: uppercase;
 }
-
 .listButton:hover,
 button:hover {
 	background-color: black;
@@ -105,61 +101,54 @@ button:hover {
 	transition: 0.5s;
 	box-shadow: #577f90 4px 4px;
 }
-
 .listButton:active,
 button:active {
 	box-shadow: none;
 }
-
+.buttonSpace {
+	margin-right: 8px;
+}
 .addToList {
 	margin-bottom: 60px;
 }
-
 .listSearchBar {
 	border: 1px solid white;
 	padding: 15px 25px;
 	border-radius: 5px; 
 }
-
 .listVsChoicesFlex {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	margin-bottom: 25px;
 }
-
-
 .searchBarFlex {
 	display: flex;
 	justify-content: space-around;
 }
-
-.listPageFlex4 {
-	display: flex;
-	/* flex-direction: column; */
-	flex-wrap: wrap;
-}
-
 .searchResults {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 }
-
 .listPageSearchFlex {
 	display: flex;
 	justify-content: space-between;
 	min-width: 100%;
 	margin: 0 2px;
 }
-
-.listPageFlex
+.listPageTopFlex {
+	display: flex;
+	justify-content: space-between;
+	margin: 60px 0 30px 0;
+}
+.listPageFlex,
 .listPageFlex2,
 .listPageFlex5 {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 }
-
 .userList,
 .userOptions {
 	display: flex;
@@ -171,7 +160,6 @@ button:active {
 	width: calc(100% / 2 - 4px);
 	height: auto;
 }
-
 .bolded {
 	font-weight: 700;
 }
@@ -185,7 +173,6 @@ button:active {
 .button-flex {
 	display: flex;
 }
-
 .flex-parent-info {
 	display: flex;
 	flex-direction: column;
@@ -193,31 +180,11 @@ button:active {
 	padding: 0 0 0 15px;
 	width: 75%;
 }
-
 .flex-parent img {
-	/* display: inline-block; */
 	max-height: 300px;
 	min-height: 299px;
 }
-
-.button-space {
-	margin-right: 8px;
-}
-
-/* .flex-parent p,
-.flex-parent button {
-	width: 75%;
-} */
-
 /* **END Blair TvShow Details *** */
-
-
-h1,
-h2 {
-	text-align: left;
-}
-
-
 .showScroll{
 	display: flex;
 }
@@ -231,8 +198,6 @@ element {
 }
 
 */
-
-
 .scrollWrapper {
 	position: relative;
 	max-width: 100vw;
@@ -241,7 +206,6 @@ element {
 	overflow-x: hidden;
 	overflow-y: hidden;
 }
-
 .showScroll	{ 
 	background: black;
 	box-sizing: border-box;
@@ -251,7 +215,6 @@ element {
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
 }
-
 .item {
 	display: inline-block;
 	width: 100px;
