@@ -69,7 +69,7 @@ class TvShowDetails extends Component {
 						<Link to="/GeneralSearch/">
 					<button>General Search</button>
 						</Link>		
-						<Link to="/NewList/">
+						<Link to="/NewListPage/">
 					<button>New List Page</button>
 						</Link>
 						

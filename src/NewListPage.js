@@ -33,18 +33,12 @@ class NewListPage extends Component {
 	
 	render() {
 		const hello = this.props.newListStateObj.shows
-	
 
-		// console.log(shows)
 
 		console.log('this is hello', hello)
 		console.log(this.state.userTV)
 		
-		// if (hello !== undefined) {
-		// 	hello.on('value', response => {
-		// 		console.log(response.val())
-		// 	})
-		// }
+
 		return (
 			<div>
 				<div className="listPageTopFlex">
