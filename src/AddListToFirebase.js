@@ -45,6 +45,7 @@ class AddListToFirebase extends Component {
                 </div>
             </Switch>
             }
+<<<<<<< HEAD
             {/* {
               tvShowsCopy.reverse().map(list => {
                 return (
@@ -127,6 +128,12 @@ class AddListToFirebase extends Component {
             } */}
 					</div>
 				);
+=======
+            
+          </div>
+
+        )
+>>>>>>> master
     }
 }
 
