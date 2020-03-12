@@ -22,7 +22,7 @@ class NewListPage extends Component {
 	}
 	handleFormSubmit = (e) => {
 		e.preventDefault();
-		axios.get(`http://api.tvmaze.com/search/shows?q=${this.state.userInput}`).then(response => {
+		axios.get(`https://api.tvmaze.com/search/shows?q=${this.state.userInput}`).then(response => {
 			const userTV = response.data;
 			this.setState({
 				userTV: userTV,
