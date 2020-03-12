@@ -29,7 +29,7 @@ class GeneralSearch extends Component {
     }
 
     componentDidMount() { 
-        axios.get(`http://api.tvmaze.com/shows?page=X`).then(response => {
+        axios.get(`https://api.tvmaze.com/shows?page=X`).then(response => {
             const tv = response.data;
                 this.setState({
                     tv: tv,
