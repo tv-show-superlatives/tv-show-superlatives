@@ -45,7 +45,6 @@ class AddListToFirebase extends Component {
                 </div>
             </Switch>
             }
-            
           </div>
 
         )
