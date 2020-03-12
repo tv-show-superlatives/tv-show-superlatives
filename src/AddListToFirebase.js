@@ -34,10 +34,10 @@ class AddListToFirebase extends Component {
                             id="showSearch"
                             onChange={this.props.handleChange}
                             value={this.props.userInput}
-                        
+                            placeholder="Name your list!"
                         />
                         <button className="addAList" type="submit">
-                            +
+                          <i class="fas fa-plus"></i>
                         </button>
 
                         {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.newListPage}`} /> : null}
@@ -45,6 +45,7 @@ class AddListToFirebase extends Component {
                 </div>
             </Switch>
             }
+<<<<<<< HEAD
             {/* {
               tvShowsCopy.reverse().map(list => {
                 return (
@@ -70,43 +71,69 @@ class AddListToFirebase extends Component {
                             })
                             // console.log(showListCopy)
 
+									{list.info.shows !== undefined &&
+										list.info.shows
+											.filter(show => show.name !== "none")
+											.map((show, index) => {
+												return (
+													<li key={show.key}>
+														{show.name}
+														<button
+															onClick={() => {
+																const listKey = list.key;
+																let showListCopy;
+																const dbRef = firebase
+																	.database()
+																	.ref()
+																	.child(listKey + "/shows/" + index + "/");
 
-                            const otherDbRef = firebase.database().ref().child(listKey +   '/shows/')
-                            otherDbRef.set(showListCopy)
-                            
-                          }}>remove</button>
-                          </li>
-                      })
-                    }
-                  
-                  <button onClick={() => {
+																dbRef.on("value", response => {
+																	// console.log(response.val())
+																	const showList = list.info.shows;
+																	showListCopy = [...showList];
+																	showListCopy.splice(index, 1);
+																});
+																// console.log(showListCopy)
 
-                    const key = list.key
-                    const dataToPush = {
-                      key: 1235,
-                      name: 'bhlegnl?'
-                    }
-                    let prevListCopy;
-                    const dbRef = firebase.database().ref().child(key + '/shows')
+																const otherDbRef = firebase
+																	.database()
+																	.ref()
+																	.child(listKey + "/shows/");
+																otherDbRef.set(showListCopy);
+															}}
+														>
+															remove
+														</button>
+													</li>
+												);
+											})}
 
-                    dbRef.on('value', response => {
-                      const prevList = response.val();
-                      prevListCopy = [...prevList];
-                      prevListCopy.push(dataToPush);
-                    })
-                    
-                    dbRef.update(prevListCopy);
-                    
+									<button
+										onClick={() => {
+											const key = list.key;
+											const dataToPush = {
+												key: 1235,
+												name: "bhlegnl?"
+											};
+											let prevListCopy;
+											const dbRef = firebase
+												.database()
+												.ref()
+												.child(key + "/shows");
 
                     }}>add to list</button>
                 </ul>
                 )
               })
             } */}
-
+					</div>
+				);
+=======
+            
           </div>
 
         )
+>>>>>>> master
     }
 }
 

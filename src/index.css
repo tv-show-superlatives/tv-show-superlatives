@@ -9,6 +9,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 .wrapper {
 	max-width: 1040px;
 	margin: 0 auto;
+	min-height: 90vh;
+	padding-top: 40px;
 }
 body {
 	margin: 0;
@@ -29,6 +31,7 @@ li{
 
 h1 {
 	color: #f0917a;
+	font-size: 3rem;
 }
 h1,
 h2 {
@@ -104,6 +107,16 @@ button {
 	border-radius: 2px;
 	text-transform: uppercase;
 }
+.addAList {
+	padding: 15px 25px 12px;
+	font-size: 1.25rem;
+	border-radius: 5px;
+}
+.listButton {
+	font-size: 1.25rem;
+	border-radius: 5px;
+	padding: 14px 25px 16px;
+}
 .listButton:hover,
 button:hover {
 	transition: 0.2s;
@@ -125,15 +138,28 @@ button:active {
 	margin-bottom: 60px;
 }
 .listSearchBar {
-	border: 1px solid white;
+	border: 2px solid white;
 	padding: 15px 25px;
 	border-radius: 5px; 
+	font-size: 1rem;
 }
 .listVsChoicesFlex {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	margin-bottom: 25px;
+}
+
+form label {
+	text-transform: uppercase;
+	font-weight: 700;
+}
+.searchForm {
+	text-align: center;
+	margin-top: 15%;
+}
+.searchBar {
+	padding-left: 10px;
 }
 .searchBarFlex {
 	display: flex;
@@ -176,42 +202,22 @@ button:active {
 .bolded {
 	font-weight: 700;
 }
-
-
 /* ***End of Blair's NewListPage Stylings*** */
 
 /* **Blair TvShow Details *** */
 
-.flex-parent,
-.button-flex {
-	display: flex;
+.singleShow {
+	text-align: center;
 }
-.flex-parent-info {
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-	padding: 0 0 0 15px;
-	width: 75%;
+
+.detailsButton {
+	margin: 20px 5px;
 }
-.flex-parent img {
-	max-height: 300px;
-	min-height: 299px;
-}
+
 /* **END Blair TvShow Details *** */
 .showScroll{
 	display: flex;
 }
-
-/* TO USE THESE VARIABLES*/
-
-/*
-
-element {
-	background-color: var(--primaryColor);
-}
-
-*/
-
 
 .scrollWrapper {
 	position: relative;
@@ -237,6 +243,20 @@ element {
 	outline: 1px dotted gray;
 	padding: 1em;
 	box-sizing: border-box;
+}
+footer {
+	padding-top: 40px;
+	font-weight: 700;
+	text-align: center;
+}
+
+.footerWrapper {
+	min-height: 10vh;
+}
+
+footer p {
+	margin: 0;
+	color: #577f90;
 }
 
 :root {
