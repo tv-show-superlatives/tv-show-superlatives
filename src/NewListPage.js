@@ -3,6 +3,7 @@ import axios from "axios";
 import TvShowDetails from './TvShowDetails';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import AddToListButton from './AddToListButton'
+import UpVote from "./UpVote";
 
 class NewListPage extends Component {
 	constructor() {
@@ -13,6 +14,7 @@ class NewListPage extends Component {
 			userInput: '',
 			userTV: [],	
 			searchedShows: [],
+			upVoteArray: [],
 		};
 	}
 	handleChange = (e) => {
@@ -26,19 +28,24 @@ class NewListPage extends Component {
 				userTV: userTV,
 			})
 		})
-	}  
+	}
+	objectArray = (objectToPush) => {
+		const stateToSet = [...this.state.upVoteArray];
+		stateToSet.push(objectToPush);
+		this.setState({
+			upVoteArray: stateToSet
+		})
+		console.log(this.state.upVoteArray)
+	}
+
 	
+
+
 	componentDidMount() {
 	}
 	
 	render() {
 		const hello = this.props.newListStateObj.shows
-
-
-		console.log('this is hello', hello)
-		console.log(this.state.userTV)
-		
-
 		return (
 			<div>
 				<div className="listPageTopFlex">
@@ -76,12 +83,10 @@ class NewListPage extends Component {
 
 										{hello.map(show => {
 											return (
-											<li>
-												<img
-												src={this.state.officialImage}
-												alt={`A poster of ${show.name}`}
-												/>
-											</li>
+											<UpVote 
+												showName={show.name}
+												upVoteArray={this.state.upVoteArray}
+											/>
 											)
 										})} 
 									</ul>
@@ -99,6 +104,7 @@ class NewListPage extends Component {
 										</Link>
 									</Switch>
 									<AddToListButton 
+										objectArray={this.objectArray}
 										showName={show.show.name}
 										showId={show.show.id}
 										newListPage={this.props.newListPage}

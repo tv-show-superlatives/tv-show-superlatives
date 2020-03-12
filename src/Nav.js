@@ -15,14 +15,11 @@ import NewListPage from "./NewListPage";
 class Nav extends Component {
 	constructor(){
 	super();
-
 	this.state={
 		tvShows:[],
 		userInput:'',
 		list: [],
 		}
-
-		
 	}
 
 	render() {
@@ -45,17 +42,13 @@ class Nav extends Component {
 					</ul>
 				</nav>
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
-				{/* <Route path="/NewListPage/" component={NewListPage} /> */}
 				<Route path="/NewListPage/" render={() => (
 					<NewListPage 
 						newListStateObj={this.props.newListStateObj}
 						newListPage={this.props.newListPage}
 						currentListObj={this.props.currentListObj}
-
-
 					/>
 				)} />
-				
 			</div>
 		);
 	}
