@@ -10,7 +10,6 @@ class AddToListButton extends Component {
             key: this.props.showId,
         }
 
-        // console.log(this.props.currentListObj)
         if (this.props.currentListObj.shows === undefined) {
             this.props.currentListObj.shows = []
             this.props.currentListObj.shows.push(showToAdd)
@@ -21,20 +20,6 @@ class AddToListButton extends Component {
             console.log('current show added', this.props.currentListObj)
             dbRef.set(this.props.currentListObj)
         }
-    
-        
-
-        // const listKey = list.key;
-        // let showListCopy;
-        // const dbRef = firebase.database().ref().child(listKey + '/shows/' + index + '/')
-        
-        
-        // dbRef.on('value', response => {
-        //   // console.log(response.val())
-        //     const showList = list.info.shows;
-        //     showListCopy = [...showList];
-        //     showListCopy.splice(index, 1)
-        // })
     }
 
     render() {

@@ -50,14 +50,6 @@ class App extends Component {
     })
 }
 
-// addListToFirebase = (props) =>{
-    // console.log(this.state.userInput)
-    //     return (
-    //         props.tvShows,
-    //         props.dummyData  //also tried props.dummy=this.props.dummyData  
-    // )
-// }
-
 
 handleChange = (e) => {
     this.setState({userInput:e.target.value})
@@ -69,15 +61,8 @@ handleChange = (e) => {
 
 handleFormSubmit = (e) => {
     e.preventDefault();
-    // this.setState({
-    //     userInput: fuck off
-    //     // tvShows:[]
-    // })
-    // this.addListToFirebase(this.state.userInput)
-    // console.log(this.handleFormSubmit, "hello")
     const userInput = this.state.userInput
     this.addNewList(userInput)
-    // this.setState({ userInput: '' })
 };
 
 
@@ -94,12 +79,10 @@ handleFormSubmit = (e) => {
           key: key,
           info: data[key]
         }
-        // console.log(listInfo.key, listInfo)
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
         newList.push(keys)
-        // console.log(data.key)
         this.setState({
           tvShows: newState,
           list: newList
@@ -108,10 +91,6 @@ handleFormSubmit = (e) => {
     })
   }
 
-    
-  // handleClick = (e) => {
-  //   e.preventDefault();
-  // }
 
   render() {
     return (
@@ -125,7 +104,6 @@ handleFormSubmit = (e) => {
 						/>
 						<Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
 						<Route path="newList/" component={NewListFirebase} />
-						{/* <Route path="newList/:listKey" component={} /> */}
 						<Route
 							path="/"
 							exact
@@ -138,7 +116,6 @@ handleFormSubmit = (e) => {
 									tvShows={this.state.tvShows}
 									list={this.state.list}
 									newListPage={this.state.newListPage}
-									// dummyData={this.dummyData}
 									addTvShow={this.addTvShow}
 									addNewList={this.addNewList}
 								/>

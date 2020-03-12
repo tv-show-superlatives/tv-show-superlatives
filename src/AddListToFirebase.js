@@ -17,61 +17,58 @@ class AddListToFirebase extends Component {
     
     render() {
 
-        // console.log(this.props.newListPage)
         const tvShows = this.props.tvShows;
         const tvShowsCopy = [...tvShows]
       
-        return (
-					<div>
-						{/* <StoreState /> */}
-						{
-							<Switch>
-								<div>
-									<form
-										className="searchForm"
-										action="submit"
-										onSubmit={this.props.handleFormSubmit}
-									>
-										<label htmlFor="showSearch">new list title: </label>
-										<input
-											className="searchBar"
-											type="text"
-											id="showSearch"
-											onChange={this.props.handleChange}
-											value={this.props.userInput}
-										/>
-										{/* <Link to="/NewListPage"> */}
-										{/* <Redirect /> */}
-										{/* {console.log(this.props.history)} */}
-										<button type="submit">
-											<i class="fas fa-plus"></i>
-											{/* <Route path="/NewListPage/" component={NewListPage} /> */}
-										</button>
+        return(
+          <div>
+            {
+              <Switch>
+                <div>
+                    <form 
+                    className="searchForm" action="submit" onSubmit={this.props.handleFormSubmit}>
+                        <label htmlFor="showSearch">new list title: </label>
+                        <input
+                            className="searchBar"
+                            type="text"
+                            id="showSearch"
+                            onChange={this.props.handleChange}
+                            value={this.props.userInput}
+                        
+                        />
+                        <button className="addAList" type="submit">
+                          <i class="fas fa-plus"></i>
+                        </button>
 
-										{this.props.newListPage ? (
-											<Redirect to={`/newListPage/${this.props.newListPage}`} />
-										) : null}
-									</form>
-								</div>
-							</Switch>
-						}
-						{tvShowsCopy.reverse().map(list => {
-							return (
-								<ul key={list.key}>
-									{list.info.name}
+                        {this.props.newListPage ? <Redirect to={`/newListPage/${this.props.newListPage}`} /> : null}
+                    </form>
+                </div>
+            </Switch>
+            }
+            {/* {
+              tvShowsCopy.reverse().map(list => {
+                return (
+                  <ul key={list.key}>{list.info.name}
 
-									<button
-										onClick={() => {
-											const key = list.key;
-											const dbRef = firebase
-												.database()
-												.ref()
-												.child(key + "/");
-											dbRef.remove();
-										}}
-									>
-										remove list
-									</button>
+                  {
+                    (list.info.shows !== undefined) &&
+                      
+                      list.info.shows.filter(show => show.name !== 'none').map((show, index) => {
+                        return <li key={show.key}>
+                          {show.name}
+                          <button onClick={() => {
+                            const listKey = list.key;
+                            let showListCopy;
+                            const dbRef = firebase.database().ref().child(listKey + '/shows/' + index + '/')
+                            
+                            
+                            dbRef.on('value', response => {
+                              // console.log(response.val())
+                              const showList = list.info.shows;
+                              showListCopy = [...showList];
+                              showListCopy.splice(index, 1)
+                            })
+                            // console.log(showListCopy)
 
 									{list.info.shows !== undefined &&
 										list.info.shows
@@ -123,20 +120,11 @@ class AddListToFirebase extends Component {
 												.ref()
 												.child(key + "/shows");
 
-											dbRef.on("value", response => {
-												const prevList = response.val();
-												prevListCopy = [...prevList];
-												prevListCopy.push(dataToPush);
-											});
-
-											dbRef.update(prevListCopy);
-										}}
-									>
-										add to list
-									</button>
-								</ul>
-							);
-						})}
+                    }}>add to list</button>
+                </ul>
+                )
+              })
+            } */}
 					</div>
 				);
     }
