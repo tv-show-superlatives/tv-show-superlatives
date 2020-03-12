@@ -16,7 +16,6 @@ class AddToListButton extends Component {
             this.props.currentListObj.shows.push(showToAdd)
             dbRef.set(this.props.currentListObj)
         }
-        
     }
 
     render() {

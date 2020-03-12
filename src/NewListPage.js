@@ -46,7 +46,6 @@ class NewListPage extends Component {
 	
 	render() {
 		const hello = this.props.newListStateObj.shows
-
 		return (
 			<div>
 				<div className="listPageTopFlex">
@@ -87,7 +86,6 @@ class NewListPage extends Component {
 											<UpVote 
 												showName={show.name}
 												upVoteArray={this.state.upVoteArray}
-												// objectArray={this.objectArray}
 											/>
 											)
 										})} 

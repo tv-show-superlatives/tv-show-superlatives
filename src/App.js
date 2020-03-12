@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
 import TvShowDetails from './TvShowDetails';
-import GeneralSearch from './GeneralSearch';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AddListToFirebase from './AddListToFirebase'
 import '../src/index.css'
-import NewListPage from './NewListPage';
 import Nav from './Nav';
 import NewListFirebase from './NewListFirebase';
 
@@ -24,8 +22,6 @@ class App extends Component {
 
     }
   }
-
-
 
   addNewList = (userInput) => {
     const newList = {
@@ -46,40 +42,16 @@ class App extends Component {
     this.setState({
       newListPage: listKey.key,
       currentListObj: newList,
-
     })
 }
-
-// addListToFirebase = (props) =>{
-    // console.log(this.state.userInput)
-    //     return (
-    //         props.tvShows,
-    //         props.dummyData  //also tried props.dummy=this.props.dummyData  
-    // )
-// }
-
-
-handleChange = (e) => {
-    this.setState({userInput:e.target.value})
-    // console.log(e.target.value)
-    
+  handleChange = (e) => {
+    this.setState({userInput:e.target.value})    
 }
-
-
-
-handleFormSubmit = (e) => {
+  handleFormSubmit = (e) => {
     e.preventDefault();
-    // this.setState({
-    //     userInput: fuck off
-    //     // tvShows:[]
-    // })
-    // this.addListToFirebase(this.state.userInput)
-    // console.log(this.handleFormSubmit, "hello")
     const userInput = this.state.userInput
     this.addNewList(userInput)
-    // this.setState({ userInput: '' })
 };
-
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
@@ -87,19 +59,15 @@ handleFormSubmit = (e) => {
       const newState = [];
       const newList = [];
       const data = response.val();
-
-
       for (let key in data) {
         const listInfo = {
           key: key,
           info: data[key]
         }
-        // console.log(listInfo.key, listInfo)
         const keys = key
         const listArray = data[key]
         newState.push(listInfo)
         newList.push(keys)
-        // console.log(data.key)
         this.setState({
           tvShows: newState,
           list: newList
@@ -108,10 +76,6 @@ handleFormSubmit = (e) => {
     })
   }
 
-    
-  // handleClick = (e) => {
-  //   e.preventDefault();
-  // }
 
   render() {
     return (
@@ -122,11 +86,9 @@ handleFormSubmit = (e) => {
               newListStateObj={this.state.newListPageObj}
               newListPage={this.state.newListPage}
               currentListObj={this.state.currentListObj}
-
             />
             <Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
             <Route path="newList/" component={NewListFirebase} />
-            {/* <Route path="newList/:listKey" component={} /> */}
             <Route
               path="/"
               exact
@@ -139,7 +101,6 @@ handleFormSubmit = (e) => {
                   tvShows={this.state.tvShows}
                   list={this.state.list}
                   newListPage={this.state.newListPage}
-                  // dummyData={this.dummyData}
                   addTvShow={this.addTvShow}
                   addNewList={this.addNewList}
                 />

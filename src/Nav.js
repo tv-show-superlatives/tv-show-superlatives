@@ -5,21 +5,21 @@ import {
 	useHistory,
 	Route,
 	Link,
-	NavLink
+	NavLink,
 } from "react-router-dom";
 import TvShowDetails from "./TvShowDetails";
 import GeneralSearch from "./GeneralSearch";
 import NewListPage from "./NewListPage";
 
+
 class Nav extends Component {
 	constructor(){
 	super();
-
 	this.state={
 		tvShows:[],
 		userInput:'',
 		list: [],
-    	}
+		}
 	}
 
 	render() {
@@ -36,23 +36,19 @@ class Nav extends Component {
 						<li tabIndex="0">
 							<Link to="/GeneralSearch/">General Search</Link>
 						</li>
-						{/* <li>
+						<li>
 							<Link to="/NewListPage/">New List</Link>
-						</li> */}
+						</li>
 					</ul>
 				</nav>
 				<Route path="/GeneralSearch/" component={GeneralSearch} />
-				{/* <Route path="/NewListPage/" component={NewListPage} /> */}
 				<Route path="/NewListPage/" render={() => (
 					<NewListPage 
 						newListStateObj={this.props.newListStateObj}
 						newListPage={this.props.newListPage}
 						currentListObj={this.props.currentListObj}
-
-
 					/>
 				)} />
-				
 			</div>
 		);
 	}
