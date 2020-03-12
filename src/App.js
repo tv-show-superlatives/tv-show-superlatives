@@ -19,7 +19,6 @@ class App extends Component {
       newListPage: '',
       newListPageObj: '',
       currentListObj: {}
-
     }
   }
 
@@ -82,6 +81,37 @@ class App extends Component {
 			<Router basename="/tv-show-superlatives/">
 				<div className="App">
 					<div className="wrapper">
+<<<<<<< HEAD
+						<Nav
+							newListStateObj={this.state.newListPageObj}
+							newListPage={this.state.newListPage}
+							currentListObj={this.state.currentListObj}
+						/>
+						<Route path="/tvShows/:tvShowsID" component={TvShowDetails} />
+						<Route path="newList/" component={NewListFirebase} />
+						<Route
+							path="/"
+							exact
+							render={() => (
+								<AddListToFirebase
+									handleFormSubmit={this.handleFormSubmit}
+									handleClick={this.handleClick}
+									handleChange={this.handleChange}
+									userInput={this.userInput}
+									tvShows={this.state.tvShows}
+									list={this.state.list}
+									newListPage={this.state.newListPage}
+									addTvShow={this.addTvShow}
+									addNewList={this.addNewList}
+								/>
+							)}
+						/>
+					</div>
+					<div className="footerWrapper">
+						<footer>
+							<p> &copy; 2020 Team Celeste, Lucas, Michael, and Blair</p>
+						</footer>
+=======
 						<Nav 
               newListStateObj={this.state.newListPageObj}
               newListPage={this.state.newListPage}
@@ -106,6 +136,7 @@ class App extends Component {
                 />
               )}
             />
+>>>>>>> master
 					</div>
 				</div>
 			</Router>
