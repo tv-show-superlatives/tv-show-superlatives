@@ -93,7 +93,10 @@ class GeneralSearch extends Component {
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
-                                <AddToListButton />
+                                <Link to={`/tvShows/${show.externals.tvrage}`}>
+                                <button className="addToList">More Details</button>
+                                </Link>
+                                {/* <AddToListButton /> */}
                                 <Router>
                                     <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                                 </Router>
@@ -109,7 +112,10 @@ class GeneralSearch extends Component {
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
-                                <AddToListButton />
+                                <Link to={`/tvShows/${show.externals.tvrage}`}>
+                                <button className="addToList">More Details</button>
+                                </Link>
+                                {/* <AddToListButton /> */}
                                 <Router>
                                     <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                                 </Router>
@@ -125,7 +131,10 @@ class GeneralSearch extends Component {
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
-                                <AddToListButton />
+                                <Link to={`/tvShows/${show.externals.tvrage}`}>
+                                <button className="addToList">More Details</button>
+                                </Link>
+                                {/* <AddToListButton /> */}
                                 <Router>
                                     <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                                 </Router>
@@ -141,7 +150,10 @@ class GeneralSearch extends Component {
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
-                                <AddToListButton />
+                                <Link to={`/tvShows/${show.externals.tvrage}`}>
+                                <button className="addToList">More Details</button>
+                                </Link>
+                                {/* <AddToListButton /> */}
                                 <Router>
                                     <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                                 </Router>
@@ -157,7 +169,10 @@ class GeneralSearch extends Component {
                                 <Link to={`/tvShows/${show.externals.tvrage}`}>
                                 <img src={`${show.image.medium}`} title={`${show.name}`} alt={`${show.name}`}/>
                                 </Link>
-                                <AddToListButton />
+                                <Link to={`/tvShows/${show.externals.tvrage}`}>
+                                <button className="addToList">More Details</button>
+                                </Link>
+                                {/* <AddToListButton /> */}
                                 <Router>
                                     <Route path="/tvShow/:tvShowID" component={TvShowDetails}/>
                                 </Router>

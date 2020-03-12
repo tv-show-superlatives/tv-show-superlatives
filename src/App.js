@@ -21,7 +21,6 @@ class App extends Component {
       newListPage: '',
       newListPageObj: '',
       currentListObj: {}
-
     }
   }
 
@@ -121,6 +120,8 @@ handleFormSubmit = (e) => {
 								/>
 							)}
 						/>
+					</div>
+					<div className="footerWrapper">
 						<footer>
 							<p> &copy; 2020 Team Celeste, Lucas, Michael, and Blair</p>
 						</footer>

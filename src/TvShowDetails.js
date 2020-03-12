@@ -44,35 +44,74 @@ class TvShowDetails extends Component {
 		console.log(this.state.tv.network)
 		return (
 			<div className="singleShow">
-				<h2 className="showName">{this.state.tv.name == null || undefined ? <p>N/A</p> : this.state.tv.name}</h2>
-				{this.state.officialImage == null || undefined ? <p>N/A</p> : <img
-					src={this.state.officialImage}
-					alt={`A poster of ${this.state.tv.name}`}
-					title={`${this.state.tv.name}`}/>}
-				<p><span className="bolded">Description: </span>
-					{this.state.officialDescription == null || undefined ? <p>N/A</p> : this.state.officialDescription}
+				<h2 className="showName">
+					{this.state.tv.name == null || undefined ? (
+						<p>N/A</p>
+					) : (
+						this.state.tv.name
+					)}
+				</h2>
+				{this.state.officialImage == null || undefined ? (
+					<p>N/A</p>
+				) : (
+					<img
+						src={this.state.officialImage}
+						alt={`A poster of ${this.state.tv.name}`}
+						title={`${this.state.tv.name}`}
+					/>
+				)}
+				<p>
+					<span className="bolded">Description: </span>
+					{this.state.officialDescription == null || undefined ? (
+						<p>N/A</p>
+					) : (
+						this.state.officialDescription
+					)}
 				</p>
-				<p><span className="bolded">Rating: </span>
-					{this.state.officialRating == null || undefined ? <p>N/A</p> : this.state.officialRating}/10
+				<p>
+					<span className="bolded">Rating: </span>
+					{this.state.officialRating == null || undefined ? (
+						<p>N/A</p>
+					) : (
+						this.state.officialRating
+					)}
+					/10
 				</p>
-				<p><span className="bolded">Network: </span>
-					{this.state.tv.network == null || undefined ? <p>N/A</p> : this.state.tv.network.name}
+				<p>
+					<span className="bolded">Network: </span>
+					{this.state.tv.network == null || undefined ? (
+						<p>N/A</p>
+					) : (
+						this.state.tv.network.name
+					)}
 				</p>
-				<p><span className="bolded">Country: </span>
-					{this.state.tv.network == null || undefined ? <p>N/A</p> : this.state.tv.network.country.name}
+				<p>
+					<span className="bolded">Country: </span>
+					{this.state.tv.network == null || undefined ? (
+						<p>N/A</p>
+					) : (
+						this.state.tv.network.country.name
+					)}
 				</p>
-				<p><span className="bolded">Genre:</span> 
-					{this.state.genreName == null || undefined ? <p>N/A</p> : this.state.genreName}
+				<p>
+					<span className="bolded">Genre: </span>
+					{this.state.genreName == null || undefined ? (
+						<p>N/A</p>
+					) : (
+						this.state.genreName
+					)}
 				</p>
 				<div className="buttonFlex">
-					<AddToListButton />
-						<Link to="/GeneralSearch/">
-					<button>General Search</button>
-						</Link>		
-						<Link to="/NewListPage/">
-					<button>New List Page</button>
-						</Link>
-						
+					{/* <AddToListButton /> */}
+					<Link to="/">
+						<button className="detailsButton">New List</button>
+					</Link>
+					<Link to="/GeneralSearch/">
+						<button className="detailsButton">Catalogue</button>
+					</Link>
+					<Link to="/NewListPage/">
+						<button className="detailsButton">Your List</button>
+					</Link>
 				</div>
 			</div>
 		);

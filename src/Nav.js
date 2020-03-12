@@ -20,13 +20,11 @@ class Nav extends Component {
 		tvShows:[],
 		userInput:'',
 		list: [],
-		}
-
-		
+		}	
 	}
 
 	render() {
-    	return (			
+		return (			
 			<div>
 				<div tabIndex="0">
 					<Link to="/" exact ><h1>TV PARTY</h1></Link>
@@ -37,10 +35,10 @@ class Nav extends Component {
 							<Link to="/">Home</Link>
 						</li>
 						<li tabIndex="0">
-							<Link to="/GeneralSearch/">General Search</Link>
+							<Link to="/GeneralSearch/">Catalogue</Link>
 						</li>
 						<li>
-							<Link to="/NewListPage/">New List</Link>
+							<Link to="/NewListPage/">Your List</Link>
 						</li>
 					</ul>
 				</nav>

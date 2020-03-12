@@ -34,7 +34,7 @@ class AddListToFirebase extends Component {
                             id="showSearch"
                             onChange={this.props.handleChange}
                             value={this.props.userInput}
-                        
+                            placeholder="Name your list!"
                         />
                         <button className="addAList" type="submit">
                           <i class="fas fa-plus"></i>
